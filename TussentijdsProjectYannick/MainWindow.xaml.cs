@@ -23,6 +23,7 @@ namespace TussentijdsProjectYannick
         public MainWindow()
         {
             InitializeComponent();
+            
         }
     }
 }
