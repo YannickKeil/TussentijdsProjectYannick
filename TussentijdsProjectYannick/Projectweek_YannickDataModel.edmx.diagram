@@ -20,6 +20,7 @@
         <AssociationConnector Association="ProjectweekModel.FK_BestellingProduct_Product" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectweekModel.FK_Product_Categorie" ManuallyRouted="false" />
         <AssociationConnector Association="ProjectweekModel.FK_Product_Leverancier" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectweekModel.FK_AdminRechten_Personeelslid" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

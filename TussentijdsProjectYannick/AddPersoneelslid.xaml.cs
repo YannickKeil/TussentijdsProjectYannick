@@ -31,6 +31,7 @@ namespace TussentijdsProjectYannick
                 cbAdminRechten.DisplayMemberPath = "titel";
                 cbAdminRechten.SelectedValuePath = "AdminRechtenID";
                 cbAdminRechten.ItemsSource = listRechten;
+                cbAdminRechten.SelectedIndex = 0;
             }
         }
         private byte[] CreateSalt()

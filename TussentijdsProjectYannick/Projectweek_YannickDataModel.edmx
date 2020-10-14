@@ -227,6 +227,7 @@
           </Key>
           <Property Name="AdminRechtenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personeelslids" Relationship="ProjectweekModel.FK_AdminRechten_Personeelslid" FromRole="AdminRechten" ToRole="Personeelslid" />
         </EntityType>
         <EntityType Name="Bestelling">
           <Key>
@@ -308,6 +309,7 @@
           <Property Name="Indiensttreding" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="GeboorteDatum" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Bestellings" Relationship="Self.FK_Bestelling_Personeelslid" FromRole="Personeelslid" ToRole="Bestelling" />
+          <NavigationProperty Name="AdminRechten" Relationship="ProjectweekModel.FK_AdminRechten_Personeelslid" FromRole="Personeelslid" ToRole="AdminRechten" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -445,7 +447,23 @@
             <End Role="Leverancier" EntitySet="Leveranciers" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <AssociationSet Name="FK_AdminRechten_Personeelslid" Association="ProjectweekModel.FK_AdminRechten_Personeelslid">
+            <End Role="AdminRechten" EntitySet="AdminRechtens" />
+            <End Role="Personeelslid" EntitySet="Personeelslids" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_AdminRechten_Personeelslid">
+          <End Type="ProjectweekModel.AdminRechten" Role="AdminRechten" Multiplicity="1" />
+          <End Type="ProjectweekModel.Personeelslid" Role="Personeelslid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRechten">
+              <PropertyRef Name="AdminRechtenID" />
+            </Principal>
+            <Dependent Role="Personeelslid">
+              <PropertyRef Name="AdminRechtenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

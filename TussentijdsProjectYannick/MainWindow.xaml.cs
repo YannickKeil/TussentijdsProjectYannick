@@ -101,14 +101,14 @@ namespace TussentijdsProjectYannick
                         MessageBox.Show("account verrified");
                         MainMenu mm = new MainMenu();
                         mm.Owner = this;
-                        this.Hide();
+                        Hide();
                         if (mm.ShowDialog() == true)
                         {
-                            this.Show();
+                            Show();
                         }
 
                     }
-                    else { /*username doen't exist*/MessageBox.Show("account failed verrification"); }
+                    else { /*verkeerde pw*/MessageBox.Show("account failed verrification"); }
                 }
                 else { /*username doen't exist*/MessageBox.Show("account failed verrification"); }
             }

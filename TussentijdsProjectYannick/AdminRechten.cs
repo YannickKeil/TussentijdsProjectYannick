@@ -14,7 +14,16 @@ namespace TussentijdsProjectYannick
     
     public partial class AdminRechten
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AdminRechten()
+        {
+            this.Personeelslids = new HashSet<Personeelslid>();
+        }
+    
         public int AdminRechtenID { get; set; }
         public string titel { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Personeelslid> Personeelslids { get; set; }
     }
 }
