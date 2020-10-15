@@ -17,4 +17,6 @@ Back up aan files toegevoegt.
 Update.txt bijgewerkt
 README bijwerken
 nog eens pushen
-
+/*dag 3 databeheer bijgewerkt*/
+Databeheer verder uitgebreid. aan het overwegen mijn database uit te breiden en opnieuw te begingen.
+error endings en design moeten nog veranderen.
