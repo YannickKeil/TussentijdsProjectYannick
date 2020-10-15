@@ -40,8 +40,8 @@ namespace TussentijdsProjectYannick
         private void btnDatabeheer_Click(object sender, RoutedEventArgs e)
         {
             //temp enkel personeel toevoegen
-            AddPersoneelslid addP = new AddPersoneelslid();
-            addP.ShowDialog();
+            Databeheer data = new Databeheer();
+            data.ShowDialog();
         }
     }
 }

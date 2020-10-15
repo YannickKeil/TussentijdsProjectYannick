@@ -95,7 +95,7 @@ namespace TussentijdsProjectYannick
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(cbAdminRechten.SelectedValue.ToString());
+            this.DialogResult = false;
         }
     }
 }

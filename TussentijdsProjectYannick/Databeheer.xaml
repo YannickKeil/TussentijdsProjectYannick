@@ -1,0 +1,161 @@
+﻿<Window x:Class="TussentijdsProjectYannick.Databeheer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TussentijdsProjectYannick"
+        mc:Ignorable="d"
+        Title="Databeheer" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+
+            <TabControl x:Name="TabDatabeheer"  SelectionChanged="TabDatabeheer_SelectionChanged">
+                <TabItem Header="Toevoegen Personeellid">
+                    <StackPanel Margin="100">
+                        <TextBox x:Name="txtVoornaam">voornaam</TextBox>
+                        <TextBox x:Name="txtAchternaam">achternaam</TextBox>
+                        <TextBox x:Name="txtUsername">Username</TextBox>
+                        <PasswordBox x:Name="txtPassword"></PasswordBox>
+                        <ComboBox x:Name="cbAdminRechten"></ComboBox>
+                        <DatePicker x:Name="dtIndiensttreding"></DatePicker>
+                        <DatePicker x:Name="dtGeboortedatum"></DatePicker>
+                        <WrapPanel>
+                            <Button x:Name="btnAdd" Margin="10" Click="btnAdd_Click">add</Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="edit/delete Personeellid">
+                    <StackPanel Margin="100">
+                        <ComboBox x:Name="cbPersoneellidEdit" SelectionChanged="cbPersoneellidEdit_SelectionChanged"></ComboBox>
+                        <TextBox x:Name="txtVoornaamEdit">voornaam</TextBox>
+                        <TextBox x:Name="txtAchternaamEdit">achternaam</TextBox>
+                        <TextBox x:Name="txtUsernameEdit">Username</TextBox>
+                        <TextBlock>als passwordbox leeg is behoud het dezelfde wachtwoord</TextBlock>
+                        <PasswordBox x:Name="txtPasswordEdit"></PasswordBox>
+                        <ComboBox x:Name="cbAdminRechtenEdit"></ComboBox>
+                        <DatePicker x:Name="dtIndiensttredingEdit"></DatePicker>
+                        <DatePicker x:Name="dtGeboortedatumEdit"></DatePicker>
+                        <WrapPanel>
+                            <Button x:Name="btnEditPersoneellid" Margin="10" Click="btnEditPersoneellid_Click">Edit</Button>
+                            <Button x:Name="btnDeletePersoneellid" Margin="10" Click="btnDeletePersoneellid_Click">Delete</Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Admin rechten">
+                    <StackPanel>
+                        <TextBlock>textbox voor naam van adminrechten om toetevoegen of editeren</TextBlock>
+                        <TextBox x:Name="txtAdminRechtenToevoegen">
+                        </TextBox>
+                        <Button x:Name="btnAddAdminRechten" Click="btnAddAdminRechten_Click" Content="toevoegen">
+                        </Button>
+                        <TextBlock>combobox om te selecteren welke admin naam te verwijderen of editeren</TextBlock>
+                        <ComboBox x:Name="cbAdminRechten2"></ComboBox>
+                        <Button x:Name="btnEditAdminRechten" Click="btnEditAdminRechten_Click" Content="Edit"></Button>
+                        <Button x:Name="btnDeleteAdminRechten" Click="btnDeleteAdminRechten_Click" Content="Delete"></Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Categorie">
+                    <StackPanel>
+                        <TextBlock>textbox voor naam van categorie om toetevoegen of editeren</TextBlock>
+                        <TextBox x:Name="txtCategorieToevoegen">
+                        </TextBox>
+                        <Button x:Name="btnAddCategorie" Click="btnAddCategorie_Click" Content="toevoegen">
+                        </Button>
+                        <TextBlock>combobox om te selecteren welke categorie naam te verwijderen of editeren</TextBlock>
+                        <ComboBox x:Name="cbCategorie"></ComboBox>
+                        <Button x:Name="btnEditCategorie" Click="btnEditCategorie_Click" Content="Edit"></Button>
+                        <Button x:Name="btnDeleteCategorie" Click="btnDeleteCategorie_Click" Content="Delete"></Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Add Klanten">
+                    <StackPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtVoornaamKlantToevoegen">voornaam</TextBox>
+                            <TextBox x:Name="txtAchternaamKlantToevoegen">achternaam</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtStraatnaamKlantToevoegen">straatnaam</TextBox>
+                            <TextBox x:Name="txtHuisnummerKlantToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">huisnummer</TextBox>
+                            <TextBox x:Name="txtBusKlantToevoegen">Bus</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtPostcodeKlantToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Postcode</TextBox>
+                            <TextBox x:Name="txtGemeenteKlantToevoegen">gemeente</TextBox>
+                        </WrapPanel>
+                        <TextBox x:Name="txtTelefoonnummerKlantToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Telefoon nummer</TextBox>
+                        <TextBox x:Name="txtEmailadresKlantToevoegen">e-mail</TextBox>
+                        <TextBox x:Name="txtOpmerkingKlantToevoegen">Opmerking</TextBox>
+                        <Button x:Name="btnToevoegenKlant" Click="btnToevoegenKlant_Click">toevoegen</Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="edit/delete Klanten">
+                    <StackPanel>
+                        <ComboBox x:Name="cbEditKlant" SelectionChanged="cbEditKlant_SelectionChanged"></ComboBox>
+                        <WrapPanel>
+                            <TextBox x:Name="txtVoornaamEditKlant">voornaam</TextBox>
+                            <TextBox x:Name="txtAchternaamEditKlant">achternaam</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtStraatnaamEditKlant">straatnaam</TextBox>
+                            <TextBox x:Name="txtHuisnummerEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">huisnummer</TextBox>
+                            <TextBox x:Name="txtBusEditKlant">Bus</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtPostcodeEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Postcode</TextBox>
+                            <TextBox x:Name="txtGemeenteEditKlant">gemeente</TextBox>
+                        </WrapPanel>
+                        <TextBox x:Name="txtTelefoonnummerEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Telefoon nummer</TextBox>
+                        <TextBox x:Name="txtEmailadresEditKlant">e-mail</TextBox>
+                        <TextBox x:Name="txtOpmerkingEditKlant">Opmerking</TextBox>
+                        <WrapPanel>
+                            <Button x:Name="btnEditKlant" Click="btnEditKlant_Click">Edit</Button>
+                            <Button x:Name="btnDeleteKlant" Click="btnDeleteKlant_Click">Delete</Button>
+                        </WrapPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Leverancier Toevoegen">
+                    <StackPanel>
+                        <TextBox x:Name="txtContactpersoonLeverancierToevoegen">voornaam</TextBox>
+                        <TextBox x:Name="txtTelefoonnummerLeverancierToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Telefoon nummer</TextBox>
+                        <TextBox x:Name="txtEmailadresLeverancierToevoegen">e-mail</TextBox>
+                        <WrapPanel>
+                            <TextBox x:Name="txtStraatnaamLeverancierToevoegen">straatnaam</TextBox>
+                            <TextBox x:Name="txtHuisnummerLeverancierToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">huisnummer</TextBox>
+                            <TextBox x:Name="txtBusLeverancierToevoegen">Bus</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtPostcodeLeverancierToevoegen" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Postcode</TextBox>
+                            <TextBox x:Name="txtGemeenteLeverancierToevoegen">gemeente</TextBox>
+                        </WrapPanel>
+                        <Button x:Name="btnLeverancierToevoegen" Click="btnLeverancierToevoegen_Click">toevoegen</Button>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="edit/delete Leverancier">
+                    <StackPanel>
+                        <ComboBox x:Name="cbEditLeverancier" SelectionChanged="cbEditLeverancier_SelectionChanged"></ComboBox>
+                        <TextBox x:Name="txtContactpersoonEditLeverancier">voornaam</TextBox>
+                        <TextBox x:Name="txtTelefoonnummerEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Telefoon nummer</TextBox>
+                        <TextBox x:Name="txtEmailadresEditLeverancier">e-mail</TextBox>
+                        <WrapPanel>
+                            <TextBox x:Name="txtStraatnaamEditLeverancier">straatnaam</TextBox>
+                            <TextBox x:Name="txtHuisnummerEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">huisnummer</TextBox>
+                            <TextBox x:Name="txtBusEditLeverancier">Bus</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <TextBox x:Name="txtPostcodeEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting">Postcode</TextBox>
+                            <TextBox x:Name="txtGemeenteEditLeverancier">gemeente</TextBox>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Button x:Name="btnEditLeverancier" Click="btnEditLeverancier_Click">edit</Button>
+                            <Button x:Name="btnDeleteLeverancier" Click="btnDeleteLeverancier_Click">delete</Button>
+                        </WrapPanel>
+                        </StackPanel>
+                </TabItem>
+                <TabItem Header="Back" >
+
+                </TabItem>
+            </TabControl>
+
+        </StackPanel>
+    </Grid>
+</Window>

@@ -183,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Databeheer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +213,9 @@
     </Compile>
     <Compile Include="Categorie.cs">
       <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Databeheer.xaml.cs">
+      <DependentUpon>Databeheer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klant.cs">
       <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
