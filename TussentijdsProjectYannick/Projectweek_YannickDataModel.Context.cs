@@ -33,5 +33,6 @@ namespace TussentijdsProjectYannick
         public virtual DbSet<Leverancier> Leveranciers { get; set; }
         public virtual DbSet<Personeelslid> Personeelslids { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

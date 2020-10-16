@@ -19,3 +19,6 @@ nog eens pushen
 Dag3
 Databeheer verder uitgebreid. aan het overwegen mijn database uit te breiden en opnieuw te begingen.
 error endings en design moeten nog veranderen.
+Dag4
+Databeheer kan alles individueel aanpassen. ik ben niet blij met hoe het werkt en het laat me denken dat ik de oefening moet herdenken.
+Ik denk er aan om Gewoon opnieuw mijn database te herbekijken en opnieuw te begingen (kan code dat ik heb hergebruiken deelsgewijs).

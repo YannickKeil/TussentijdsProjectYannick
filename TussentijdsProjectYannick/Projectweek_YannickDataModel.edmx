@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProjectweekModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProjectweekModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminRechten">
           <Key>
             <PropertyRef Name="AdminRechtenID" />
@@ -94,6 +94,16 @@
           <Property Name="LeverancierID" Type="int" Nullable="false" />
           <Property Name="CategorieID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <Association Name="FK_Bestelling_Klant">
           <End Role="Klant" Type="Self.Klant" Multiplicity="1" />
           <End Role="Bestelling" Type="Self.Bestelling" Multiplicity="*" />
@@ -154,6 +164,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Personeelslid_AdminRechten">
+          <End Role="AdminRechten" Type="Self.AdminRechten" Multiplicity="1" />
+          <End Role="Personeelslid" Type="Self.Personeelslid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRechten">
+              <PropertyRef Name="AdminRechtenID" />
+            </Principal>
+            <Dependent Role="Personeelslid">
+              <PropertyRef Name="AdminRechtenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_Categorie">
           <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -187,6 +209,7 @@
           <EntitySet Name="Leverancier" EntityType="Self.Leverancier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personeelslid" EntityType="Self.Personeelslid" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Bestelling_Klant" Association="Self.FK_Bestelling_Klant">
             <End Role="Klant" EntitySet="Klant" />
             <End Role="Bestelling" EntitySet="Bestelling" />
@@ -207,6 +230,10 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="BestellingProduct" EntitySet="BestellingProduct" />
           </AssociationSet>
+          <AssociationSet Name="FK_Personeelslid_AdminRechten" Association="Self.FK_Personeelslid_AdminRechten">
+            <End Role="AdminRechten" EntitySet="AdminRechten" />
+            <End Role="Personeelslid" EntitySet="Personeelslid" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_Categorie" Association="Self.FK_Product_Categorie">
             <End Role="Categorie" EntitySet="Categorie" />
             <End Role="Product" EntitySet="Product" />
@@ -216,8 +243,7 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProjectweekModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -451,6 +477,7 @@
             <End Role="AdminRechten" EntitySet="AdminRechtens" />
             <End Role="Personeelslid" EntitySet="Personeelslids" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="ProjectweekModel.sysdiagram" />
         </EntityContainer>
         <Association Name="FK_AdminRechten_Personeelslid">
           <End Type="ProjectweekModel.AdminRechten" Role="AdminRechten" Multiplicity="1" />
@@ -464,6 +491,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -564,6 +601,17 @@
                 <ScalarProperty Name="BTW" ColumnName="BTW" />
                 <ScalarProperty Name="LeverancierID" ColumnName="LeverancierID" />
                 <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProjectweekModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

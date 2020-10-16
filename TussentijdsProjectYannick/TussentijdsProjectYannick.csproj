@@ -179,6 +179,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
     <Page Include="AddPersoneelslid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -26,43 +26,54 @@ namespace TussentijdsProjectYannick
         public Databeheer()
         {
             InitializeComponent();
-            AddPersoneel();
-            EditPersoneel();
+            EditAdminrechten();
+            //EditPersoneel();
             EditCategorie();
-            EditKlant();
-            EditLeverancier();
-        }
-        private void AddPersoneel() 
-        {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
-            {              
-                var listRechten = ctx.AdminRechtens.Select(x => x).ToList();
-                cbAdminRechten.DisplayMemberPath = "titel";
-                cbAdminRechten.SelectedValuePath = "AdminRechtenID";
-                cbAdminRechten.ItemsSource = listRechten;
-                cbAdminRechten.SelectedIndex = 0;
-                cbAdminRechten2.DisplayMemberPath = "titel";
-                cbAdminRechten2.SelectedValuePath = "AdminRechtenID";
-                cbAdminRechten2.ItemsSource = listRechten;
-                cbAdminRechten2.SelectedIndex = 0;
-            }
+            //EditKlant();
+            //EditLeverancier();
+            EditProductenfillCombobox();
+            EditBestellingfillCombobox();
+            EditBestellingProductfillCombobox();
         }
 
         private void EditPersoneel()
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
+                cbEditPersoneellid.ItemsSource = null;
                 var listPersoneellid = ctx.Personeelslids.Select(x => new { naamUser = x.Voornaam + " " + x.Achternaam + " " + x.Username, id = x.PersoneelslidID }).ToList();
-                cbPersoneellidEdit.DisplayMemberPath = "naamUser";
-                cbPersoneellidEdit.SelectedValuePath = "id";
-                cbPersoneellidEdit.ItemsSource = listPersoneellid;
-                cbPersoneellidEdit.SelectedIndex = 0;
+                cbEditPersoneellid.DisplayMemberPath = "naamUser";
+                cbEditPersoneellid.SelectedValuePath = "id";
+                cbEditPersoneellid.ItemsSource = listPersoneellid;
+                cbEditPersoneellid.SelectedIndex = 0;
+                cbAdminRechtenPersoneellidEdit.ItemsSource = null;
+                var listRechten = ctx.AdminRechtens.Select(x => x).ToList();
+                cbAdminRechtenPersoneellidEdit.DisplayMemberPath = "titel";
+                cbAdminRechtenPersoneellidEdit.SelectedValuePath = "AdminRechtenID";
+                cbAdminRechtenPersoneellidEdit.ItemsSource = listRechten;
+                cbAdminRechtenPersoneellidEdit.SelectedIndex = 0;
+                EditBestellingfillCombobox();
             }
         }
+        private void EditAdminrechten()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbAdminRechten.ItemsSource = null;
+                var listRechten = ctx.AdminRechtens.Select(x => x).ToList();
+                cbAdminRechten.DisplayMemberPath = "titel";
+                cbAdminRechten.SelectedValuePath = "AdminRechtenID";
+                cbAdminRechten.ItemsSource = listRechten;
+                cbAdminRechten.SelectedIndex = 0;
+            }
+        }
+
+
         private void EditCategorie()
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
-            {               
+            {
+                cbCategorie.ItemsSource = null;
                 var listCategorie = ctx.Categories.Select(x => x).ToList();
                 cbCategorie.DisplayMemberPath = "CategorieNaam";
                 cbCategorie.SelectedValuePath = "CategorieID";
@@ -70,16 +81,17 @@ namespace TussentijdsProjectYannick
                 cbCategorie.SelectedIndex = 0;
             }
         }
-        private void EditKlant() 
+        private void EditKlant()
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 cbEditKlant.ItemsSource = null;
-                var listKlant = ctx.Klants.Select(x => new  { Naam = x.Voornaam + " " + x.Achternaam, Id = x.KlantID}).ToList();
+                var listKlant = ctx.Klants.Select(x => new { Naam = x.Voornaam + " " + x.Achternaam, Id = x.KlantID }).ToList();
                 cbEditKlant.DisplayMemberPath = "Naam";
                 cbEditKlant.SelectedValuePath = "Id";
                 cbEditKlant.ItemsSource = listKlant;
                 cbEditKlant.SelectedIndex = 0;
+                EditBestellingfillCombobox();
             }
         }
         private void EditLeverancier()
@@ -92,6 +104,139 @@ namespace TussentijdsProjectYannick
                 cbEditLeverancier.SelectedValuePath = "LeverancierID";
                 cbEditLeverancier.ItemsSource = listLeverancier;
                 cbEditLeverancier.SelectedIndex = 0;
+                EditBestellingfillCombobox();
+            }
+        }
+        private void EditProducten()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbEditProducten.ItemsSource = null;
+                var listProducten = ctx.Products.Select(x => x).ToList();
+                cbEditProducten.DisplayMemberPath = "Naam";
+                cbEditProducten.SelectedValuePath = "ProductID";
+                cbEditProducten.ItemsSource = listProducten;
+                cbEditProducten.SelectedIndex = 0;
+                EditBestellingProductfillCombobox();
+            }
+        }
+        private void EditProductenfillCombobox()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbEditLeverancier.ItemsSource = null;
+                var listLeverancier = ctx.Leveranciers.Select(x => x).ToList();
+                cbLeverancierEditProducten.DisplayMemberPath = "Contactpersoon";
+                cbLeverancierEditProducten.SelectedValuePath = "LeverancierID";
+                cbLeverancierEditProducten.ItemsSource = listLeverancier;
+                cbLeverancierEditProducten.SelectedIndex = 0;
+                var listCategorie = ctx.Categories.Select(x => x).ToList();
+                cbCategorieEditProducten.DisplayMemberPath = "CategorieNaam";
+                cbCategorieEditProducten.SelectedValuePath = "CategorieID";
+                cbCategorieEditProducten.ItemsSource = listCategorie;
+                cbCategorieEditProducten.SelectedIndex = 0;
+            }
+        }
+        private void EditBestelling()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbEditBestelling.ItemsSource = null;
+                var listBestellingen = ctx.Bestellings.Select(x => new
+                {
+                    Naam = x.Klant.KlantID +
+                    " " +
+                    x.Klant.Voornaam +
+                    " " +
+                    x.Klant.Achternaam +
+                    " " +
+                    x.DatumOpgemaakt,
+                    Id = x.BestellingID
+                }).ToList();
+                cbEditBestelling.DisplayMemberPath = "Naam";
+                cbEditBestelling.SelectedValuePath = "Id";
+                cbEditBestelling.ItemsSource = listBestellingen;
+                cbEditBestelling.SelectedIndex = 0;
+                EditBestellingProductfillCombobox();
+            }
+        }
+        private void EditBestellingfillCombobox()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbPersoneelslidEditBestelling.ItemsSource = null;
+                var listPersoneellid = ctx.Personeelslids.Select(x => new { naamUser = x.Voornaam + " " + x.Achternaam + " " + x.Username, id = x.PersoneelslidID }).ToList();
+                cbPersoneelslidEditBestelling.DisplayMemberPath = "naamUser";
+                cbPersoneelslidEditBestelling.SelectedValuePath = "id";
+                cbPersoneelslidEditBestelling.ItemsSource = listPersoneellid;
+                cbPersoneelslidEditBestelling.SelectedIndex = 0;
+                cbLeverancierEditBestelling.ItemsSource = null;
+                var listLeverancier = ctx.Leveranciers.Select(x => x).ToList();
+                cbLeverancierEditBestelling.DisplayMemberPath = "Contactpersoon";
+                cbLeverancierEditBestelling.SelectedValuePath = "LeverancierID";
+                cbLeverancierEditBestelling.ItemsSource = listLeverancier;
+                cbLeverancierEditBestelling.SelectedIndex = 0;
+                cbKlantEditBestelling.ItemsSource = null;
+                var listKlant = ctx.Klants.Select(x => new { Naam = x.Voornaam + " " + x.Achternaam, Id = x.KlantID }).ToList();
+                cbKlantEditBestelling.DisplayMemberPath = "Naam";
+                cbKlantEditBestelling.SelectedValuePath = "Id";
+                cbKlantEditBestelling.ItemsSource = listKlant;
+                cbKlantEditBestelling.SelectedIndex = 0;
+            }
+        }
+        private void EditBestellingProduct()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbEditBestellingProduct.ItemsSource = null;
+                var listBestellingProducten = ctx.BestellingProducts.Select(x => new
+                {
+                    Naam = x.Bestelling.Klant.KlantID +
+                    " " +
+                    x.Bestelling.Klant.Voornaam +
+                    " " +
+                    x.Bestelling.Klant.Achternaam +
+                    " " +
+                    x.Bestelling.DatumOpgemaakt+
+                    " "+
+                    x.Product.Naam+
+                    " "+
+                    x.Product.Eenheid,
+                    Id = x.BestellingID
+                }).ToList();
+                cbEditBestellingProduct.DisplayMemberPath = "Naam";
+                cbEditBestellingProduct.SelectedValuePath = "Id";
+                cbEditBestellingProduct.ItemsSource = listBestellingProducten;
+                cbEditBestellingProduct.SelectedIndex = 0;
+            }
+        }
+        private void EditBestellingProductfillCombobox()
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                cbBestellingenEditBestellingProduct.ItemsSource = null;
+                var listBestellingen = ctx.Bestellings.Select(x => new
+                {
+                    Naam = x.Klant.KlantID +
+                    " " +
+                    x.Klant.Voornaam +
+                    " " +
+                    x.Klant.Achternaam +
+                    " " +
+                    x.DatumOpgemaakt,
+                    Id = x.BestellingID
+                }).ToList();
+                cbBestellingenEditBestellingProduct.DisplayMemberPath = "Naam";
+                cbBestellingenEditBestellingProduct.SelectedValuePath = "Id";
+                cbBestellingenEditBestellingProduct.ItemsSource = listBestellingen;
+                cbBestellingenEditBestellingProduct.SelectedIndex = 0;
+                cbProductenEditBestellingProduct.ItemsSource = null;
+                var listProducten = ctx.Products.Select(x => x).ToList();
+                cbProductenEditBestellingProduct.DisplayMemberPath = "Naam";
+                cbProductenEditBestellingProduct.SelectedValuePath = "ProductID";
+                cbProductenEditBestellingProduct.ItemsSource = listProducten;
+                cbProductenEditBestellingProduct.SelectedIndex = 0;
+
             }
         }
         //private void btnToevoegenPersoneellid_Click(object sender, RoutedEventArgs e)
@@ -117,32 +262,57 @@ namespace TussentijdsProjectYannick
 
             return argon2.GetBytes(16);
         }
+        private void tbPersoneellidEdit_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbPersoneellidEdit.IsChecked == true)
+            {
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+                btnEditPersoneellid.IsEnabled = true;
+                btnDeletePersoneellid.IsEnabled = true;
+                cbEditPersoneellid.IsEnabled = true;
+                btnToevoegenPersoneellid.IsEnabled = false;
+                EditPersoneel();
+                lblPassword.Text = "Als de passwordbox leeg is behoud de user het dezelfde wachtwoord";
+            }
+            else if (tbPersoneellidEdit.IsChecked == false)
+            {
+                btnEditPersoneellid.IsEnabled = false;
+                btnDeletePersoneellid.IsEnabled = false;
+                cbEditPersoneellid.IsEnabled = false;
+                btnToevoegenPersoneellid.IsEnabled = true;
+                txtVoornaamPersoneellidEdit.Text = "Voornaam";
+                txtAchternaamPersoneellidEdit.Text = "Achternaam";
+                txtUsernamePersoneellidEdit.Text = "Username";
+                dtIndiensttredingPersoneellidEdit.DisplayDate = DateTime.Now;
+                dtGeboortedatumPersoneellidEdit.DisplayDate = DateTime.Now;
+                dtIndiensttredingPersoneellidEdit.SelectedDate = DateTime.Now;
+                dtGeboortedatumPersoneellidEdit.SelectedDate = DateTime.Now;
+                lblPassword.Text = "Wachtwoord";
+            }
+        }
+        private void btnAddPersoneellid_Click(object sender, RoutedEventArgs e)
         {
             //if (checks)
             //{
-            var password = txtPassword.Password;
+            var password = txtPasswordPersoneellidEdit.Password;
             var salt = CreateSalt();
             var hash = HashPassword(password, salt);
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 ctx.Personeelslids.Add(new Personeelslid()
                 {
-                    Voornaam = txtVoornaam.Text,
-                    Achternaam = txtAchternaam.Text,
+                    Voornaam = txtVoornaamPersoneellidEdit.Text,
+                    Achternaam = txtAchternaamPersoneellidEdit.Text,
                     Wachtwoord = Convert.ToBase64String(hash),
-                    AdminRechtenID = (int)cbAdminRechten.SelectedValue,
+                    AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue,
                     Salt = Convert.ToBase64String(salt),
-                    Username = txtUsername.Text,
-                    Indiensttreding = dtIndiensttreding.SelectedDate.Value,
-                    GeboorteDatum = dtGeboortedatum.SelectedDate.Value
+                    Username = txtUsernamePersoneellidEdit.Text,
+                    Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value,
+                    GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value
                 });
                 ctx.SaveChanges();
-                MessageBox.Show("toegevoegt");              
-                AddPersoneel();
+                MessageBox.Show("toegevoegt");
                 EditPersoneel();
-
             }
             //}
             // else
@@ -150,7 +320,62 @@ namespace TussentijdsProjectYannick
             //error endings
             //}
         }
+        private void cbPersoneellidEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                if (cbEditPersoneellid.SelectedValue != null)
+                {
+                    if (ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue) != null)
+                    {
+                        var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue);
+                        txtVoornaamPersoneellidEdit.Text = selectedPersoneel.Voornaam;
+                        txtAchternaamPersoneellidEdit.Text = selectedPersoneel.Achternaam;
+                        cbAdminRechtenPersoneellidEdit.SelectedValue = selectedPersoneel.AdminRechtenID;
+                        txtUsernamePersoneellidEdit.Text = selectedPersoneel.Username;
+                        dtIndiensttredingPersoneellidEdit.SelectedDate = Convert.ToDateTime(selectedPersoneel.Indiensttreding);
+                        dtGeboortedatumPersoneellidEdit.SelectedDate = Convert.ToDateTime(selectedPersoneel.GeboorteDatum);
+                    }
+                }
+            }
+        }
 
+        private void btnEditPersoneellid_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue);
+
+                selectedPersoneel.Voornaam = txtVoornaamPersoneellidEdit.Text;
+                selectedPersoneel.Achternaam = txtAchternaamPersoneellidEdit.Text;
+                selectedPersoneel.AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue;
+                if (txtPasswordPersoneellidEdit.Password != "")
+                {
+                    var password = txtPasswordPersoneellidEdit.Password;
+                    var salt = CreateSalt();
+                    var hash = HashPassword(password, salt);
+                    selectedPersoneel.Wachtwoord = Convert.ToBase64String(hash);
+                    selectedPersoneel.Salt = Convert.ToBase64String(salt);
+                }
+                selectedPersoneel.Username = txtUsernamePersoneellidEdit.Text;
+                selectedPersoneel.Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value;
+                selectedPersoneel.GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value;
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("edited");
+            EditPersoneel();
+        }
+
+        private void btnDeletePersoneellid_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.Personeelslids.Remove(ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue));
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Deleted");
+            EditPersoneel();
+        }
         private void TabDatabeheer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (TabDatabeheer.SelectedIndex == TabDatabeheer.Items.Count - 1)
@@ -165,29 +390,27 @@ namespace TussentijdsProjectYannick
             {
                 ctx.AdminRechtens.Add(new AdminRechten { titel = txtAdminRechtenToevoegen.Text });
                 //ctx.SaveChanges();
-                AddPersoneel();
-
             }
+            EditAdminrechten();
         }
-        private void btnEditCategorie_Click(object sender, RoutedEventArgs e)
+        private void btnEditAdminRechten_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten2.SelectedValue).titel = txtAdminRechtenToevoegen.Text;
+                ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue).titel = txtAdminRechtenToevoegen.Text;
                 //ctx.SaveChanges();
-                AddPersoneel();
-
             }
+            EditAdminrechten();
         }
 
         private void btnDeleteAdminRechten_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                ctx.AdminRechtens.Remove(ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten2.SelectedValue));
+                ctx.AdminRechtens.Remove(ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue));
                 //ctx.SaveChanges();
-                AddPersoneel();
             }
+            EditAdminrechten();
         }
 
         private void btnAddCategorie_Click(object sender, RoutedEventArgs e)
@@ -196,86 +419,34 @@ namespace TussentijdsProjectYannick
             {
                 ctx.Categories.Add(new Categorie { CategorieNaam = txtCategorieToevoegen.Text });
                 ctx.SaveChanges();
-                EditCategorie();
             }
+            EditCategorie();
+            EditProductenfillCombobox();
 
         }
-        private void btnEditAdminRechten_Click(object sender, RoutedEventArgs e)
+        private void btnEditCategorie_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 ctx.Categories.Single(x => x.CategorieID == (int)cbCategorie.SelectedValue).CategorieNaam = txtCategorieToevoegen.Text;
                 ctx.SaveChanges();
-                EditCategorie();
             }
+            EditCategorie();
+            EditProductenfillCombobox();
         }
 
         private void btnDeleteCategorie_Click(object sender, RoutedEventArgs e)
-        {           
+        {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                
+
                 ctx.Categories.Remove(ctx.Categories.Single(x => x.CategorieID == (int)cbCategorie.SelectedValue));
                 ctx.SaveChanges();
-                EditCategorie();
             }
-        }
-        private void cbPersoneellidEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
-            {
-                if(cbPersoneellidEdit.SelectedValue != null)
-                { 
-                    if (ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbPersoneellidEdit.SelectedValue) != null)
-                    {
-                        var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbPersoneellidEdit.SelectedValue);
-                        txtVoornaamEdit.Text = selectedPersoneel.Voornaam;
-                        txtAchternaamEdit.Text = selectedPersoneel.Achternaam;
-                        cbAdminRechtenEdit.SelectedValue = selectedPersoneel.AdminRechtenID;
-                        txtUsernameEdit.Text = selectedPersoneel.Username;
-                        dtIndiensttredingEdit.SelectedDate = Convert.ToDateTime(selectedPersoneel.Indiensttreding);
-                        dtGeboortedatumEdit.SelectedDate = Convert.ToDateTime(selectedPersoneel.GeboorteDatum);
-                    }
-                }
-            }
+            EditCategorie();
+            EditProductenfillCombobox();
         }
 
-        private void btnEditPersoneellid_Click(object sender, RoutedEventArgs e)
-        {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
-            {
-                var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbPersoneellidEdit.SelectedValue);
-
-                selectedPersoneel.Voornaam = txtVoornaamEdit.Text;
-                selectedPersoneel.Achternaam = txtAchternaamEdit.Text;
-                selectedPersoneel.AdminRechtenID = (int)cbAdminRechtenEdit.SelectedValue;
-                if (txtPasswordEdit.Password != "")
-                {
-                    var password = txtPasswordEdit.Password;
-                    var salt = CreateSalt();
-                    var hash = HashPassword(password, salt);
-                    selectedPersoneel.Wachtwoord = Convert.ToBase64String(hash);
-                    selectedPersoneel.Salt = Convert.ToBase64String(salt);
-                }
-                selectedPersoneel.Username = txtUsernameEdit.Text;
-                selectedPersoneel.Indiensttreding = dtIndiensttredingEdit.SelectedDate.Value;
-                selectedPersoneel.GeboorteDatum = dtGeboortedatumEdit.SelectedDate.Value;
-                ctx.SaveChanges();
-            }
-            MessageBox.Show("edited");
-            EditPersoneel();
-        }
-
-        private void btnDeletePersoneellid_Click(object sender, RoutedEventArgs e)
-        {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
-            {
-                ctx.Personeelslids.Remove(ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbPersoneellidEdit.SelectedValue));
-                ctx.SaveChanges();
-            }
-            MessageBox.Show("Deleted");
-            EditPersoneel();
-        }
         private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
         private static bool IsTextAllowed(string text)
         {
@@ -302,27 +473,58 @@ namespace TussentijdsProjectYannick
             }
         }
 
+        private void tbEditKlant_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbEditKlant.IsChecked == true)
+            {
+                EditKlant();
+                btnEditKlant.IsEnabled = true;
+                btnDeleteKlant.IsEnabled = true;
+                cbEditKlant.IsEnabled = true;
+                btnToevoegenKlant.IsEnabled = false;
+            }
+            else if (tbEditKlant.IsChecked == false)
+            {
+                btnEditKlant.IsEnabled = false;
+                btnDeleteKlant.IsEnabled = false;
+                cbEditKlant.IsEnabled = false;
+                btnToevoegenKlant.IsEnabled = true;
+                txtVoornaamEditKlant.Text = "Voornaam";
+                txtAchternaamEditKlant.Text = "Achternaam";
+                txtStraatnaamEditKlant.Text = "Straatnaam";
+                txtHuisnummerEditKlant.Text = "Huisnummer";
+                txtBusEditKlant.Text = "Bus";
+                txtPostcodeEditKlant.Text = "Postcode";
+                txtGemeenteEditKlant.Text = "Gemeente";
+                txtTelefoonnummerEditKlant.Text = "Telefoon nummer";
+                txtEmailadresEditKlant.Text = "e-mail";
+                txtOpmerkingEditKlant.Text = "Opmerking";
 
+            }
+        }
         private void btnToevoegenKlant_Click(object sender, RoutedEventArgs e)
-        {            
+        {
             string bus = "";
-            if (txtBusKlantToevoegen.Text != "Bus")
-            { bus = txtBusKlantToevoegen.Text; }
+            if (txtBusEditKlant.Text != "Bus")
+            { bus = txtBusEditKlant.Text; }
+            string opmerking = "";
+            if (txtOpmerkingEditKlant.Text != "Opmerking")
+            { opmerking = txtOpmerkingEditKlant.Text; }
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 ctx.Klants.Add(new Klant
                 {
-                    Voornaam = txtVoornaamKlantToevoegen.Text,
-                    Achternaam = txtAchternaamKlantToevoegen.Text,
-                    Straatnaam = txtStraatnaamKlantToevoegen.Text,
-                    Huisnummer = Convert.ToInt32(txtHuisnummerKlantToevoegen.Text),
+                    Voornaam = txtVoornaamEditKlant.Text,
+                    Achternaam = txtAchternaamEditKlant.Text,
+                    Straatnaam = txtStraatnaamEditKlant.Text,
+                    Huisnummer = Convert.ToInt32(txtHuisnummerEditKlant.Text),
                     Bus = bus,
-                    Postcode = txtPostcodeKlantToevoegen.Text,
-                    Gemeente = txtGemeenteKlantToevoegen.Text,
-                    Telefoonnummer = txtTelefoonnummerKlantToevoegen.Text,
-                    Emailadres = txtEmailadresKlantToevoegen.Text,
+                    Postcode = txtPostcodeEditKlant.Text,
+                    Gemeente = txtGemeenteEditKlant.Text,
+                    Telefoonnummer = txtTelefoonnummerEditKlant.Text,
+                    Emailadres = txtEmailadresEditKlant.Text,
                     AangemaaktOp = DateTime.Now,
-                    Opmerking = txtOpmerkingKlantToevoegen.Text
+                    Opmerking = opmerking
                 });
                 ctx.SaveChanges();
                 MessageBox.Show("Toegevoegd");
@@ -333,7 +535,7 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                if (cbEditKlant.SelectedValue !=null)
+                if (cbEditKlant.SelectedValue != null)
                 {
                     if (ctx.Klants.Single(p => p.KlantID == (int)cbEditKlant.SelectedValue) != null)
                     {
@@ -358,8 +560,8 @@ namespace TussentijdsProjectYannick
         private void btnEditKlant_Click(object sender, RoutedEventArgs e)
         {
             string bus = "";
-            if (txtBusKlantToevoegen.Text != "Bus")
-            { bus = txtBusKlantToevoegen.Text; }
+            if (txtBusEditKlant.Text != "Bus")
+            { bus = txtBusEditKlant.Text; }
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 var selectedKlant = ctx.Klants.Single(k => k.KlantID == (int)cbEditKlant.SelectedValue);
@@ -372,11 +574,11 @@ namespace TussentijdsProjectYannick
                 selectedKlant.Gemeente = txtGemeenteEditKlant.Text;
                 selectedKlant.Telefoonnummer = txtTelefoonnummerEditKlant.Text;
                 selectedKlant.Emailadres = txtEmailadresEditKlant.Text;
-                selectedKlant.Opmerking = txtOpmerkingEditKlant.Text;                
+                selectedKlant.Opmerking = txtOpmerkingEditKlant.Text;
                 ctx.SaveChanges();
             }
-                MessageBox.Show("Edited");
-                EditKlant();
+            MessageBox.Show("Edited");
+            EditKlant();
         }
 
         private void btnDeleteKlant_Click(object sender, RoutedEventArgs e)
@@ -386,32 +588,59 @@ namespace TussentijdsProjectYannick
                 ctx.Klants.Remove(ctx.Klants.Single(k => k.KlantID == (int)cbEditKlant.SelectedValue));
                 ctx.SaveChanges();
             }
-                MessageBox.Show("Deleted");
-                EditKlant();
+            MessageBox.Show("Deleted");
+            EditKlant();
         }
-
-        private void btnLeverancierToevoegen_Click(object sender, RoutedEventArgs e)
+        private void tbEditLeverancier_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbEditLeverancier.IsChecked == true)
+            {
+                EditLeverancier();
+                btnEditLeverancier.IsEnabled = true;
+                btnDeleteLeverancier.IsEnabled = true;
+                cbEditLeverancier.IsEnabled = true;
+                btnToevoegenLeverancier.IsEnabled = false;
+            }
+            else if (tbEditLeverancier.IsChecked == false)
+            {
+                btnEditLeverancier.IsEnabled = false;
+                btnDeleteLeverancier.IsEnabled = false;
+                cbEditLeverancier.IsEnabled = false;
+                btnToevoegenLeverancier.IsEnabled = true;
+                txtContactpersoonEditLeverancier.Text = "Contactpersoon";
+                txtTelefoonnummerEditLeverancier.Text = "Telefoon nummer";
+                txtEmailadresEditLeverancier.Text = "e-mail";
+                txtStraatnaamEditLeverancier.Text = "Straatnaam";
+                txtHuisnummerEditLeverancier.Text = "Huisnummer";
+                txtBusEditLeverancier.Text = "Bus";
+                txtPostcodeEditLeverancier.Text = "Postcode";
+                txtGemeenteEditLeverancier.Text = "Gemeente";
+            }
+        }
+        private void btnToevoegenLeverancier_Click(object sender, RoutedEventArgs e)
         {
             string bus = "";
-            if (txtBusLeverancierToevoegen.Text != "Bus")
-            { bus = txtBusLeverancierToevoegen.Text; }
+            if (txtBusEditLeverancier.Text != "Bus")
+            { bus = txtBusEditLeverancier.Text; }
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 ctx.Leveranciers.Add(new Leverancier()
                 {
-                    Contactpersoon = txtContactpersoonLeverancierToevoegen.Text,
-                    Telefoonnummer = txtTelefoonnummerLeverancierToevoegen.Text,
-                    Emailadres = txtEmailadresLeverancierToevoegen.Text,
-                    Straatnaam = txtStraatnaamLeverancierToevoegen.Text,
-                    Huisnummer = Convert.ToInt32(txtHuisnummerLeverancierToevoegen.Text),
+                    Contactpersoon = txtContactpersoonEditLeverancier.Text,
+                    Telefoonnummer = txtTelefoonnummerEditLeverancier.Text,
+                    Emailadres = txtEmailadresEditLeverancier.Text,
+                    Straatnaam = txtStraatnaamEditLeverancier.Text,
+                    Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text),
                     Bus = bus,
-                    Postcode = txtPostcodeLeverancierToevoegen.Text,
-                    Gemeente = txtGemeenteLeverancierToevoegen.Text
+                    Postcode = txtPostcodeEditLeverancier.Text,
+                    Gemeente = txtGemeenteEditLeverancier.Text
                 });
                 ctx.SaveChanges();
             }
-                MessageBox.Show("Toevoegen");
-                EditLeverancier();
+            MessageBox.Show("Toevoegen");
+            EditLeverancier();
+            EditProductenfillCombobox();
+            //cbEditLeverancier.SelectedIndex = cbEditLeverancier.Items.Count - 1;
 
         }
         private void cbEditLeverancier_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -420,7 +649,7 @@ namespace TussentijdsProjectYannick
             {
                 if (cbEditLeverancier.SelectedValue != null)
                 {
-                    if (ctx.Leveranciers.Single(p => p.LeverancierID == (int)cbEditLeverancier.SelectedValue) != null)
+                    if (ctx.Leveranciers.Single(l => l.LeverancierID == (int)cbEditLeverancier.SelectedValue) != null)
                     {
                         var selectedPersoneel = ctx.Leveranciers.Single(p => p.LeverancierID == (int)cbEditLeverancier.SelectedValue);
                         txtContactpersoonEditLeverancier.Text = selectedPersoneel.Contactpersoon;
@@ -454,23 +683,288 @@ namespace TussentijdsProjectYannick
                 selectedLeverancier.Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text);
                 selectedLeverancier.Bus = bus;
                 selectedLeverancier.Postcode = txtPostcodeEditLeverancier.Text;
-                selectedLeverancier.Gemeente = txtGemeenteEditLeverancier.Text;                              
+                selectedLeverancier.Gemeente = txtGemeenteEditLeverancier.Text;
                 ctx.SaveChanges();
             }
-                MessageBox.Show("Edited");
-                EditLeverancier();
+            MessageBox.Show("Edited");
+            EditLeverancier();
+            EditProductenfillCombobox();
         }
 
         private void btnDeleteLeverancier_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                ctx.Leveranciers.Remove(ctx.Leveranciers.Single(k => k.LeverancierID == (int)cbEditLeverancier.SelectedValue));
+                ctx.Leveranciers.Remove(ctx.Leveranciers.Single(p => p.LeverancierID == (int)cbEditLeverancier.SelectedValue));
                 ctx.SaveChanges();
             }
-                MessageBox.Show("Deleted");
-                EditLeverancier();
+            MessageBox.Show("Deleted");
+            EditLeverancier();
+            EditProductenfillCombobox();
+        }
+        private void tbEditProducten_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbEditProducten.IsChecked == true)
+            {
+                EditProducten();
+                btnEditProducten.IsEnabled = true;
+                btnDeleteProducten.IsEnabled = true;
+                cbEditProducten.IsEnabled = true;
+                btnToevoegenProducten.IsEnabled = false;
+            }
+            else if (tbEditProducten.IsChecked == false)
+            {
+                btnEditProducten.IsEnabled = false;
+                btnDeleteProducten.IsEnabled = false;
+                cbEditProducten.IsEnabled = false;
+                btnToevoegenProducten.IsEnabled = true;
+                txtNaamEditProducten.Text = "Naam";
+                txtMargeEditProducten.Text = "Marge";
+                nudEenheidProducten.Text = "0";
+                txtBTWEditProducten.Text = "BTW";
+                EditProductenfillCombobox();
+            }
+
+        }
+        private void cbEditProducten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                if (cbEditProducten.SelectedValue != null)
+                {
+                    if (ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue) != null)
+                    {
+                        var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
+                        txtNaamEditProducten.Text = selectedProduct.Naam;
+                        txtMargeEditProducten.Text = selectedProduct.Marge.ToString();
+                        nudEenheidProducten.Text = selectedProduct.Eenheid.ToString();
+                        txtBTWEditProducten.Text = selectedProduct.BTW.ToString();
+                        cbLeverancierEditProducten.SelectedValue = selectedProduct.LeverancierID;
+                        cbCategorieEditProducten.SelectedValue = selectedProduct.CategorieID;
+                    }
+                }
+            }
+        }
+        private void btnNudEenheidProductenUp_Click(object sender, RoutedEventArgs e)
+        {
+            decimal getal = Convert.ToDecimal(nudEenheidProducten.Text);
+            getal++;
+            nudEenheidProducten.Text = getal.ToString();
+
+        }
+        private void btnNudEenheidProductenDown_Click(object sender, RoutedEventArgs e)
+        {
+            nudEenheidProducten.Text = $"{Convert.ToDecimal(nudEenheidProducten.Text) - 1}";
+        }
+        private void btnToevoegenProducten_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.Products.Add(new Product
+                {
+                    Naam = txtNaamEditProducten.Text,
+                    Marge = Convert.ToDecimal(txtMargeEditProducten.Text),
+                    Eenheid = Convert.ToInt32(nudEenheidProducten.Text),
+                    BTW = Convert.ToDecimal(txtBTWEditProducten.Text),
+                    LeverancierID = (int)cbLeverancierEditProducten.SelectedValue,
+                    CategorieID = (int)cbCategorieEditProducten.SelectedValue
+                });
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Toevoegen");
+            EditProducten();
+
         }
 
+        private void btnEditProducten_Click(object sender, RoutedEventArgs e)
+        {
+
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
+                selectedProduct.Naam = txtNaamEditProducten.Text;
+                selectedProduct.Marge = Convert.ToDecimal(txtMargeEditProducten.Text);
+                selectedProduct.Eenheid = Convert.ToInt32(nudEenheidProducten.Text);
+                selectedProduct.BTW = Convert.ToDecimal(txtBTWEditProducten.Text);
+                selectedProduct.LeverancierID = (int)cbLeverancierEditProducten.SelectedValue;
+                selectedProduct.CategorieID = (int)cbCategorieEditProducten.SelectedValue;
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Edited");
+            EditProducten();
+        }
+
+        private void btnDeleteProducten_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.Products.Remove(ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue));
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Deleted");
+            EditProducten();
+        }
+
+        private void tbEditBestelling_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbEditBestelling.IsChecked == true)
+            {
+                EditBestelling();
+                btnEditBestelling.IsEnabled = true;
+                btnDeleteBestelling.IsEnabled = true;
+                cbEditBestelling.IsEnabled = true;
+                btnToevoegenBestelling.IsEnabled = false;
+            }
+            else if (tbEditProducten.IsChecked == false)
+            {
+                btnEditBestelling.IsEnabled = false;
+                btnDeleteBestelling.IsEnabled = false;
+                cbEditBestelling.IsEnabled = false;
+                btnToevoegenBestelling.IsEnabled = true;
+                dtDatumOpgemaakt.SelectedDate = DateTime.Now;
+                dtDatumOpgemaakt.DisplayDate = DateTime.Now;
+                EditBestellingfillCombobox();
+            }
+        }
+
+        private void cbEditBestelling_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                if (cbEditBestelling.SelectedValue != null)
+                {
+                    if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue) != null)
+                    {
+                        var selectedBestelling = ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue);
+                        dtDatumOpgemaakt.SelectedDate = selectedBestelling.DatumOpgemaakt;
+                        dtDatumOpgemaakt.DisplayDate = selectedBestelling.DatumOpgemaakt;
+                        cbPersoneelslidEditBestelling.SelectedValue = selectedBestelling.PersoneelslidID;
+                        cbLeverancierEditBestelling.SelectedValue = selectedBestelling.LeverancierID;
+                        cbKlantEditBestelling.SelectedValue = selectedBestelling.KlantID;
+                    }
+                }
+            }
+        }
+
+        private void btnToevoegenBestelling_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.Bestellings.Add(new Bestelling
+                {
+                    DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate,
+                    PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue,
+                    LeverancierID = (int)cbLeverancierEditBestelling.SelectedValue,
+                    KlantID = (int)cbKlantEditBestelling.SelectedValue
+                });
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Toevoegen");
+            EditBestelling();
+        }
+
+        private void btnEditBestelling_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var selectedBestelling = ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue);
+                selectedBestelling.DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate;
+                selectedBestelling.PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue;
+                selectedBestelling.LeverancierID = (int)cbLeverancierEditBestelling.SelectedValue;
+                selectedBestelling.KlantID = (int)cbKlantEditBestelling.SelectedValue;
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Edited");
+            EditBestelling();
+        }
+
+        private void btnDeleteBestelling_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.Bestellings.Remove(ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue));
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Deleted");
+            EditProducten();
+        }
+
+        private void tbEditBestellingProduct_Checked(object sender, RoutedEventArgs e)
+        {
+            if (tbEditBestelling.IsChecked == true)
+            {
+                EditBestellingProduct();
+                btnEditBestellingProduct.IsEnabled = true;
+                btnDeleteBestellingProduct.IsEnabled = true;
+                cbEditBestellingProduct.IsEnabled = true;
+                btnToevoegenBestellingProduct.IsEnabled = false;
+            }
+            else if (tbEditProducten.IsChecked == false)
+            {
+                btnEditBestellingProduct.IsEnabled = false;
+                btnDeleteBestellingProduct.IsEnabled = false;
+                cbEditBestellingProduct.IsEnabled = false;
+                btnToevoegenBestellingProduct.IsEnabled = true;
+                EditBestellingProductfillCombobox();
+            }
+
+        }
+
+        private void cbEditBestellingProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                if (cbEditBestellingProduct.SelectedValue != null)
+                {
+                    if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue) != null)
+                    {
+                        var selectedBestellingProduct = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
+                        cbBestellingenEditBestellingProduct.SelectedValue = selectedBestellingProduct.BestellingID;
+                        cbProductenEditBestellingProduct.SelectedValue = selectedBestellingProduct.ProductID;
+                        
+                    }
+                }
+            }
+        }
+
+        private void btnToevoegenBestellingProduct_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.BestellingProducts.Add(new BestellingProduct
+                {
+                    BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue,
+                    ProductID = (int)cbProductenEditBestellingProduct.SelectedValue
+
+                });
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Toevoegen");
+            EditBestellingProduct();
+        }
+
+        private void btnEditBestellingProduct_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var selectedBestelling = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
+                selectedBestelling.BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue;
+                selectedBestelling.ProductID = (int)cbProductenEditBestellingProduct.SelectedValue;
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Edited");
+            EditBestellingProduct();
+        }
+
+        private void btnDeleteBestellingProduct_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                ctx.BestellingProducts.Remove(ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue));
+                ctx.SaveChanges();
+            }
+            MessageBox.Show("Deleted");
+            EditProducten();
+        }
     }
 }
