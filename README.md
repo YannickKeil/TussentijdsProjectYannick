@@ -20,3 +20,6 @@ nog eens pushen
 /*dag 3 databeheer bijgewerkt*/
 Databeheer verder uitgebreid. aan het overwegen mijn database uit te breiden en opnieuw te begingen.
 error endings en design moeten nog veranderen.
+/*Dag4  alles in database is individueel aan te passen.Ik ben niet tevreden en ben aan het overwegen zo goed als opnieuw te begingen.*/
+Databeheer kan alles individueel aanpassen. ik ben niet blij met hoe het werkt en het laat me denken dat ik de oefening moet herdenken.
+Ik denk er aan om Gewoon opnieuw mijn database te herbekijken en opnieuw te begingen (kan code dat ik heb hergebruiken deelsgewijs).
