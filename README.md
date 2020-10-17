@@ -23,3 +23,6 @@ error endings en design moeten nog veranderen.
 /*Dag4  alles in database is individueel aan te passen.Ik ben niet tevreden en ben aan het overwegen zo goed als opnieuw te begingen.*/
 Databeheer kan alles individueel aanpassen. ik ben niet blij met hoe het werkt en het laat me denken dat ik de oefening moet herdenken.
 Ik denk er aan om Gewoon opnieuw mijn database te herbekijken en opnieuw te begingen (kan code dat ik heb hergebruiken deelsgewijs).
+/*Dag 5 Database + test*/
+ik heb aan mijn database een gewerkt. Ik heb een nieuw project gestart voor wat tests in te doen.
+Ik heb in nieuw project met database eerste les mssql datagrid proberen te gebruiken. 
