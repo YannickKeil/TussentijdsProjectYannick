@@ -32,3 +32,8 @@ Ik heb uitijndelijk een andere NuGet Pakage gehaald en een lijst van mijn object
 Ik kan het uitlezen Converten en een lijst van objecten steken. met deze lijst zou ik mijn data in men database kunnen aanpassen.
 nut voor het project => ik kan een voorbeeld (template) Json printen met al men producten voor aan mijn leverancier te bezorgen.
 leverancier kan een angepaste Json file terug geven en ik zou mijn data met deze Template kunnen aanpassen. onder Databeheer.
+/*Dag 7 Databeheer Bestellen en fouten opgelost*/
+kleine aanpassing aan login en DataBeheer verder afgewerkt. Enkel nog foutmeldingen design en aanpassen per ID. 
+Json Template kan gegenereerd worden en men kan de database aanpassen met template.
+Had een paar fouten na aanpassen van Database ook Opgelost.
+Bestellen is ook zo goed als af.
