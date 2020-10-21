@@ -17,6 +17,7 @@ namespace TussentijdsProjectYannick
         public int BestellingProductID { get; set; }
         public int BestellingID { get; set; }
         public int ProductID { get; set; }
+        public int AantalProtuctBesteld { get; set; }
     
         public virtual Bestelling Bestelling { get; set; }
         public virtual Product Product { get; set; }

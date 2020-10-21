@@ -23,10 +23,14 @@ namespace TussentijdsProjectYannick
         public int ProductID { get; set; }
         public string Naam { get; set; }
         public decimal Marge { get; set; }
-        public int Eenheid { get; set; }
+        public string Eenheid { get; set; }
         public decimal BTW { get; set; }
         public int LeverancierID { get; set; }
         public int CategorieID { get; set; }
+        public int AantalOpVooraad { get; set; }
+        public Nullable<int> AantalNaBesteld { get; set; }
+        public Nullable<int> AantalBesteld { get; set; }
+        public Nullable<int> AantalBeschikbaar { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProducts { get; set; }

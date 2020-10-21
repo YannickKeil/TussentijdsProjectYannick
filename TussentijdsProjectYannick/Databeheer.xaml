@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel>
 
-            <TabControl x:Name="TabDatabeheer"  SelectionChanged="TabDatabeheer_SelectionChanged">
+            <TabControl x:Name="TabDatabeheer"  SelectionChanged="TabDatabeheer_SelectionChanged"  >
                 <!--<TabItem Header="Toevoegen Personeellid">
                     <StackPanel Margin="100">
                         <TextBox x:Name="txtVoornaam">voornaam</TextBox>
@@ -176,20 +176,21 @@
                             <TextBox x:Name="txtMargeEditProducten" Text="Marge" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
                             <TextBlock>%</TextBlock>
                         </WrapPanel>
-                        <WrapPanel>
-                            <TextBox x:Name="nudEenheidProducten" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
-                            <StackPanel>
-                                <RepeatButton x:Name="btnNudEenheidProductenUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudEenheidProductenUp_Click" ClickMode="Press"/>
-                                <RepeatButton x:Name="btnNudEenheidProductenDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudEenheidProductenDown_Click" ClickMode="Press"/>
-                            </StackPanel>
-                            <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center">Eenheid</TextBlock>
-                        </WrapPanel>
+                        <TextBox x:Name="txtEenheidEditProducten" Text="Eenheid" ></TextBox>
                         <WrapPanel>
                             <TextBox x:Name="txtBTWEditProducten" Text="BTW" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
                             <TextBlock>%</TextBlock>
                         </WrapPanel>
                         <ComboBox x:Name="cbLeverancierEditProducten"></ComboBox>
                         <ComboBox x:Name="cbCategorieEditProducten"></ComboBox>
+                        <WrapPanel>
+                            <TextBox x:Name="nudAantalOpVooraadProducten" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
+                            <StackPanel>
+                                <RepeatButton x:Name="btnNudAantalOpVooraadProductenUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalOpVooraadProductenUp_Click" ClickMode="Press"/>
+                                <RepeatButton x:Name="btnNudAantalOpVooraadProductenDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudAantalOpVooraadProductenDown_Click" ClickMode="Press"/>
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center">Aantal</TextBlock>
+                        </WrapPanel>
                         <WrapPanel>
                             <Button x:Name="btnToevoegenProducten" Click="btnToevoegenProducten_Click">Toevoegen</Button>
                             <Button x:Name="btnEditProducten" Click="btnEditProducten_Click" IsEnabled="False">Edit</Button>
@@ -223,10 +224,24 @@
                         <ComboBox x:Name="cbBestellingenEditBestellingProduct"></ComboBox>
                         <ComboBox x:Name="cbProductenEditBestellingProduct"></ComboBox>
                         <WrapPanel>
+                            <TextBox x:Name="nudAantalProductenBesteld" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
+                            <StackPanel>
+                                <RepeatButton x:Name="btnNudAantalProductenBesteldUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalProductenBesteldUp_Click" ClickMode="Press"/>
+                                <RepeatButton x:Name="btnNudProductenBesteldDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudProductenBesteldDown_Click" ClickMode="Press"/>
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center">Aantal</TextBlock>
+                        </WrapPanel>
+                        <WrapPanel>
                             <Button x:Name="btnToevoegenBestellingProduct" Click="btnToevoegenBestellingProduct_Click">Toevoegen</Button>
                             <Button x:Name="btnEditBestellingProduct" Click="btnEditBestellingProduct_Click" IsEnabled="False">Edit</Button>
                             <Button x:Name="btnDeleteBestellingProduct" Click="btnDeleteBestellingProduct_Click" IsEnabled="False">Delete</Button>
                         </WrapPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Json Producten">
+                    <StackPanel>
+                        <Button x:Name="btnJsonTemplateCreate" Content="Create Template" Click="btnJsonTemplateCreate_Click" />
+                        <Button x:Name="btnEditProductenMetJson" Content="Edit Producten met Json" Click="btnEditProductenMetJson_Click" />
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Back">

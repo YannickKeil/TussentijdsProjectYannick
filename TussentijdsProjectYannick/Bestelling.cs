@@ -23,8 +23,10 @@ namespace TussentijdsProjectYannick
         public int BestellingID { get; set; }
         public System.DateTime DatumOpgemaakt { get; set; }
         public int PersoneelslidID { get; set; }
-        public int LeverancierID { get; set; }
-        public int KlantID { get; set; }
+        public Nullable<int> LeverancierID { get; set; }
+        public Nullable<int> KlantID { get; set; }
+        public Nullable<System.DateTime> DatumVerzending { get; set; }
+        public Nullable<System.DateTime> DatumAankomst { get; set; }
     
         public virtual Klant Klant { get; set; }
         public virtual Leverancier Leverancier { get; set; }

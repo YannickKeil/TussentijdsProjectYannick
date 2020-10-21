@@ -28,6 +28,8 @@
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
         <Button x:Name="btnDatabeheer" Grid.Column="2" Grid.Row="3" Width="100" Height="25" Content="Databeheer" Click="btnDatabeheer_Click" ></Button>
+        <Button x:Name="btnOverzicht" Grid.Column="3" Grid.Row="3" Width="100" Height="25" Content="Overzicht" Click="btnOverzicht_Click" ></Button>
+        <Button x:Name="btnBestelling" Grid.Column="4" Grid.Row="3" Width="100" Height="25" Content="Bestelling" Click="btnBestelling_Click" ></Button>
         <Button x:Name="btnLogOut" Grid.Column="3" Grid.Row="4" Width="100" Height="25" Content="Log Out" Click="btnLogOut_Click" ></Button>
     </Grid>
 </Window>

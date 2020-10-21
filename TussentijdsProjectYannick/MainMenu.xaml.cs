@@ -25,6 +25,12 @@ namespace TussentijdsProjectYannick
         {
             InitializeComponent();
         }
+        public Personeelslid Selected { get; set; }
+        public MainMenu(Personeelslid selected)
+        {
+            Selected = selected;
+            InitializeComponent();
+        }
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
@@ -42,6 +48,17 @@ namespace TussentijdsProjectYannick
             //temp enkel personeel toevoegen
             Databeheer data = new Databeheer();
             data.ShowDialog();
+        }
+
+        private void btnOverzicht_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnBestelling_Click(object sender, RoutedEventArgs e)
+        {
+            BestellingMenu bestelling = new BestellingMenu(Selected);
+            bestelling.ShowDialog();
         }
     }
 }

@@ -37,8 +37,15 @@
                 <Button x:Name="btnClose" Style="{StaticResource Test}" Width="20" Height="20" Content="x" Click="btnClose_Click" Margin="10"  HorizontalAlignment="Right" BorderThickness="0"  >
             </Button>
             <StackPanel  Margin="30">
-                <TextBox x:Name="txtUsername" Width="200" Height="25" Margin="10" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" Text="Username" VerticalContentAlignment="Center"/>
-                    <PasswordBox x:Name="txtWachtwoord" Width="200" Margin="10" Height="25" Password="Password" GotFocus="txtWachtwoord_GotFocus" LostFocus="txtWachtwoord_LostFocus" VerticalContentAlignment="Center"/>
+                    <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                        <TextBox x:Name="txtUsername" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" VerticalContentAlignment="Center"></TextBox>
+                        <TextBlock Name="UsernameWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Username"></TextBlock>
+                    </Grid>
+                    <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                        <PasswordBox x:Name="txtWachtwoord" GotFocus="txtWachtwoord_GotFocus" LostFocus="txtWachtwoord_LostFocus" VerticalContentAlignment="Center"></PasswordBox>
+                        <TextBlock Name="passWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Password"></TextBlock>
+                    </Grid>
+                    
                 <Button x:Name="btnLogIn" Width="100" Height="25" Content="Log In" Click="btnLogIn_Click" Margin="10"></Button>
                 </StackPanel>
         </StackPanel>

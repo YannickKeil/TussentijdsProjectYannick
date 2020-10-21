@@ -35,13 +35,13 @@ namespace TussentijdsProjectYannick
             Application.Current.Shutdown();
         }
 
-        private byte[] CreateSalt()
-        {
-            var buffer = new byte[16];
-            var rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(buffer);
-            return buffer;
-        }
+        //private byte[] CreateSalt()
+        //{
+        //    var buffer = new byte[16];
+        //    var rng = new RNGCryptoServiceProvider();
+        //    rng.GetBytes(buffer);
+        //    return buffer;
+        //}
         private byte[] HashPassword(string password, byte[] salt)
         {
             var argon2 = new Argon2id(Encoding.UTF8.GetBytes(password));
@@ -58,31 +58,31 @@ namespace TussentijdsProjectYannick
             var newHash = HashPassword(password, salt);
             return hash.SequenceEqual(newHash);
         }
-        public void Run()
-        {
-            var password = "Hello World!";
-            var stopwatch = Stopwatch.StartNew();
+        //public void Run()
+        //{
+        //    var password = "Hello World!";
+        //    var stopwatch = Stopwatch.StartNew();
 
-            MessageBox.Show($"Creating hash for password '{ password }'.");
+        //    MessageBox.Show($"Creating hash for password '{ password }'.");
 
-            var salt = CreateSalt();
-            MessageBox.Show($"Using salt '{ Convert.ToBase64String(salt) }'.");
+        //    var salt = CreateSalt();
+        //    MessageBox.Show($"Using salt '{ Convert.ToBase64String(salt) }'.");
 
-            var hash = HashPassword(password, salt);
-            MessageBox.Show($"Hash is '{ Convert.ToBase64String(hash) }'.");
+        //    var hash = HashPassword(password, salt);
+        //    MessageBox.Show($"Hash is '{ Convert.ToBase64String(hash) }'.");
 
-            stopwatch.Stop();
-            MessageBox.Show($"Process took { stopwatch.ElapsedMilliseconds / 1024.0 } s");
+        //    stopwatch.Stop();
+        //    MessageBox.Show($"Process took { stopwatch.ElapsedMilliseconds / 1024.0 } s");
 
-            stopwatch = Stopwatch.StartNew();
-            MessageBox.Show($"Verifying hash...");
+        //    stopwatch = Stopwatch.StartNew();
+        //    MessageBox.Show($"Verifying hash...");
 
-            var success = VerifyHash(password, salt, hash);
-            MessageBox.Show(success ? "Success!" : "Failure!");
+        //    var success = VerifyHash(password, salt, hash);
+        //    MessageBox.Show(success ? "Success!" : "Failure!");
 
-            stopwatch.Stop();
-            MessageBox.Show($"Process took { stopwatch.ElapsedMilliseconds / 1024.0 } s");
-        }
+        //    stopwatch.Stop();
+        //    MessageBox.Show($"Process took { stopwatch.ElapsedMilliseconds / 1024.0 } s");
+        //}
 
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
@@ -91,19 +91,24 @@ namespace TussentijdsProjectYannick
             {
                 if (ctx.Personeelslids.Where(pl => pl.Username == txtUsername.Text).FirstOrDefault() != null)
                 {
-                    byte[] hash = Convert.FromBase64String(ctx.Personeelslids.Where(pl => pl.Username == txtUsername.Text).FirstOrDefault().Wachtwoord);                   
-                    byte[] salt = Convert.FromBase64String(ctx.Personeelslids.Where(pl => pl.Username == txtUsername.Text).FirstOrDefault().Salt);
+                    byte[] hash = Convert.FromBase64String(ctx.Personeelslids.Single(pl => pl.Username == txtUsername.Text).Wachtwoord);                   
+                    byte[] salt = Convert.FromBase64String(ctx.Personeelslids.Single(pl => pl.Username == txtUsername.Text).Salt);
                     string password = txtWachtwoord.Password;                    
                     var success = VerifyHash(password, salt, hash);
                     MessageBox.Show(success ? "Success!" : "Failure!");
                     if (success)
                     {
+                        Personeelslid logedIn = ctx.Personeelslids.Single(pl => pl.Username == txtUsername.Text);
                         MessageBox.Show("account verrified");
-                        MainMenu mm = new MainMenu();
+                        MainMenu mm = new MainMenu(logedIn);
                         mm.Owner = this;
                         Hide();
                         if (mm.ShowDialog() == true)
                         {
+                            txtUsername.Text = "";
+                            txtWachtwoord.Password = "";
+                            UsernameWordHint.Visibility = Visibility.Visible;
+                            passWordHint.Visibility = Visibility.Visible;
                             Show();
                         }
 
@@ -122,30 +127,34 @@ namespace TussentijdsProjectYannick
 
         private void txtUsername_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtUsername.Text == "Username")
+            if (txtUsername.Text.Length == 0)
             {
-                txtUsername.Text = "";
+                UsernameWordHint.Visibility = Visibility.Hidden;
             }
         }
 
         private void txtUsername_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text))
-                txtUsername.Text = "Username";
+            if (txtUsername.Text.Length == 0)
+            {
+                UsernameWordHint.Visibility = Visibility.Visible;
+            }               
         }
 
         private void txtWachtwoord_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (txtWachtwoord.Password == "Password")
+            if (txtWachtwoord.Password.Length == 0)
             {
-                txtWachtwoord.Password = "";
+                passWordHint.Visibility = Visibility.Hidden;
             }
         }
 
         private void txtWachtwoord_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtWachtwoord.Password))
-                txtWachtwoord.Password = "Password";
+            if (txtWachtwoord.Password.Length == 0)
+                passWordHint.Visibility = Visibility.Visible;
         }
+
+
     }
 }

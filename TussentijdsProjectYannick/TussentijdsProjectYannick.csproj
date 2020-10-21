@@ -149,6 +149,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -179,10 +182,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdminRechten.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bestelling.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingMenu.xaml.cs">
+      <DependentUpon>BestellingMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingProduct.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Categorie.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Klant.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leverancier.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personeelslid.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
     </Compile>
     <Page Include="AddPersoneelslid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BestellingMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,30 +235,12 @@
     <Compile Include="AddPersoneelslid.xaml.cs">
       <DependentUpon>AddPersoneelslid.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminRechten.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bestelling.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BestellingProduct.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Categorie.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Databeheer.xaml.cs">
       <DependentUpon>Databeheer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Klant.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Leverancier.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -235,12 +251,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Personeelslid.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Projectweek_YannickDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -15,6 +15,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Konscious.Security.Cryptography;
+using System.IO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TussentijdsProjectYannick
 {
@@ -34,10 +37,12 @@ namespace TussentijdsProjectYannick
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
+            
         }
 
         private void EditPersoneel()
         {
+            
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 cbEditPersoneellid.ItemsSource = null;
@@ -447,7 +452,7 @@ namespace TussentijdsProjectYannick
             EditProductenfillCombobox();
         }
 
-        private static readonly Regex _regex = new Regex("[^0-9.-]+"); //regex that matches disallowed text
+        private static readonly Regex _regex = new Regex("[^0-9]+"); //regex that matches disallowed text
         private static bool IsTextAllowed(string text)
         {
             return !_regex.IsMatch(text);
@@ -720,8 +725,9 @@ namespace TussentijdsProjectYannick
                 btnToevoegenProducten.IsEnabled = true;
                 txtNaamEditProducten.Text = "Naam";
                 txtMargeEditProducten.Text = "Marge";
-                nudEenheidProducten.Text = "0";
+                txtEenheidEditProducten.Text = "Eenheid";
                 txtBTWEditProducten.Text = "BTW";
+                nudAantalOpVooraadProducten.Text = "0";
                 EditProductenfillCombobox();
             }
 
@@ -737,24 +743,26 @@ namespace TussentijdsProjectYannick
                         var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
                         txtNaamEditProducten.Text = selectedProduct.Naam;
                         txtMargeEditProducten.Text = selectedProduct.Marge.ToString();
-                        nudEenheidProducten.Text = selectedProduct.Eenheid.ToString();
+                        txtEenheidEditProducten.Text = selectedProduct.Eenheid;
                         txtBTWEditProducten.Text = selectedProduct.BTW.ToString();
                         cbLeverancierEditProducten.SelectedValue = selectedProduct.LeverancierID;
                         cbCategorieEditProducten.SelectedValue = selectedProduct.CategorieID;
+                        nudAantalOpVooraadProducten.Text = selectedProduct.AantalOpVooraad.ToString();
                     }
                 }
             }
         }
-        private void btnNudEenheidProductenUp_Click(object sender, RoutedEventArgs e)
+        private void btnNudAantalOpVooraadProductenUp_Click(object sender, RoutedEventArgs e)
         {
-            decimal getal = Convert.ToDecimal(nudEenheidProducten.Text);
+            decimal getal = Convert.ToDecimal(nudAantalOpVooraadProducten.Text);
             getal++;
-            nudEenheidProducten.Text = getal.ToString();
+            nudAantalOpVooraadProducten.Text = getal.ToString();
 
         }
-        private void btnNudEenheidProductenDown_Click(object sender, RoutedEventArgs e)
+        private void btnNudAantalOpVooraadProductenDown_Click(object sender, RoutedEventArgs e)
         {
-            nudEenheidProducten.Text = $"{Convert.ToDecimal(nudEenheidProducten.Text) - 1}";
+            if (Convert.ToDecimal(nudAantalOpVooraadProducten.Text) > 0)
+            nudAantalOpVooraadProducten.Text = $"{Convert.ToDecimal(nudAantalOpVooraadProducten.Text) - 1}";
         }
         private void btnToevoegenProducten_Click(object sender, RoutedEventArgs e)
         {
@@ -764,10 +772,11 @@ namespace TussentijdsProjectYannick
                 {
                     Naam = txtNaamEditProducten.Text,
                     Marge = Convert.ToDecimal(txtMargeEditProducten.Text),
-                    Eenheid = Convert.ToInt32(nudEenheidProducten.Text),
+                    Eenheid = txtEenheidEditProducten.Text,
                     BTW = Convert.ToDecimal(txtBTWEditProducten.Text),
                     LeverancierID = (int)cbLeverancierEditProducten.SelectedValue,
-                    CategorieID = (int)cbCategorieEditProducten.SelectedValue
+                    CategorieID = (int)cbCategorieEditProducten.SelectedValue,
+                    AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text)
                 });
                 ctx.SaveChanges();
             }
@@ -784,10 +793,11 @@ namespace TussentijdsProjectYannick
                 var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
                 selectedProduct.Naam = txtNaamEditProducten.Text;
                 selectedProduct.Marge = Convert.ToDecimal(txtMargeEditProducten.Text);
-                selectedProduct.Eenheid = Convert.ToInt32(nudEenheidProducten.Text);
+                selectedProduct.Eenheid = txtEenheidEditProducten.Text;
                 selectedProduct.BTW = Convert.ToDecimal(txtBTWEditProducten.Text);
                 selectedProduct.LeverancierID = (int)cbLeverancierEditProducten.SelectedValue;
                 selectedProduct.CategorieID = (int)cbCategorieEditProducten.SelectedValue;
+                selectedProduct.AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text);
                 ctx.SaveChanges();
             }
             MessageBox.Show("Edited");
@@ -934,9 +944,15 @@ namespace TussentijdsProjectYannick
                 ctx.BestellingProducts.Add(new BestellingProduct
                 {
                     BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue,
-                    ProductID = (int)cbProductenEditBestellingProduct.SelectedValue
+                    ProductID = (int)cbProductenEditBestellingProduct.SelectedValue,
+                    AantalProtuctBesteld = Convert.ToInt32(nudAantalProductenBesteld.Text)
 
                 });
+                if (ctx.Bestellings.Single(b=>b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).LeverancierID == null)
+                { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad -= Convert.ToInt32(nudAantalProductenBesteld.Text); }
+                else if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).KlantID == null)
+                { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad += Convert.ToInt32(nudAantalProductenBesteld.Text); }
+
                 ctx.SaveChanges();
             }
             MessageBox.Show("Toevoegen");
@@ -948,8 +964,14 @@ namespace TussentijdsProjectYannick
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 var selectedBestelling = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
+                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += selectedBestelling.AantalProtuctBesteld - Convert.ToInt32(nudAantalProductenBesteld.Text); }
+                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= selectedBestelling.AantalProtuctBesteld - Convert.ToInt32(nudAantalProductenBesteld.Text); }
+
                 selectedBestelling.BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue;
                 selectedBestelling.ProductID = (int)cbProductenEditBestellingProduct.SelectedValue;
+                selectedBestelling.AantalProtuctBesteld = Convert.ToInt32(nudAantalProductenBesteld.Text);
                 ctx.SaveChanges();
             }
             MessageBox.Show("Edited");
@@ -960,11 +982,81 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
+                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
+                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
+
+                
                 ctx.BestellingProducts.Remove(ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue));
                 ctx.SaveChanges();
             }
             MessageBox.Show("Deleted");
             EditProducten();
+        }
+        private void btnNudAantalProductenBesteldUp_Click(object sender, RoutedEventArgs e)
+        {
+            decimal getal = Convert.ToDecimal(nudAantalProductenBesteld.Text);
+            getal++;
+            nudAantalProductenBesteld.Text = getal.ToString();
+        }
+
+        private void btnNudProductenBesteldDown_Click(object sender, RoutedEventArgs e)
+        {
+            if (Convert.ToDecimal(nudAantalProductenBesteld.Text) > 0)
+                nudAantalProductenBesteld.Text = $"{Convert.ToDecimal(nudAantalProductenBesteld.Text) - 1}";
+        }
+        private void btnJsonTemplateCreate_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var producten = ctx.Products.Select(w => w);
+                List<object> ListProducten = new List<object>();
+                foreach (var item in producten)
+                {
+                   
+                    Product productsForList = new Product() { ProductID = item.ProductID,Naam = item.Naam,Marge = item.Marge,Eenheid = item.Eenheid,BTW = item.BTW, LeverancierID = item.LeverancierID, CategorieID = item.CategorieID, AantalOpVooraad = item.AantalOpVooraad, AantalNaBesteld = item.AantalNaBesteld, AantalBesteld = item.AantalBesteld, AantalBeschikbaar = item.AantalBeschikbaar };
+                    ListProducten.Add(productsForList);
+                }
+                JsonCreate(ListProducten);
+                MessageBox.Show("Template created");
+            }
+        }
+
+        private void btnEditProductenMetJson_Click(object sender, RoutedEventArgs e)
+        {
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                var json = File.ReadAllText("gegevens.Json");
+                List<Product> listProducten = JsonConvert.DeserializeObject<List<Product>>(json);
+                foreach (var item in listProducten)
+                {
+                    var selectedProduct = ctx.Products.Single(p => p.ProductID == item.ProductID);
+                    selectedProduct.Naam = item.Naam;
+                    selectedProduct.Marge = item.Marge;
+                    selectedProduct.Eenheid = item.Eenheid;
+                    selectedProduct.BTW = item.BTW;
+                    selectedProduct.LeverancierID = item.LeverancierID;
+                    selectedProduct.CategorieID = item.CategorieID;
+                    selectedProduct.AantalOpVooraad = item.AantalOpVooraad;
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Edited");
+                EditProducten();
+            }           
+        }
+        public void JsonCreate(List<object> listObject)
+        {
+            if (!File.Exists("gegevens.Json"))
+            {
+                using (FileStream fs = File.Create("gegevens.Json"))
+                {
+                }
+            }
+
+            var jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
+            File.WriteAllText("gegevens.Json", jsonString);
+            MessageBox.Show(jsonString.ToString());
         }
     }
 }
