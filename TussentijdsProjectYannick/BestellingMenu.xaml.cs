@@ -33,6 +33,20 @@ namespace TussentijdsProjectYannick
             LoadKlanten();
             LoadLeveranciers();
             LoadProducten();
+            if (selected.AdminRechtenID == 1)
+            {
+                tbLeverancierKlant.Visibility = Visibility.Visible;
+            }
+            else if(selected.AdminRechtenID == 2)
+            {
+                tbLeverancierKlant.Visibility = Visibility.Hidden;
+                tbLeverancierKlant.IsChecked = true;
+            }
+            else if(selected.AdminRechtenID == 3)
+            {
+                tbLeverancierKlant.Visibility = Visibility.Hidden;
+                tbLeverancierKlant.IsChecked = false;
+            }
         }
         public void LoadKlanten()
         {
@@ -109,12 +123,14 @@ namespace TussentijdsProjectYannick
         {
             cbKlants.Visibility = Visibility.Hidden;
             cbLeveranciers.Visibility = Visibility.Visible;
+            btnAddNewKlant.Content = "Voeg Nieuwe Leverancier Toe";
         }
 
         private void tbLeverancierKlant_Unchecked(object sender, RoutedEventArgs e)
         {
             cbKlants.Visibility = Visibility.Visible;
             cbLeveranciers.Visibility = Visibility.Hidden;
+            btnAddNewKlant.Content = "Voeg Nieuwe Klant Toe";
         }
         private void btnAddNewKlant_Click(object sender, RoutedEventArgs e)
         {

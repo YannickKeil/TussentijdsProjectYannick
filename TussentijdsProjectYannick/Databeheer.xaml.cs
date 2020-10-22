@@ -18,6 +18,7 @@ using Konscious.Security.Cryptography;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Web.UI.WebControls;
 
 namespace TussentijdsProjectYannick
 {
@@ -52,6 +53,44 @@ namespace TussentijdsProjectYannick
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
+            if (selected.AdminRechtenID == 1)
+            {
+                tabPersoneellid.IsEnabled = true;
+                tabAdminRechten.IsEnabled = true;
+                tabCategorie.IsEnabled = true;
+                tabKlanten.IsEnabled = true;
+                tabLeverancier.IsEnabled = true;
+                tabProducten.IsEnabled = true;
+                tabBestellingen.IsEnabled = true;
+                tabBestellingProducten.IsEnabled = true;
+                tabJsonProducten.IsEnabled = true;
+            }
+            else if (selected.AdminRechtenID == 2)
+            {
+                TabDatabeheer.SelectedItem = tabProducten;
+                tabPersoneellid.IsEnabled = false;
+                tabAdminRechten.IsEnabled = false;
+                tabCategorie.IsEnabled = true;
+                tabKlanten.IsEnabled = false;
+                tabLeverancier.IsEnabled = true;
+                tabProducten.IsEnabled = true;
+                tabBestellingen.IsEnabled = false;
+                tabBestellingProducten.IsEnabled = false;
+                tabJsonProducten.IsEnabled = false;
+            }
+            else if (selected.AdminRechtenID == 3)
+            {
+                TabDatabeheer.SelectedItem = tabKlanten;
+                tabPersoneellid.IsEnabled = false;
+                tabAdminRechten.IsEnabled = false;
+                tabCategorie.IsEnabled = false;
+                tabKlanten.IsEnabled = true;
+                tabLeverancier.IsEnabled = false;
+                tabProducten.IsEnabled = false;
+                tabBestellingen.IsEnabled = false;
+                tabBestellingProducten.IsEnabled = false;
+                tabJsonProducten.IsEnabled = false;
+            }
 
         }
         private void EditPersoneel()
@@ -291,7 +330,10 @@ namespace TussentijdsProjectYannick
                 cbEditPersoneellid.IsEnabled = true;
                 btnToevoegenPersoneellid.IsEnabled = false;
                 EditPersoneel();
-                lblPassword.Text = "Als de passwordbox leeg is behoud de user het dezelfde wachtwoord";
+                passWordHint.Text = "Als de passwordbox leeg is behoud de user het dezelfde wachtwoord";
+                txtVoornaamPersoneellidEditWordHint.Visibility = Visibility.Hidden;
+                txtAchternaamPersoneellidEditWordHint.Visibility = Visibility.Hidden;
+                UsernameWordHint.Visibility = Visibility.Hidden;
             }
             else if (tbPersoneellidEdit.IsChecked == false)
             {
@@ -299,15 +341,14 @@ namespace TussentijdsProjectYannick
                 btnDeletePersoneellid.IsEnabled = false;
                 cbEditPersoneellid.IsEnabled = false;
                 btnToevoegenPersoneellid.IsEnabled = true;
-                txtVoornaamPersoneellidEdit.Text = "Voornaam";
-                txtAchternaamPersoneellidEdit.Text = "Achternaam";
-                txtUsernamePersoneellidEdit.Text = "Username";
                 dtIndiensttredingPersoneellidEdit.DisplayDate = DateTime.Now;
                 dtGeboortedatumPersoneellidEdit.DisplayDate = DateTime.Now;
                 dtIndiensttredingPersoneellidEdit.SelectedDate = DateTime.Now;
                 dtGeboortedatumPersoneellidEdit.SelectedDate = DateTime.Now;
-                lblPassword.Text = "Wachtwoord";
+                passWordHint.Text = "Wachtwoord";
+                ResetTextBoxPersoneel();
             }
+
         }
         private void btnAddPersoneellid_Click(object sender, RoutedEventArgs e)
         {
@@ -332,12 +373,24 @@ namespace TussentijdsProjectYannick
                 ctx.SaveChanges();
                 MessageBox.Show("toegevoegt");
                 EditPersoneel();
+                ResetTextBoxPersoneel();
             }
             //}
             // else
             //{
             //error endings
             //}
+        }
+        private void ResetTextBoxPersoneel()
+        {
+            txtVoornaamPersoneellidEdit.Text = "";
+            txtAchternaamPersoneellidEdit.Text = "";
+            txtUsernamePersoneellidEdit.Text = "";
+            txtPasswordPersoneellidEdit.Password = "";
+            txtVoornaamPersoneellidEditWordHint.Visibility = Visibility.Visible;
+            txtAchternaamPersoneellidEditWordHint.Visibility = Visibility.Visible;
+            UsernameWordHint.Visibility = Visibility.Visible;
+            passWordHint.Visibility = Visibility.Visible;
         }
         private void cbPersoneellidEdit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1078,6 +1131,70 @@ namespace TussentijdsProjectYannick
             var jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
             File.WriteAllText("gegevens.Json", jsonString);
             MessageBox.Show(jsonString.ToString());
+        }
+
+        private void txtVoornaamPersoneellidEdit_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtVoornaamPersoneellidEdit.Text.Length == 0)
+            {
+                txtVoornaamPersoneellidEditWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtVoornaamPersoneellidEdit_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtVoornaamPersoneellidEdit.Text.Length == 0)
+            {
+                txtVoornaamPersoneellidEditWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtAchternaamPersoneellidEdit_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAchternaamPersoneellidEdit.Text.Length == 0)
+            {
+                txtAchternaamPersoneellidEditWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtAchternaamPersoneellidEdit_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAchternaamPersoneellidEdit.Text.Length == 0)
+            {
+                txtAchternaamPersoneellidEditWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtUsernamePersoneellidEdit_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtUsernamePersoneellidEdit.Text.Length == 0)
+            {
+                UsernameWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtUsernamePersoneellidEdit_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtUsernamePersoneellidEdit.Text.Length == 0)
+            {
+                UsernameWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtPasswordPersoneellidEdit_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPasswordPersoneellidEdit.Password.Length == 0)
+            {
+                passWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPasswordPersoneellidEdit_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(txtPasswordPersoneellidEdit.Password.Length == 0)
+            {
+                passWordHint.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

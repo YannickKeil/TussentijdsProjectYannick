@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TussentijdsProjectYannick"
         mc:Ignorable="d"
-        Title="Databeheer" Height="450" Width="800">
+        Title="Databeheer" Height="600" Width="800">
     <Grid>
         <StackPanel>
 
@@ -25,21 +25,37 @@
                     </StackPanel>
                 </TabItem>-->
                 <TabItem Header="Personeellid" x:Name="tabPersoneellid">
-                    <StackPanel Margin="100">
-                        <WrapPanel>
+                    <StackPanel Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <WrapPanel Margin="10" HorizontalAlignment="Center" Width="200" MaxWidth="500">
                             <ToggleButton x:Name="tbPersoneellidEdit" Content="edit/delete" ToggleButton.Checked="tbPersoneellidEdit_Checked" ToggleButton.Unchecked="tbPersoneellidEdit_Checked"></ToggleButton>
-                            <ComboBox x:Name="cbEditPersoneellid" SelectionChanged="cbPersoneellidEdit_SelectionChanged" IsEnabled="False"></ComboBox>
+                            <ComboBox x:Name="cbEditPersoneellid" SelectionChanged="cbPersoneellidEdit_SelectionChanged" IsEnabled="False" ></ComboBox>
                         </WrapPanel>
-                        <TextBox x:Name="txtVoornaamPersoneellidEdit">Voornaam</TextBox>
-                        <TextBox x:Name="txtAchternaamPersoneellidEdit">Achternaam</TextBox>
-                        <TextBox x:Name="txtUsernamePersoneellidEdit">Username</TextBox>
-                        <TextBlock x:Name="lblPassword" Text="Wachtwoord">als passwordbox leeg is behoud het dezelfde wachtwoord</TextBlock>
-                        <PasswordBox x:Name="txtPasswordPersoneellidEdit"></PasswordBox>
-                        <ComboBox x:Name="cbAdminRechtenPersoneellidEdit"></ComboBox>
-                        <TextBlock>Datum Indiensttreding</TextBlock>
-                        <DatePicker x:Name="dtIndiensttredingPersoneellidEdit"></DatePicker>
-                        <TextBlock>Geboortedatum</TextBlock>
-                        <DatePicker x:Name="dtGeboortedatumPersoneellidEdit"></DatePicker>
+                        <!--<Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                        <TextBox x:Name="txtUsername" GotFocus="txtUsername_GotFocus" LostFocus="txtUsername_LostFocus" VerticalContentAlignment="Center"></TextBox>
+                        <TextBlock Name="UsernameWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Username"></TextBlock>
+    ``                  </Grid> -->
+                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                            <TextBox x:Name="txtVoornaamPersoneellidEdit" VerticalContentAlignment="center" LostFocus="txtVoornaamPersoneellidEdit_LostFocus" GotFocus="txtVoornaamPersoneellidEdit_GotFocus"></TextBox>
+                            <TextBlock Name="txtVoornaamPersoneellidEditWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Voornaam"/>
+                        </Grid>
+                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                            <TextBox x:Name="txtAchternaamPersoneellidEdit" VerticalContentAlignment="center" LostFocus="txtAchternaamPersoneellidEdit_LostFocus" GotFocus="txtAchternaamPersoneellidEdit_GotFocus"></TextBox>
+                            <TextBlock Name="txtAchternaamPersoneellidEditWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Achternaam" />
+                        </Grid>
+                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                            <TextBox x:Name="txtUsernamePersoneellidEdit" VerticalContentAlignment="center" LostFocus="txtUsernamePersoneellidEdit_LostFocus" GotFocus="txtUsernamePersoneellidEdit_GotFocus"></TextBox>
+                            <TextBlock Name="UsernameWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Username"></TextBlock>
+                        </Grid>
+                        <!--<TextBlock x:Name="lblPassword" Text="" Margin="10">als passwordbox leeg is behoud het dezelfde wachtwoord</TextBlock>-->
+                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10">
+                            <PasswordBox x:Name="" LostFocus="txtPasswordPersoneellidEdit_LostFocus" GotFocus="txtPasswordPersoneellidEdit_GotFocus"></PasswordBox>
+                            <TextBlock Name="passWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Password"/>
+                        </Grid>
+                        <ComboBox x:Name="cbAdminRechtenPersoneellidEdit" Margin="10"></ComboBox>
+                        <TextBlock Margin="10">Datum Indiensttreding</TextBlock>
+                        <DatePicker x:Name="dtIndiensttredingPersoneellidEdit" Margin="10"></DatePicker>
+                        <TextBlock Margin="10">Geboortedatum </TextBlock>
+                        <DatePicker x:Name="dtGeboortedatumPersoneellidEdit" Margin="10"></DatePicker>
                         <WrapPanel>
                             <Button x:Name="btnToevoegenPersoneellid" Margin="10" Click="btnAddPersoneellid_Click">Toevoegen</Button>
                             <Button x:Name="btnEditPersoneellid" Margin="10" Click="btnEditPersoneellid_Click" IsEnabled="False">Edit</Button>
@@ -47,8 +63,9 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Admin rechten" x:Name="tabAdminRechten">
-                    <StackPanel>
+                <TabItem Header="Admin rechten" x:Name="tabAdminRechten" VerticalContentAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="395" MaxHeight="2160" Margin="100">
+                        
                         <TextBlock>textbox voor naam van adminrechten om toetevoegen of editeren</TextBlock>
                         <TextBox x:Name="txtAdminRechtenToevoegen">
                         </TextBox>
@@ -61,7 +78,7 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Categorie" x:Name="tabCategorie">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <TextBlock>textbox voor naam van categorie om toetevoegen of editeren</TextBlock>
                         <TextBox x:Name="txtCategorieToevoegen">
                         </TextBox>
@@ -95,7 +112,7 @@
                     </StackPanel>
                 </TabItem>-->
                 <TabItem Header="Klanten" x:Name="tabKlanten">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditKlant" Content="edit/delete" ToggleButton.Checked="tbEditKlant_Checked" ToggleButton.Unchecked="tbEditKlant_Checked"></ToggleButton>
                             <ComboBox x:Name="cbEditKlant" SelectionChanged="cbEditKlant_SelectionChanged" IsEnabled="False"></ComboBox>
@@ -141,7 +158,7 @@
                     </StackPanel>
                 </TabItem>-->
                 <TabItem Header="Leverancier" x:Name="tabLeverancier">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditLeverancier" Content="edit/delete" ToggleButton.Checked="tbEditLeverancier_Checked" ToggleButton.Unchecked="tbEditLeverancier_Checked"></ToggleButton>
                             <ComboBox x:Name="cbEditLeverancier" SelectionChanged="cbEditLeverancier_SelectionChanged" IsEnabled="False"></ComboBox>
@@ -166,7 +183,7 @@
                         </StackPanel>
                 </TabItem>
                 <TabItem Header="Producten" x:Name="tabProducten">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditProducten" Content="edit/delete" ToggleButton.Checked="tbEditProducten_Checked" ToggleButton.Unchecked="tbEditProducten_Checked"></ToggleButton>
                             <ComboBox x:Name="cbEditProducten" SelectionChanged="cbEditProducten_SelectionChanged" IsEnabled="False"></ComboBox>
@@ -199,11 +216,12 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Bestellingen" x:Name="tabBestellingen">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditBestelling" Content="edit/delete" ToggleButton.Checked="tbEditBestelling_Checked" ToggleButton.Unchecked="tbEditBestelling_Checked"></ToggleButton>
                             <ComboBox x:Name="cbEditBestelling" SelectionChanged="cbEditBestelling_SelectionChanged" IsEnabled="False"></ComboBox>
                         </WrapPanel>
+                        <TextBlock>Datum Opmaak</TextBlock>
                         <DatePicker x:Name="dtDatumOpgemaakt"></DatePicker>
                         <ComboBox x:Name="cbPersoneelslidEditBestelling"></ComboBox>
                         <ComboBox x:Name="cbLeverancierEditBestelling"></ComboBox>
@@ -216,7 +234,7 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="BestellingProducten" x:Name="tabBestellingProducten">
-                    <StackPanel>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditBestellingProduct" Content="edit/delete" ToggleButton.Checked="tbEditBestellingProduct_Checked" ToggleButton.Unchecked="tbEditBestellingProduct_Checked"></ToggleButton>
                             <ComboBox x:Name="cbEditBestellingProduct" SelectionChanged="cbEditBestellingProduct_SelectionChanged" IsEnabled="False"></ComboBox>
@@ -239,7 +257,7 @@
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Json Producten" x:Name="tabJsonProducten">
-                    <StackPanel>
+                    <StackPanel Margin="100" >
                         <Button x:Name="btnJsonTemplateCreate" Content="Create Template" Click="btnJsonTemplateCreate_Click" />
                         <Button x:Name="btnEditProductenMetJson" Content="Edit Producten met Json" Click="btnEditProductenMetJson_Click" />
                     </StackPanel>
