@@ -24,7 +24,7 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>-->
-                <TabItem Header="Personeellid">
+                <TabItem Header="Personeellid" x:Name="tabPersoneellid">
                     <StackPanel Margin="100">
                         <WrapPanel>
                             <ToggleButton x:Name="tbPersoneellidEdit" Content="edit/delete" ToggleButton.Checked="tbPersoneellidEdit_Checked" ToggleButton.Unchecked="tbPersoneellidEdit_Checked"></ToggleButton>
@@ -47,7 +47,7 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Admin rechten">
+                <TabItem Header="Admin rechten" x:Name="tabAdminRechten">
                     <StackPanel>
                         <TextBlock>textbox voor naam van adminrechten om toetevoegen of editeren</TextBlock>
                         <TextBox x:Name="txtAdminRechtenToevoegen">
@@ -60,7 +60,7 @@
                         <Button x:Name="btnDeleteAdminRechten" Click="btnDeleteAdminRechten_Click" Content="Delete"></Button>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Categorie">
+                <TabItem Header="Categorie" x:Name="tabCategorie">
                     <StackPanel>
                         <TextBlock>textbox voor naam van categorie om toetevoegen of editeren</TextBlock>
                         <TextBox x:Name="txtCategorieToevoegen">
@@ -94,7 +94,7 @@
                         
                     </StackPanel>
                 </TabItem>-->
-                <TabItem Header="Klanten">
+                <TabItem Header="Klanten" x:Name="tabKlanten">
                     <StackPanel>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditKlant" Content="edit/delete" ToggleButton.Checked="tbEditKlant_Checked" ToggleButton.Unchecked="tbEditKlant_Checked"></ToggleButton>
@@ -140,7 +140,7 @@
                         <Button x:Name="btnLeverancierToevoegen" Click="btnLeverancierToevoegen_Click">toevoegen</Button>
                     </StackPanel>
                 </TabItem>-->
-                <TabItem Header="Leverancier">
+                <TabItem Header="Leverancier" x:Name="tabLeverancier">
                     <StackPanel>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditLeverancier" Content="edit/delete" ToggleButton.Checked="tbEditLeverancier_Checked" ToggleButton.Unchecked="tbEditLeverancier_Checked"></ToggleButton>
@@ -165,7 +165,7 @@
                         </WrapPanel>
                         </StackPanel>
                 </TabItem>
-                <TabItem Header="Producten">
+                <TabItem Header="Producten" x:Name="tabProducten">
                     <StackPanel>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditProducten" Content="edit/delete" ToggleButton.Checked="tbEditProducten_Checked" ToggleButton.Unchecked="tbEditProducten_Checked"></ToggleButton>
@@ -198,7 +198,7 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Bestellingen">
+                <TabItem Header="Bestellingen" x:Name="tabBestellingen">
                     <StackPanel>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditBestelling" Content="edit/delete" ToggleButton.Checked="tbEditBestelling_Checked" ToggleButton.Unchecked="tbEditBestelling_Checked"></ToggleButton>
@@ -215,7 +215,7 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="BestellingProducten">
+                <TabItem Header="BestellingProducten" x:Name="tabBestellingProducten">
                     <StackPanel>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditBestellingProduct" Content="edit/delete" ToggleButton.Checked="tbEditBestellingProduct_Checked" ToggleButton.Unchecked="tbEditBestellingProduct_Checked"></ToggleButton>
@@ -238,13 +238,13 @@
                         </WrapPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Json Producten">
+                <TabItem Header="Json Producten" x:Name="tabJsonProducten">
                     <StackPanel>
                         <Button x:Name="btnJsonTemplateCreate" Content="Create Template" Click="btnJsonTemplateCreate_Click" />
                         <Button x:Name="btnEditProductenMetJson" Content="Edit Producten met Json" Click="btnEditProductenMetJson_Click" />
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Back">
+                <TabItem Header="Back" x:Name="tabBack">
 
                 </TabItem>
             </TabControl>

@@ -39,7 +39,21 @@ namespace TussentijdsProjectYannick
             EditBestellingProductfillCombobox();
             
         }
+        public Personeelslid Selected { get; set; }
+        public Databeheer(Personeelslid selected)
+        {
+            Selected = selected;
+            InitializeComponent();
+            EditAdminrechten();
+            //EditPersoneel();
+            EditCategorie();
+            //EditKlant();
+            //EditLeverancier();
+            EditProductenfillCombobox();
+            EditBestellingfillCombobox();
+            EditBestellingProductfillCombobox();
 
+        }
         private void EditPersoneel()
         {
             
@@ -534,6 +548,10 @@ namespace TussentijdsProjectYannick
                 ctx.SaveChanges();
                 MessageBox.Show("Toegevoegd");
                 EditKlant();
+                if(Selected == null)
+                {
+                    this.DialogResult = true;
+                }
             }
         }
         private void cbEditKlant_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -646,7 +664,10 @@ namespace TussentijdsProjectYannick
             EditLeverancier();
             EditProductenfillCombobox();
             //cbEditLeverancier.SelectedIndex = cbEditLeverancier.Items.Count - 1;
-
+            if (Selected == null)
+            {
+                this.DialogResult = true;
+            }
         }
         private void cbEditLeverancier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

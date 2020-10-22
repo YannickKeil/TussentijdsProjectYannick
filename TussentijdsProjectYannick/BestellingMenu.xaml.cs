@@ -118,6 +118,53 @@ namespace TussentijdsProjectYannick
         }
         private void btnAddNewKlant_Click(object sender, RoutedEventArgs e)
         {
+            Databeheer db = new Databeheer();
+            db.tabKlanten.Visibility = Visibility.Hidden;
+            db.tabAdminRechten.Visibility = Visibility.Hidden;
+            db.tabBestellingen.Visibility = Visibility.Hidden;
+            db.tabBestellingProducten.Visibility = Visibility.Hidden;
+            db.tabCategorie.Visibility = Visibility.Hidden;
+            db.tabJsonProducten.Visibility = Visibility.Hidden;
+            db.tabLeverancier.Visibility = Visibility.Hidden;
+            db.tabPersoneellid.Visibility = Visibility.Hidden;
+            db.tabProducten.Visibility = Visibility.Hidden;           
+            if ((bool)tbLeverancierKlant.IsChecked)
+            {
+                db.TabDatabeheer.SelectedItem = db.tabLeverancier;
+                db.tbEditLeverancier.Visibility = Visibility.Hidden;
+                db.cbEditLeverancier.Visibility = Visibility.Hidden;
+                db.btnEditLeverancier.Visibility = Visibility.Hidden;
+                db.btnDeleteLeverancier.Visibility = Visibility.Hidden;
+            }
+            else if (!(bool)tbLeverancierKlant.IsChecked)
+            {
+                db.TabDatabeheer.SelectedItem = db.tabKlanten;
+                db.tbEditKlant.Visibility = Visibility.Hidden;
+                db.cbEditKlant.Visibility = Visibility.Hidden;
+                db.btnEditKlant.Visibility = Visibility.Hidden;
+                db.btnDeleteKlant.Visibility = Visibility.Hidden;
+            }
+            
+            db.ShowDialog();
+            
+                db.tabKlanten.Visibility = Visibility.Visible;
+                db.tabAdminRechten.Visibility = Visibility.Visible;
+                db.tabBestellingen.Visibility = Visibility.Visible;
+                db.tabBestellingProducten.Visibility = Visibility.Visible;
+                db.tabCategorie.Visibility = Visibility.Visible;
+                db.tabJsonProducten.Visibility = Visibility.Visible;
+                db.tabLeverancier.Visibility = Visibility.Visible;
+                db.tabPersoneellid.Visibility = Visibility.Visible;
+                db.tabProducten.Visibility = Visibility.Visible;
+            db.tbEditKlant.Visibility = Visibility.Visible;
+            db.cbEditKlant.Visibility = Visibility.Visible;
+            db.btnEditKlant.Visibility = Visibility.Visible;
+            db.btnDeleteKlant.Visibility = Visibility.Visible;
+            db.tbEditLeverancier.Visibility = Visibility.Visible;
+            db.cbEditLeverancier.Visibility = Visibility.Visible;
+            db.btnEditLeverancier.Visibility = Visibility.Visible;
+            db.btnDeleteLeverancier.Visibility = Visibility.Visible;
+
         }
         private void btnNumUp_Click(object sender, RoutedEventArgs e)
         {
