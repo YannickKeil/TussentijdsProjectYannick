@@ -208,9 +208,13 @@ namespace TussentijdsProjectYannick
                     " " +
                     x.Klant.Achternaam +
                     " " +
+                    x.Leverancier.LeverancierID +
+                    " " +
+                    x.Leverancier.Contactpersoon +
+                    " " +                   
                     x.DatumOpgemaakt,
                     Id = x.BestellingID
-                }).ToList();
+                }).ToList();               
                 cbEditBestelling.DisplayMemberPath = "Naam";
                 cbEditBestelling.SelectedValuePath = "Id";
                 cbEditBestelling.ItemsSource = listBestellingen;
@@ -464,6 +468,8 @@ namespace TussentijdsProjectYannick
                 //ctx.SaveChanges();
             }
             EditAdminrechten();
+            txtAdminRechtenToevoegen.Text = "";
+            txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
         }
         private void btnEditAdminRechten_Click(object sender, RoutedEventArgs e)
         {
@@ -473,6 +479,8 @@ namespace TussentijdsProjectYannick
                 //ctx.SaveChanges();
             }
             EditAdminrechten();
+            txtAdminRechtenToevoegen.Text = "";
+            txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
         }
 
         private void btnDeleteAdminRechten_Click(object sender, RoutedEventArgs e)
@@ -494,7 +502,8 @@ namespace TussentijdsProjectYannick
             }
             EditCategorie();
             EditProductenfillCombobox();
-
+            txtCategorieToevoegen.Text = "";
+            txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
         }
         private void btnEditCategorie_Click(object sender, RoutedEventArgs e)
         {
@@ -505,6 +514,8 @@ namespace TussentijdsProjectYannick
             }
             EditCategorie();
             EditProductenfillCombobox();
+            txtCategorieToevoegen.Text = "";
+            txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
         }
 
         private void btnDeleteCategorie_Click(object sender, RoutedEventArgs e)
@@ -561,18 +572,33 @@ namespace TussentijdsProjectYannick
                 btnDeleteKlant.IsEnabled = false;
                 cbEditKlant.IsEnabled = false;
                 btnToevoegenKlant.IsEnabled = true;
-                txtVoornaamEditKlant.Text = "Voornaam";
-                txtAchternaamEditKlant.Text = "Achternaam";
-                txtStraatnaamEditKlant.Text = "Straatnaam";
-                txtHuisnummerEditKlant.Text = "Huisnummer";
-                txtBusEditKlant.Text = "Bus";
-                txtPostcodeEditKlant.Text = "Postcode";
-                txtGemeenteEditKlant.Text = "Gemeente";
-                txtTelefoonnummerEditKlant.Text = "Telefoon nummer";
-                txtEmailadresEditKlant.Text = "e-mail";
-                txtOpmerkingEditKlant.Text = "Opmerking";
+                ReloadTextBoxKlant();
 
             }
+
+        }
+        private void ReloadTextBoxKlant()
+        {
+            txtVoornaamEditKlant.Text = "";
+            txtAchternaamEditKlant.Text = "";
+            txtStraatnaamEditKlant.Text = "";
+            txtHuisnummerEditKlant.Text = "";
+            txtBusEditKlant.Text = "";
+            txtPostcodeEditKlant.Text = "";
+            txtGemeenteEditKlant.Text = "";
+            txtTelefoonnummerEditKlant.Text = "";
+            txtEmailadresEditKlant.Text = "";
+            txtOpmerkingEditKlant.Text = "";
+            txtVoornaamEditKlantWordHint.Visibility = Visibility.Visible;
+            txtAchternaamEditKlantWordHint.Visibility = Visibility.Visible;
+            txtStraatnaamEditKlantWordHint.Visibility = Visibility.Visible;
+            txtHuisnummerEditKlantWordHint.Visibility = Visibility.Visible;
+            txtBusEditKlantWordHint.Visibility = Visibility.Visible;
+            txtPostcodeEditKlantWordHint.Visibility = Visibility.Visible;
+            txtGemeenteEditKlantWordHint.Visibility = Visibility.Visible;
+            txtTelefoonnummerEditKlantWordHint.Visibility = Visibility.Visible;
+            txtEmailadresEditKlantWordHint.Visibility = Visibility.Visible;
+            txtOpmerkingEditKlantWordHint.Visibility = Visibility.Visible;
         }
         private void btnToevoegenKlant_Click(object sender, RoutedEventArgs e)
         {
@@ -601,7 +627,8 @@ namespace TussentijdsProjectYannick
                 ctx.SaveChanges();
                 MessageBox.Show("Toegevoegd");
                 EditKlant();
-                if(Selected == null)
+                ReloadTextBoxKlant();
+                if (Selected == null)
                 {
                     this.DialogResult = true;
                 }
@@ -683,15 +710,27 @@ namespace TussentijdsProjectYannick
                 btnDeleteLeverancier.IsEnabled = false;
                 cbEditLeverancier.IsEnabled = false;
                 btnToevoegenLeverancier.IsEnabled = true;
-                txtContactpersoonEditLeverancier.Text = "Contactpersoon";
-                txtTelefoonnummerEditLeverancier.Text = "Telefoon nummer";
-                txtEmailadresEditLeverancier.Text = "e-mail";
-                txtStraatnaamEditLeverancier.Text = "Straatnaam";
-                txtHuisnummerEditLeverancier.Text = "Huisnummer";
-                txtBusEditLeverancier.Text = "Bus";
-                txtPostcodeEditLeverancier.Text = "Postcode";
-                txtGemeenteEditLeverancier.Text = "Gemeente";
+                ReloadTextBoxLeverancier();
             }
+        }
+        private void ReloadTextBoxLeverancier()
+        {
+            txtContactpersoonEditLeverancier.Text = "";
+            txtTelefoonnummerEditLeverancier.Text = "";
+            txtEmailadresEditLeverancier.Text = "";
+            txtStraatnaamEditLeverancier.Text = "";
+            txtHuisnummerEditLeverancier.Text = "";
+            txtBusEditLeverancier.Text = "";
+            txtPostcodeEditLeverancier.Text = "";
+            txtGemeenteEditLeverancier.Text = "";
+            txtContactpersoonEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtTelefoonnummerEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtEmailadresEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtStraatnaamEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtHuisnummerEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtBusEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtPostcodeEditLeverancierWordHint.Visibility = Visibility.Visible;
+            txtGemeenteEditLeverancierWordHint.Visibility = Visibility.Visible;
         }
         private void btnToevoegenLeverancier_Click(object sender, RoutedEventArgs e)
         {
@@ -716,6 +755,7 @@ namespace TussentijdsProjectYannick
             MessageBox.Show("Toevoegen");
             EditLeverancier();
             EditProductenfillCombobox();
+            ReloadTextBoxLeverancier();
             //cbEditLeverancier.SelectedIndex = cbEditLeverancier.Items.Count - 1;
             if (Selected == null)
             {
@@ -797,14 +837,23 @@ namespace TussentijdsProjectYannick
                 btnDeleteProducten.IsEnabled = false;
                 cbEditProducten.IsEnabled = false;
                 btnToevoegenProducten.IsEnabled = true;
-                txtNaamEditProducten.Text = "Naam";
-                txtMargeEditProducten.Text = "Marge";
-                txtEenheidEditProducten.Text = "Eenheid";
-                txtBTWEditProducten.Text = "BTW";
-                nudAantalOpVooraadProducten.Text = "0";
+                
                 EditProductenfillCombobox();
+                ReloadTextBoxProducten();
             }
 
+        }
+        private void ReloadTextBoxProducten()
+        {
+            txtNaamEditProducten.Text = "";
+            txtMargeEditProducten.Text = "";
+            txtEenheidEditProducten.Text = "";
+            txtBTWEditProducten.Text = "";
+            nudAantalOpVooraadProducten.Text = "0";
+            txtNaamEditProductenWordHint.Visibility = Visibility.Visible;
+            txtMargeEditProductenWordHint.Visibility = Visibility.Visible;
+            txtEenheidEditProductenWordHint.Visibility = Visibility.Visible;
+            txtBTWEditProductenWordHint.Visibility = Visibility.Visible;
         }
         private void cbEditProducten_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1194,6 +1243,390 @@ namespace TussentijdsProjectYannick
             if(txtPasswordPersoneellidEdit.Password.Length == 0)
             {
                 passWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtAdminRechtenToevoegen_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAdminRechtenToevoegen.Text.Length == 0)
+            {
+                txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtAdminRechtenToevoegen_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAdminRechtenToevoegen.Text.Length == 0)
+            {
+                txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtCategorieToevoegen_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtCategorieToevoegen.Text.Length == 0)
+            {
+                txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtCategorieToevoegen_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtCategorieToevoegen.Text.Length == 0)
+            {
+                txtCategorieToevoegenWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtVoornaamEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtVoornaamEditKlant.Text.Length == 0)
+            {
+                txtVoornaamEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtVoornaamEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtVoornaamEditKlant.Text.Length == 0)
+            {
+                txtVoornaamEditKlantWordHint.Visibility = Visibility.Hidden;
+
+            }
+        }
+
+        private void txtAchternaamEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAchternaamEditKlant.Text.Length == 0)
+            {
+                txtAchternaamEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtAchternaamEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtAchternaamEditKlant.Text.Length == 0)
+            {
+                txtAchternaamEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtStraatnaamEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtStraatnaamEditKlant.Text.Length == 0)
+            {
+                txtStraatnaamEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtStraatnaamEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtStraatnaamEditKlant.Text.Length == 0)
+            {
+                txtStraatnaamEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtHuisnummerEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtHuisnummerEditKlant.Text.Length == 0)
+            {
+                txtHuisnummerEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtHuisnummerEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtHuisnummerEditKlant.Text.Length == 0)
+            {
+                txtHuisnummerEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtBusEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBusEditKlant.Text.Length == 0)
+            {
+                txtBusEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtBusEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBusEditKlant.Text.Length == 0)
+            {
+                txtBusEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtGemeenteEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtGemeenteEditKlant.Text.Length == 0)
+            {
+                txtGemeenteEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtGemeenteEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtGemeenteEditKlant.Text.Length == 0)
+            {
+                txtGemeenteEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtPostcodeEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPostcodeEditKlant.Text.Length == 0)
+            {
+                txtPostcodeEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPostcodeEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPostcodeEditKlant.Text.Length == 0)
+            {
+                txtPostcodeEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtTelefoonnummerEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtTelefoonnummerEditKlant.Text.Length == 0)
+            {
+                txtTelefoonnummerEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtTelefoonnummerEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtTelefoonnummerEditKlant.Text.Length == 0)
+            {
+                txtTelefoonnummerEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtEmailadresEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEmailadresEditKlant.Text.Length == 0)
+            {
+                txtEmailadresEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtEmailadresEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEmailadresEditKlant.Text.Length == 0)
+            {
+                txtEmailadresEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtOpmerkingEditKlant_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtOpmerkingEditKlant.Text.Length == 0)
+            {
+                txtOpmerkingEditKlantWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtOpmerkingEditKlant_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtOpmerkingEditKlant.Text.Length == 0)
+            {
+                txtOpmerkingEditKlantWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtContactpersoonEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtContactpersoonEditLeverancier.Text.Length == 0)
+            {
+                txtContactpersoonEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtContactpersoonEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtContactpersoonEditLeverancier.Text.Length == 0)
+            {
+                txtContactpersoonEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtTelefoonnummerEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtTelefoonnummerEditLeverancier.Text.Length == 0)
+            {
+                txtTelefoonnummerEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtTelefoonnummerEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtTelefoonnummerEditLeverancier.Text.Length == 0)
+            {
+                txtTelefoonnummerEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtEmailadresEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEmailadresEditLeverancier.Text.Length == 0)
+            {
+                txtEmailadresEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtEmailadresEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEmailadresEditLeverancier.Text.Length == 0)
+            {
+                txtEmailadresEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtStraatnaamEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtStraatnaamEditLeverancier.Text.Length == 0)
+            {
+                txtStraatnaamEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtStraatnaamEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtStraatnaamEditLeverancier.Text.Length == 0)
+            {
+                txtStraatnaamEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtHuisnummerEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtHuisnummerEditLeverancier.Text.Length == 0)
+            {
+                txtHuisnummerEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtHuisnummerEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtHuisnummerEditLeverancier.Text.Length == 0)
+            {
+                txtHuisnummerEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtBusEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBusEditLeverancier.Text.Length == 0)
+            {
+                txtBusEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtBusEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBusEditLeverancier.Text.Length == 0)
+            {
+                txtBusEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+        private void txtGemeenteEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtGemeenteEditLeverancier.Text.Length == 0)
+            {
+                txtGemeenteEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtGemeenteEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtGemeenteEditLeverancier.Text.Length == 0)
+            {
+                txtGemeenteEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtPostcodeEditLeverancier_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPostcodeEditLeverancier.Text.Length == 0)
+            {
+                txtPostcodeEditLeverancierWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtPostcodeEditLeverancier_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtPostcodeEditLeverancier.Text.Length == 0)
+            {
+                txtPostcodeEditLeverancierWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtNaamEditProducten_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNaamEditProducten.Text.Length == 0)
+            {
+                txtNaamEditProductenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtNaamEditProducten_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtNaamEditProducten.Text.Length == 0)
+            {
+                txtNaamEditProductenWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtMargeEditProducten_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtMargeEditProducten.Text.Length == 0)
+            {
+                txtMargeEditProductenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtMargeEditProducten_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtMargeEditProducten.Text.Length == 0)
+            {
+                txtMargeEditProductenWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtEenheidEditProducten_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEenheidEditProducten.Text.Length == 0)
+            {
+                txtEenheidEditProductenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtEenheidEditProducten_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtEenheidEditProducten.Text.Length == 0)
+            {
+                txtEenheidEditProductenWordHint.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void txtBTWEditProducten_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBTWEditProducten.Text.Length == 0)
+            {
+                txtBTWEditProductenWordHint.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void txtBTWEditProducten_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (txtBTWEditProducten.Text.Length == 0)
+            {
+                txtBTWEditProductenWordHint.Visibility = Visibility.Hidden;
             }
         }
     }

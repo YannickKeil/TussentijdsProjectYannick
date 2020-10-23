@@ -20,7 +20,7 @@ namespace TussentijdsProjectYannick
     /// </summary>
     public partial class MainMenu : Window
     {
-
+        
         public MainMenu()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace TussentijdsProjectYannick
 
         private void btnOverzicht_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void btnBestelling_Click(object sender, RoutedEventArgs e)

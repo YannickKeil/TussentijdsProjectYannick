@@ -216,10 +216,10 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var besteling = ctx.Bestellings.FirstOrDefault();
+                var bestelling = ctx.Bestellings.FirstOrDefault();
                 if ((bool)tbLeverancierKlant.IsChecked)
                 {
-                    besteling = ctx.Bestellings.Add(new Bestelling
+                    bestelling = ctx.Bestellings.Add(new Bestelling
                     {
                         DatumOpgemaakt = DateTime.Now,
                         PersoneelslidID = Selected.PersoneelslidID,
@@ -229,7 +229,7 @@ namespace TussentijdsProjectYannick
                 }
                 else if (!(bool)tbLeverancierKlant.IsChecked)
                 {
-                    besteling = ctx.Bestellings.Add(new Bestelling
+                    bestelling = ctx.Bestellings.Add(new Bestelling
                     {
                         DatumOpgemaakt = DateTime.Now,
                         PersoneelslidID = Selected.PersoneelslidID,
@@ -237,14 +237,19 @@ namespace TussentijdsProjectYannick
                     });
                     MessageBox.Show("klant");
                 }
+                else
+                {
+                    MessageBox.Show("Oops somthing went wrong. Please contact a dev.");
+                    return;
+                }
                 ctx.SaveChanges();
-                MessageBox.Show($"{besteling.BestellingID} {besteling.DatumOpgemaakt} {besteling.KlantID}");
+                MessageBox.Show($"{bestelling.BestellingID} {bestelling.DatumOpgemaakt} {bestelling.KlantID}");
                 
                 foreach (var item in gekozenProducten)
                 {
                     ctx.BestellingProducts.Add(new BestellingProduct
                     {
-                        BestellingID = besteling.BestellingID,
+                        BestellingID = bestelling.BestellingID,
                         ProductID = item.ProductIDAPB,
                         AantalProtuctBesteld = item.AantalGekozenProductAPB
                     });
