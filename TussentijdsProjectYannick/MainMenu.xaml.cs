@@ -52,7 +52,8 @@ namespace TussentijdsProjectYannick
 
         private void btnOverzicht_Click(object sender, RoutedEventArgs e)
         {
-            
+            Overzicht overzicht = new Overzicht();
+            overzicht.ShowDialog();
         }
 
         private void btnBestelling_Click(object sender, RoutedEventArgs e)

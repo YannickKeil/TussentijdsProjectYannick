@@ -19,6 +19,9 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Web.UI.WebControls;
+using System.Net;
+using System.Net.Mail;
+using System.Diagnostics;
 
 namespace TussentijdsProjectYannick
 {
@@ -34,7 +37,7 @@ namespace TussentijdsProjectYannick
             //EditPersoneel();
             EditCategorie();
             //EditKlant();
-            //EditLeverancier();
+            EditLeverancier();
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
@@ -46,10 +49,10 @@ namespace TussentijdsProjectYannick
             Selected = selected;
             InitializeComponent();
             EditAdminrechten();
-            //EditPersoneel();
+            EditPersoneel();
             EditCategorie();
-            //EditKlant();
-            //EditLeverancier();
+            EditKlant();
+            EditLeverancier();
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
@@ -157,11 +160,16 @@ namespace TussentijdsProjectYannick
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 cbEditLeverancier.ItemsSource = null;
+                cbJsonLeveranciers.ItemsSource = null;
                 var listLeverancier = ctx.Leveranciers.Select(x => x).ToList();
                 cbEditLeverancier.DisplayMemberPath = "Contactpersoon";
                 cbEditLeverancier.SelectedValuePath = "LeverancierID";
                 cbEditLeverancier.ItemsSource = listLeverancier;
                 cbEditLeverancier.SelectedIndex = 0;
+                cbJsonLeveranciers.DisplayMemberPath = "Contactpersoon";
+                cbJsonLeveranciers.SelectedValuePath = "LeverancierID";
+                cbJsonLeveranciers.ItemsSource = listLeverancier;
+                cbJsonLeveranciers.SelectedIndex = 0;
                 EditBestellingfillCombobox();
             }
         }
@@ -565,6 +573,16 @@ namespace TussentijdsProjectYannick
                 btnDeleteKlant.IsEnabled = true;
                 cbEditKlant.IsEnabled = true;
                 btnToevoegenKlant.IsEnabled = false;
+                txtVoornaamEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtAchternaamEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtStraatnaamEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtHuisnummerEditKlantWordHint.Visibility = Visibility.Hidden;
+                if (txtBusEditKlant.Text != "") txtBusEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtPostcodeEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtGemeenteEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtTelefoonnummerEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtEmailadresEditKlantWordHint.Visibility = Visibility.Hidden;
+                txtOpmerkingEditKlantWordHint.Visibility = Visibility.Hidden;
             }
             else if (tbEditKlant.IsChecked == false)
             {
@@ -588,7 +606,7 @@ namespace TussentijdsProjectYannick
             txtGemeenteEditKlant.Text = "";
             txtTelefoonnummerEditKlant.Text = "";
             txtEmailadresEditKlant.Text = "";
-            txtOpmerkingEditKlant.Text = "";
+            txtOpmerkingEditKlant.Text = "";            
             txtVoornaamEditKlantWordHint.Visibility = Visibility.Visible;
             txtAchternaamEditKlantWordHint.Visibility = Visibility.Visible;
             txtStraatnaamEditKlantWordHint.Visibility = Visibility.Visible;
@@ -647,9 +665,11 @@ namespace TussentijdsProjectYannick
                         txtAchternaamEditKlant.Text = selectedKlant.Achternaam;
                         txtStraatnaamEditKlant.Text = selectedKlant.Straatnaam;
                         txtHuisnummerEditKlant.Text = selectedKlant.Huisnummer.ToString();
-                        if (selectedKlant.Bus != "")
-                        { txtBusEditKlant.Text = selectedKlant.Bus; }
-                        else { txtBusEditKlant.Text = "Bus"; }
+                        if(selectedKlant.Bus == "") { txtBusEditKlantWordHint.Visibility = Visibility.Visible; }
+                        else {
+                            txtBusEditKlantWordHint.Visibility = Visibility.Hidden;
+                            txtBusEditKlant.Text = selectedKlant.Bus; 
+                        }                       
                         txtPostcodeEditKlant.Text = selectedKlant.Postcode;
                         txtGemeenteEditKlant.Text = selectedKlant.Gemeente;
                         txtTelefoonnummerEditKlant.Text = selectedKlant.Telefoonnummer;
@@ -703,6 +723,14 @@ namespace TussentijdsProjectYannick
                 btnDeleteLeverancier.IsEnabled = true;
                 cbEditLeverancier.IsEnabled = true;
                 btnToevoegenLeverancier.IsEnabled = false;
+                txtContactpersoonEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtTelefoonnummerEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtEmailadresEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtStraatnaamEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtHuisnummerEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                if (txtBusEditLeverancier.Text != "") txtBusEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtPostcodeEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                txtGemeenteEditLeverancierWordHint.Visibility = Visibility.Hidden;
             }
             else if (tbEditLeverancier.IsChecked == false)
             {
@@ -776,11 +804,14 @@ namespace TussentijdsProjectYannick
                         txtEmailadresEditLeverancier.Text = selectedPersoneel.Emailadres;
                         txtStraatnaamEditLeverancier.Text = selectedPersoneel.Straatnaam;
                         txtHuisnummerEditLeverancier.Text = selectedPersoneel.Huisnummer.ToString();
-                        if (selectedPersoneel.Bus != "")
-                        { txtBusEditLeverancier.Text = selectedPersoneel.Bus; }
-                        else { txtBusEditKlant.Text = "Bus"; }
+                        if (selectedPersoneel.Bus == "") { txtBusEditLeverancierWordHint.Visibility = Visibility.Visible; }
+                        else
+                        {
+                            txtBusEditLeverancierWordHint.Visibility = Visibility.Hidden;
+                            txtBusEditLeverancier.Text = selectedPersoneel.Bus;
+                        }                      
                         txtPostcodeEditLeverancier.Text = selectedPersoneel.Postcode;
-                        txtPostcodeEditLeverancier.Text = selectedPersoneel.Gemeente;
+                        txtGemeenteEditLeverancier.Text = selectedPersoneel.Gemeente;
                     }
                 }
             }
@@ -830,6 +861,10 @@ namespace TussentijdsProjectYannick
                 btnDeleteProducten.IsEnabled = true;
                 cbEditProducten.IsEnabled = true;
                 btnToevoegenProducten.IsEnabled = false;
+                txtNaamEditProductenWordHint.Visibility = Visibility.Hidden;
+                txtMargeEditProductenWordHint.Visibility = Visibility.Hidden;
+                txtEenheidEditProductenWordHint.Visibility = Visibility.Hidden;
+                txtBTWEditProductenWordHint.Visibility = Visibility.Hidden;
             }
             else if (tbEditProducten.IsChecked == false)
             {
@@ -849,7 +884,8 @@ namespace TussentijdsProjectYannick
             txtMargeEditProducten.Text = "";
             txtEenheidEditProducten.Text = "";
             txtBTWEditProducten.Text = "";
-            nudAantalOpVooraadProducten.Text = "0";
+            nudAantalOpVooraadProducten.Text = "0";           
+            nudAankoopPrijs.Text = "0.00";
             txtNaamEditProductenWordHint.Visibility = Visibility.Visible;
             txtMargeEditProductenWordHint.Visibility = Visibility.Visible;
             txtEenheidEditProductenWordHint.Visibility = Visibility.Visible;
@@ -871,6 +907,7 @@ namespace TussentijdsProjectYannick
                         cbLeverancierEditProducten.SelectedValue = selectedProduct.LeverancierID;
                         cbCategorieEditProducten.SelectedValue = selectedProduct.CategorieID;
                         nudAantalOpVooraadProducten.Text = selectedProduct.AantalOpVooraad.ToString();
+                        nudAankoopPrijs.Text = selectedProduct.AankoopPrijs.ToString();
                     }
                 }
             }
@@ -887,6 +924,31 @@ namespace TussentijdsProjectYannick
             if (Convert.ToDecimal(nudAantalOpVooraadProducten.Text) > 0)
             nudAantalOpVooraadProducten.Text = $"{Convert.ToDecimal(nudAantalOpVooraadProducten.Text) - 1}";
         }
+        private static readonly Regex _regex2 = new Regex("[^0-9,]+"); //regex that matches disallowed text
+        private static bool IsTextAllowed2(string text)
+        {
+            return !_regex2.IsMatch(text);
+        }
+        private void nudAankoopPrijs_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed2(e.Text);
+        }
+
+        private void nudAankoopPrijs_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(typeof(String)))
+            {
+                String text = (String)e.DataObject.GetData(typeof(String));
+                if (!IsTextAllowed2(text))
+                {
+                    e.CancelCommand();
+                }
+            }
+            else
+            {
+                e.CancelCommand();
+            }
+        }
         private void btnToevoegenProducten_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
@@ -899,7 +961,8 @@ namespace TussentijdsProjectYannick
                     BTW = Convert.ToDecimal(txtBTWEditProducten.Text),
                     LeverancierID = (int)cbLeverancierEditProducten.SelectedValue,
                     CategorieID = (int)cbCategorieEditProducten.SelectedValue,
-                    AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text)
+                    AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text),
+                    AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text)
                 });
                 ctx.SaveChanges();
             }
@@ -921,6 +984,7 @@ namespace TussentijdsProjectYannick
                 selectedProduct.LeverancierID = (int)cbLeverancierEditProducten.SelectedValue;
                 selectedProduct.CategorieID = (int)cbCategorieEditProducten.SelectedValue;
                 selectedProduct.AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text);
+                selectedProduct.AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text);
                 ctx.SaveChanges();
             }
             MessageBox.Show("Edited");
@@ -1031,6 +1095,7 @@ namespace TussentijdsProjectYannick
                 btnDeleteBestellingProduct.IsEnabled = true;
                 cbEditBestellingProduct.IsEnabled = true;
                 btnToevoegenBestellingProduct.IsEnabled = false;
+                nudAantalProductenBesteld.Text = "0";
             }
             else if (tbEditProducten.IsChecked == false)
             {
@@ -1129,20 +1194,39 @@ namespace TussentijdsProjectYannick
             if (Convert.ToDecimal(nudAantalProductenBesteld.Text) > 0)
                 nudAantalProductenBesteld.Text = $"{Convert.ToDecimal(nudAantalProductenBesteld.Text) - 1}";
         }
+        public class JsonProductenLeverancier
+        {  
+            public int ProductID { get; set; }
+            public string Naam { get; set; }
+            public string Eenheid { get; set; }
+            public decimal BTW { get; set; }
+            public decimal AankoopPrijs { get; set; }
+
+            public JsonProductenLeverancier(int productID, string naam, string eenheid, decimal bTW, decimal aankoopPrijs)
+            {
+                ProductID = productID;
+                Naam = naam;
+                Eenheid = eenheid;
+                BTW = bTW;
+                AankoopPrijs = aankoopPrijs;
+            }
+        }
         private void btnJsonTemplateCreate_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var producten = ctx.Products.Select(w => w);
+                var producten = ctx.Products.Where(p=>p.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(p => p);
                 List<object> ListProducten = new List<object>();
                 foreach (var item in producten)
                 {
-                   
-                    Product productsForList = new Product() { ProductID = item.ProductID,Naam = item.Naam,Marge = item.Marge,Eenheid = item.Eenheid,BTW = item.BTW, LeverancierID = item.LeverancierID, CategorieID = item.CategorieID, AantalOpVooraad = item.AantalOpVooraad, AantalNaBesteld = item.AantalNaBesteld, AantalBesteld = item.AantalBesteld, AantalBeschikbaar = item.AantalBeschikbaar };
+
+                    JsonProductenLeverancier productsForList = new JsonProductenLeverancier(item.ProductID,item.Naam,item.Eenheid,item.BTW,item.AankoopPrijs);
                     ListProducten.Add(productsForList);
                 }
                 JsonCreate(ListProducten);
+
                 MessageBox.Show("Template created");
+                
             }
         }
 
@@ -1151,18 +1235,15 @@ namespace TussentijdsProjectYannick
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 var json = File.ReadAllText("gegevens.Json");
-                List<Product> listProducten = JsonConvert.DeserializeObject<List<Product>>(json);
+                List<JsonProductenLeverancier> listProducten = JsonConvert.DeserializeObject<List<JsonProductenLeverancier>>(json);
                 foreach (var item in listProducten)
                 {
                     var selectedProduct = ctx.Products.Single(p => p.ProductID == item.ProductID);
-                    selectedProduct.Naam = item.Naam;
-                    selectedProduct.Marge = item.Marge;
+                    selectedProduct.Naam = item.Naam;                    
                     selectedProduct.Eenheid = item.Eenheid;
                     selectedProduct.BTW = item.BTW;
-                    selectedProduct.LeverancierID = item.LeverancierID;
-                    selectedProduct.CategorieID = item.CategorieID;
-                    selectedProduct.AantalOpVooraad = item.AantalOpVooraad;
-                    ctx.SaveChanges();
+                    selectedProduct.AankoopPrijs = item.AankoopPrijs;
+                   ctx.SaveChanges();
                 }
                 MessageBox.Show("Edited");
                 EditProducten();
@@ -1180,6 +1261,12 @@ namespace TussentijdsProjectYannick
             var jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
             File.WriteAllText("gegevens.Json", jsonString);
             MessageBox.Show(jsonString.ToString());
+            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            {
+                string uri = $"mailto:{ctx.Leveranciers.Where(l=>l.LeverancierID==(int)cbJsonLeveranciers.SelectedValue).Select(l=>l.Emailadres).FirstOrDefault()}?subject=Gegevens Producten&body={jsonString.ToString()}";
+                Uri myUri = new Uri(uri);
+                Process.Start(myUri.AbsoluteUri);
+            }
         }
 
         private void txtVoornaamPersoneellidEdit_LostFocus(object sender, RoutedEventArgs e)
@@ -1629,5 +1716,7 @@ namespace TussentijdsProjectYannick
                 txtBTWEditProductenWordHint.Visibility = Visibility.Hidden;
             }
         }
+
+      
     }
 }

@@ -280,6 +280,14 @@
                             </StackPanel>
                             <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center">Aantal</TextBlock>
                         </WrapPanel>
+                        <WrapPanel Margin="10">
+                            <TextBox x:Name="nudAankoopPrijs" Text="0.00" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="nudAankoopPrijs_PreviewTextInput" DataObject.Pasting="nudAankoopPrijs_Pasting"/>
+                            <StackPanel>
+                                <RepeatButton x:Name="btnNudAankoopPrijsProductenUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalOpVooraadProductenUp_Click" ClickMode="Press"/>
+                                <RepeatButton x:Name="btnNudAankoopPrijsProductenDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudAantalOpVooraadProductenDown_Click" ClickMode="Press"/>
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center">Aankoop Prijs</TextBlock>
+                        </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center">
                             <Button x:Name="btnToevoegenProducten" Click="btnToevoegenProducten_Click" Margin="10">Toevoegen</Button>
                             <Button x:Name="btnEditProducten" Click="btnEditProducten_Click" IsEnabled="False" Margin="10">Edit</Button>
@@ -295,8 +303,12 @@
                         </WrapPanel>
                         <TextBlock>Datum Opmaak</TextBlock>
                         <DatePicker x:Name="dtDatumOpgemaakt"></DatePicker>
+                        <TextBlock Text="Persooneel"/>
                         <ComboBox x:Name="cbPersoneelslidEditBestelling"></ComboBox>
+                        <TextBlock Text="Leverancier"/>
+                        <!--<ToggleButton x:Name="tbKlantLeverancierEditBetselling" Content="Klant"/> -->
                         <ComboBox x:Name="cbLeverancierEditBestelling"></ComboBox>
+                        <TextBlock Text="Klant"/>
                         <ComboBox x:Name="cbKlantEditBestelling"></ComboBox>
                         <WrapPanel>
                             <Button x:Name="btnToevoegenBestelling" Click="btnToevoegenBestelling_Click">Toevoegen</Button>
@@ -330,7 +342,8 @@
                 </TabItem>
                 <TabItem Header="Json Producten" x:Name="tabJsonProducten">
                     <StackPanel Margin="100" >
-                        <Button x:Name="btnJsonTemplateCreate" Content="Create Template" Click="btnJsonTemplateCreate_Click" />
+                        <ComboBox x:Name="cbJsonLeveranciers" />
+                        <Button x:Name="btnJsonTemplateCreate" Content="Create Template and send" Click="btnJsonTemplateCreate_Click" />
                         <Button x:Name="btnEditProductenMetJson" Content="Edit Producten met Json" Click="btnEditProductenMetJson_Click" />
                     </StackPanel>
                 </TabItem>

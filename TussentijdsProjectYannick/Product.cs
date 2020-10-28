@@ -31,6 +31,7 @@ namespace TussentijdsProjectYannick
         public Nullable<int> AantalNaBesteld { get; set; }
         public Nullable<int> AantalBesteld { get; set; }
         public Nullable<int> AantalBeschikbaar { get; set; }
+        public decimal AankoopPrijs { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProducts { get; set; }
