@@ -383,7 +383,7 @@ namespace TussentijdsProjectYannick
                 }
 
                 //Save the document  
-                object filename = $"{Directory.GetCurrentDirectory()}/temp1.pdf";
+                object filename = $"{Directory.GetCurrentDirectory()}/temp1.docx";
                 document.SaveAs2(ref filename);
                 document.Close(ref missing, ref missing, ref missing);
                 document = null;
