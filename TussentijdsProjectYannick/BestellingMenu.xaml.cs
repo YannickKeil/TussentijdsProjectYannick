@@ -283,270 +283,289 @@ namespace TussentijdsProjectYannick
         private void FactuurKlant(int selectedBestellingID)
         {
             MessageBox.Show(selectedBestellingID.ToString());
-            //try
-            //{
-
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            try
             {
-                
 
-                //Create an instance for word app  
-                Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
-
-                //Set animation status for word application  
-                winword.ShowAnimation = false;
-
-                //Set status for word application is to be visible or not.  
-                winword.Visible = false;
-
-                //Create a missing variable for missing value  
-                object missing = System.Reflection.Missing.Value;
-
-                //Create a new document  
-                Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-
-                //Add header into the document  
-                foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
-                {
-                    //Get the header range and add the header details.  
-                    Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
-                    headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
-                    headerRange.Font.Size = 30;
-                    headerRange.Text = "Bedrijfnaam";
-                }
-
-                //Add the footers into the document  
-                foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
-                {
-                    //Get the footer range and add the footer details.  
-                    Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
-                    footerRange.Font.Size = 10;
-                    footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                    footerRange.Text = "www.Bedrijfsite.com info@bedrijfsnaam.com BTWnummer  Bedrijfsnaam©";
-                }
-
-                //adding text to document  
-                //document.Content.SetRange(0, 0);
-                //document.Content.Text = "This is test document " + Environment.NewLine;
-                
-                var bestelling = ctx.Bestellings.Where(b => b.BestellingID == selectedBestellingID).Select(b => b).FirstOrDefault();
-                //Add paragraph with Heading 1 style
-                Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
-                object styleHeading1 = "Heading 1";
-                para1.Range.set_Style(ref styleHeading1);
-                para1.Range.Text = $"Kortemark, {DateTime.Now.ToShortDateString()}";
-                para1.Range.InsertParagraphAfter();
-                //if (bestelling != null)
-                //{
-                //    MessageBox.Show($"{ bestelling.Klant.Voornaam} { bestelling.Klant.Achternaam}");
-                //    var TitelTable = document.Tables.Add(para1.Range, 10, 4, ref missing, ref missing);
-                //    TitelTable.Borders.Enable = 0;
-                //    TitelTable.Cell(1, 1).Range.Text = $"{ bestelling.Klant.Voornaam} { bestelling.Klant.Achternaam}";
-                //    TitelTable.Cell(1, 1).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(1, 1).Range.Font.Size = 20;
-
-                //    TitelTable.Cell(1, 4).Range.Text = $"Kortemark, { DateTime.Now.ToShortDateString()}";
-                //    TitelTable.Cell(1, 4).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(1, 4).Range.Font.Size = 20;
-
-                //    TitelTable.Cell(2, 1).Range.Text = $"{bestelling.Klant.Straatnaam} {bestelling.Klant.Huisnummer}";
-                //    TitelTable.Cell(2, 1).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(2, 1).Range.Font.Size = 20;
-
-                //    TitelTable.Cell(3, 1).Range.Text = $"{bestelling.Klant.Postcode} {bestelling.Klant.Gemeente}";
-                //    TitelTable.Cell(3, 1).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(3, 1).Range.Font.Size = 20;
-
-                //    TitelTable.Cell(4, 1).Range.Text = $"{bestelling.Klant.Telefoonnummer}";
-                //    TitelTable.Cell(4, 1).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(4, 1).Range.Font.Size = 20;
-
-                //    TitelTable.Cell(6, 1).Range.Text = $"Bestelnr.:{bestelling.BestellingID}";
-                //    TitelTable.Cell(6, 1).Range.Font.Name = "verdana";
-                //    TitelTable.Cell(6, 1).Range.Font.Size = 20;
-                //}
-
-
-
-
-                //Add paragraph with Heading 2 style  
-                Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
-                para2.Range.set_Style(ref styleHeading1);
-                string test = $"{bestelling.Klant.Voornaam} {bestelling.Klant.Achternaam}";
-                para2.Range.Text = test;
-                para2.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para3 = document.Content.Paragraphs.Add(ref missing);
-                para3.Range.set_Style(ref styleHeading1);
-                para3.Range.Text = $"{bestelling.Klant.Straatnaam} {bestelling.Klant.Huisnummer}";
-                para3.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para4 = document.Content.Paragraphs.Add(ref missing);
-                para4.Range.set_Style(ref styleHeading1);
-                para4.Range.Text = $"{bestelling.Klant.Postcode} {bestelling.Klant.Gemeente}";
-                para4.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para5 = document.Content.Paragraphs.Add(ref missing);
-                para5.Range.set_Style(ref styleHeading1);
-                para5.Range.Text = $"{bestelling.Klant.Telefoonnummer}";
-                para5.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para6 = document.Content.Paragraphs.Add(ref missing);
-                para6.Range.set_Style(ref styleHeading1);
-                para6.Range.Text = "";
-                para6.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para7 = document.Content.Paragraphs.Add(ref missing);
-                para7.Range.set_Style(ref styleHeading1);
-                para7.Range.Text = $"Bestelnr.:{bestelling.BestellingID}";
-                para7.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para8 = document.Content.Paragraphs.Add(ref missing);
-                para8.Range.set_Style(ref styleHeading1);
-                para8.Range.Text = "";
-                para8.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para9 = document.Content.Paragraphs.Add(ref missing);
-                para9.Range.set_Style(ref styleHeading1);
-                para9.Range.Text = "";
-                para9.Range.InsertParagraphAfter();
-                Microsoft.Office.Interop.Word.Paragraph para10 = document.Content.Paragraphs.Add(ref missing);
-                para10.Range.set_Style(ref styleHeading1);
-                para10.Range.Text = "";
-                para10.Range.InsertParagraphAfter();
-                var bestellingProducten = ctx.BestellingProducts.Where(bp => bp.BestellingID == selectedBestellingID).Select(bp => bp).ToList();
-               
-
-                //Create a 5X5 table and insert some dummy record  
-                int Rows = bestellingProducten.Count + 4;
-                var firstTable = document.Tables.Add(para1.Range, Rows, 3, ref missing, ref missing);
-                string products;
-                if (Rows == 1)
-                {
-                    products = "Product";
-                }
-                else
-                {
-                    products = "Producten";
-                }
-                //WdPreferredWidthType wdPreferredWidthPercent = default;
-                //firstTable.Columns.PreferredWidthType = wdPreferredWidthPercent;
-                //firstTable.Columns[1].PreferredWidth = 50;
-                //firstTable.Columns[2].PreferredWidth = 25;
-                //firstTable.Columns[3].PreferredWidth = 25;
-                firstTable.Borders.Enable = 0;
-                firstTable.Cell(1, 1).Range.Text = products;
-                firstTable.Cell(1, 1).Range.Font.Name = "verdana";
-                firstTable.Cell(1, 1).Range.Font.Size = 10;
-                firstTable.Cell(1, 1).Range.Font.Bold = 1;
-                firstTable.Cell(1, 2).Range.Text = "Aantal";
-                firstTable.Cell(1, 2).Range.Font.Name = "verdana";
-                firstTable.Cell(1, 2).Range.Font.Size = 10;
-                firstTable.Cell(1, 2).Range.Font.Bold = 1;
-                firstTable.Cell(1, 3).Range.Text = "Prijs";
-                firstTable.Cell(1, 3).Range.Font.Name = "verdana";
-                firstTable.Cell(1, 3).Range.Font.Size = 10;
-                firstTable.Cell(1, 3).Range.Font.Bold = 1;
-
-                double excBTW = 0;
-                double BTW = 0;
-                double Totaal = 0;
-
-                for (int i = 2; i < firstTable.Rows.Count + 1; i++)
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
                 {
 
-                    if (i - 2 < Rows - 4)
+
+                    //Create an instance for word app  
+                    Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
+
+                    //Set animation status for word application  
+                    winword.ShowAnimation = false;
+
+                    //Set status for word application is to be visible or not.  
+                    winword.Visible = false;
+
+                    //Create a missing variable for missing value  
+                    object missing = System.Reflection.Missing.Value;
+
+                    //Create a new document  
+                    Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
+
+                    //Add header into the document  
+                    foreach (Microsoft.Office.Interop.Word.Section section in document.Sections)
                     {
-                        firstTable.Cell(i, 1).Range.Text = $"{bestellingProducten[i - 2].Product.Naam}";
-                        firstTable.Cell(i, 1).Range.Font.Name = "verdana";
-                        firstTable.Cell(i, 1).Range.Font.Size = 10;
-                        firstTable.Cell(i, 2).Range.Text = $"{bestellingProducten[i - 2].AantalProtuctBesteld} {bestellingProducten[i - 2].Product.Eenheid}";
-                        firstTable.Cell(i, 2).Range.Font.Name = "verdana";
-                        firstTable.Cell(i, 2).Range.Font.Size = 10;
-                        firstTable.Cell(i, 3).Range.Text = $"€ {bestellingProducten[i - 2].Product.Bruto()}";
-                        firstTable.Cell(i, 3).Range.Font.Name = "verdana";
-                        firstTable.Cell(i, 3).Range.Font.Size = 10;
-                        excBTW += bestellingProducten[i - 2].Product.Netto() * bestellingProducten[i - 2].AantalProtuctBesteld;
-                        BTW += bestellingProducten[i - 2].Product.BTWVerschil() * bestellingProducten[i - 2].AantalProtuctBesteld;
-                        Totaal += bestellingProducten[i - 2].Product.Bruto() * bestellingProducten[i - 2].AantalProtuctBesteld;
+                        //Get the header range and add the header details.  
+                        Microsoft.Office.Interop.Word.Range headerRange = section.Headers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        headerRange.Fields.Add(headerRange, Microsoft.Office.Interop.Word.WdFieldType.wdFieldPage);
+                        headerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        headerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdBlue;
+                        headerRange.Font.Size = 30;
+                        headerRange.Text = "Bedrijfnaam";
+                    }
+
+                    //Add the footers into the document  
+                    foreach (Microsoft.Office.Interop.Word.Section wordSection in document.Sections)
+                    {
+                        //Get the footer range and add the footer details.  
+                        Microsoft.Office.Interop.Word.Range footerRange = wordSection.Footers[Microsoft.Office.Interop.Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
+                        footerRange.Font.ColorIndex = Microsoft.Office.Interop.Word.WdColorIndex.wdDarkRed;
+                        footerRange.Font.Size = 10;
+                        footerRange.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        footerRange.Text = "www.Bedrijfsite.com info@bedrijfsnaam.com BTWnummer  Bedrijfsnaam©";
+                    }
+
+                    //adding text to document  
+                    //document.Content.SetRange(0, 0);
+                    //document.Content.Text = "This is test document " + Environment.NewLine;
+
+                    var bestelling = ctx.Bestellings.Where(b => b.BestellingID == selectedBestellingID).Select(b => b).FirstOrDefault();
+                    //Add paragraph with Heading 1 style
+                    Microsoft.Office.Interop.Word.Paragraph para1 = document.Content.Paragraphs.Add(ref missing);
+                    object styleHeading1 = "Heading 1";
+                    para1.Range.set_Style(ref styleHeading1);
+                    para1.Range.Text = $""/*Kortemark, {DateTime.Now.ToShortDateString()}*/;
+                    para1.Range.InsertParagraphAfter();
+                    //if (bestelling != null)
+                    //{
+                    //    MessageBox.Show($"{ bestelling.Klant.Voornaam} { bestelling.Klant.Achternaam}");
+                    //    var TitelTable = document.Tables.Add(para1.Range, 10, 4, ref missing, ref missing);
+                    //    TitelTable.Borders.Enable = 0;
+                    //    TitelTable.Cell(1, 1).Range.Text = $"{ bestelling.Klant.Voornaam} { bestelling.Klant.Achternaam}";
+                    //    TitelTable.Cell(1, 1).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(1, 1).Range.Font.Size = 20;
+
+                    //    TitelTable.Cell(1, 4).Range.Text = $"Kortemark, { DateTime.Now.ToShortDateString()}";
+                    //    TitelTable.Cell(1, 4).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(1, 4).Range.Font.Size = 20;
+
+                    //    TitelTable.Cell(2, 1).Range.Text = $"{bestelling.Klant.Straatnaam} {bestelling.Klant.Huisnummer}";
+                    //    TitelTable.Cell(2, 1).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(2, 1).Range.Font.Size = 20;
+
+                    //    TitelTable.Cell(3, 1).Range.Text = $"{bestelling.Klant.Postcode} {bestelling.Klant.Gemeente}";
+                    //    TitelTable.Cell(3, 1).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(3, 1).Range.Font.Size = 20;
+
+                    //    TitelTable.Cell(4, 1).Range.Text = $"{bestelling.Klant.Telefoonnummer}";
+                    //    TitelTable.Cell(4, 1).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(4, 1).Range.Font.Size = 20;
+
+                    //    TitelTable.Cell(6, 1).Range.Text = $"Bestelnr.:{bestelling.BestellingID}";
+                    //    TitelTable.Cell(6, 1).Range.Font.Name = "verdana";
+                    //    TitelTable.Cell(6, 1).Range.Font.Size = 20;
+                    //}
+
+
+
+
+                    //Add paragraph with Heading 2 style  
+                    Microsoft.Office.Interop.Word.Paragraph para2 = document.Content.Paragraphs.Add(ref missing);
+                    para2.Range.set_Style(ref styleHeading1);
+                    string test = $"{bestelling.Klant.Voornaam} {bestelling.Klant.Achternaam}";
+                    para2.Range.Text = test;
+                    para2.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para3 = document.Content.Paragraphs.Add(ref missing);
+                    para3.Range.set_Style(ref styleHeading1);
+                    para3.Range.Text = $"{bestelling.Klant.Straatnaam} {bestelling.Klant.Huisnummer}";
+                    para3.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para4 = document.Content.Paragraphs.Add(ref missing);
+                    para4.Range.set_Style(ref styleHeading1);
+                    para4.Range.Text = $"{bestelling.Klant.Postcode} {bestelling.Klant.Gemeente}";
+                    para4.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para5 = document.Content.Paragraphs.Add(ref missing);
+                    para5.Range.set_Style(ref styleHeading1);
+                    para5.Range.Text = $"{bestelling.Klant.Telefoonnummer}";
+                    para5.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para6 = document.Content.Paragraphs.Add(ref missing);
+                    para6.Range.set_Style(ref styleHeading1);
+                    para6.Range.Text = "";
+                    para6.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para7 = document.Content.Paragraphs.Add(ref missing);
+                    para7.Range.set_Style(ref styleHeading1);
+                    para7.Range.Text = $"Bestelnr.:{bestelling.BestellingID}";
+                    para7.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para8 = document.Content.Paragraphs.Add(ref missing);
+                    para8.Range.set_Style(ref styleHeading1);
+                    para8.Range.Text = "";
+                    para8.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para9 = document.Content.Paragraphs.Add(ref missing);
+                    para9.Range.set_Style(ref styleHeading1);
+                    para9.Range.Text = "";
+                    para9.Range.InsertParagraphAfter();
+                    Microsoft.Office.Interop.Word.Paragraph para10 = document.Content.Paragraphs.Add(ref missing);
+                    para10.Range.set_Style(ref styleHeading1);
+                    para10.Range.Text = "";
+                    para10.Range.InsertParagraphAfter();
+                    var bestellingProducten = ctx.BestellingProducts.Where(bp => bp.BestellingID == selectedBestellingID).Select(bp => bp).ToList();
+
+
+                    //Create a 5X5 table and insert some dummy record  
+                    int Rows = bestellingProducten.Count + 4;
+                    var firstTable = document.Tables.Add(para1.Range, Rows, 4, ref missing, ref missing);
+                    string products;
+                    if (Rows == 1)
+                    {
+                        products = "Product";
                     }
                     else
                     {
-
-                        if (firstTable.Rows.Count + 1 - i == 3)
-                        {
-                            firstTable.Cell(i, 1).Range.Text = "Exclusief BTW";
-                            firstTable.Cell(i, 1).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 1).Range.Font.Size = 10;
-                            firstTable.Cell(i, 1).Range.Font.Bold = 1;
-                            firstTable.Cell(i, 3).Range.Text = $"€ {excBTW}";
-                            firstTable.Cell(i, 3).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 3).Range.Font.Size = 10;
-                            firstTable.Cell(i, 3).Range.Font.Bold = 1;
-                        }
-                        else if (firstTable.Rows.Count + 1 - i == 2)
-                        {
-                            firstTable.Cell(i, 1).Range.Text = "BTW";
-                            firstTable.Cell(i, 1).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 1).Range.Font.Size = 10;
-                            firstTable.Cell(i, 1).Range.Font.Bold = 1;
-                            firstTable.Cell(i, 3).Range.Text = $"€ {BTW}";
-                            firstTable.Cell(i, 3).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 3).Range.Font.Size = 10;
-                            firstTable.Cell(i, 3).Range.Font.Bold = 1;
-                        }
-                        else if (firstTable.Rows.Count + 1 - i == 1)
-                        {
-                            firstTable.Cell(i, 1).Range.Text = "Totaal:";
-                            firstTable.Cell(i, 1).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 1).Range.Font.Size = 10;
-                            firstTable.Cell(i, 1).Range.Font.Bold = 1;
-                            firstTable.Cell(i, 3).Range.Text = $"€ {Totaal}";
-                            firstTable.Cell(i, 3).Range.Font.Name = "verdana";
-                            firstTable.Cell(i, 3).Range.Font.Size = 10;
-                            firstTable.Cell(i, 3).Range.Font.Bold = 1;
-                        }
+                        products = "Producten";
                     }
+                    //WdPreferredWidthType wdPreferredWidthPercent = default;
+                    //firstTable.Columns.PreferredWidthType = wdPreferredWidthPercent;
+                    //firstTable.Columns[1].PreferredWidth = 50;
+                    //firstTable.Columns[2].PreferredWidth = 25;
+                    //firstTable.Columns[3].PreferredWidth = 25;
+                    firstTable.Borders.Enable = 0;
+                    firstTable.Cell(1, 1).Range.Text = products;
+                    firstTable.Cell(1, 1).Range.Font.Name = "verdana";
+                    firstTable.Cell(1, 1).Range.Font.Size = 10;
+                    firstTable.Cell(1, 1).Range.Font.Bold = 1;
+                    firstTable.Cell(1, 2).Range.Text = "Aantal";
+                    firstTable.Cell(1, 2).Range.Font.Name = "verdana";
+                    firstTable.Cell(1, 2).Range.Font.Size = 10;
+                    firstTable.Cell(1, 2).Range.Font.Bold = 1;
+                    firstTable.Cell(1, 3).Range.Text = "Eenheidsprijs";
+                    firstTable.Cell(1, 3).Range.Font.Name = "verdana";
+                    firstTable.Cell(1, 3).Range.Font.Size = 10;
+                    firstTable.Cell(1, 3).Range.Font.Bold = 1;
+                    firstTable.Cell(1, 4).Range.Text = "Prijs";
+                    firstTable.Cell(1, 4).Range.Font.Name = "verdana";
+                    firstTable.Cell(1, 4).Range.Font.Size = 10;
+                    firstTable.Cell(1, 4).Range.Font.Bold = 1;
 
+                    double excBTW = 0;
+                    double BTW = 0;
+                    double Totaal = 0;
+
+                    for (int i = 2; i < firstTable.Rows.Count + 1; i++)
+                    {
+
+                        if (i - 2 < Rows - 4)
+                        {
+                            firstTable.Cell(i, 1).Range.Text = $"{bestellingProducten[i - 2].Product.Naam}";
+                            firstTable.Cell(i, 1).Range.Font.Name = "verdana";
+                            firstTable.Cell(i, 1).Range.Font.Size = 10;
+                            firstTable.Cell(i, 2).Range.Text = $"{bestellingProducten[i - 2].AantalProtuctBesteld} {bestellingProducten[i - 2].Product.Eenheid}";
+                            firstTable.Cell(i, 2).Range.Font.Name = "verdana";
+                            firstTable.Cell(i, 2).Range.Font.Size = 10;
+                            firstTable.Cell(i, 3).Range.Text = $"€ {bestellingProducten[i - 2].Product.Bruto()}";
+                            firstTable.Cell(i, 3).Range.Font.Name = "verdana";
+                            firstTable.Cell(i, 3).Range.Font.Size = 10;
+                            firstTable.Cell(i, 4).Range.Text = $"€ {bestellingProducten[i - 2].Product.Bruto() * bestellingProducten[i - 2].AantalProtuctBesteld}";
+                            firstTable.Cell(i, 4).Range.Font.Name = "verdana";
+                            firstTable.Cell(i, 4).Range.Font.Size = 10;
+
+                            excBTW += bestellingProducten[i - 2].Product.Netto() * bestellingProducten[i - 2].AantalProtuctBesteld;
+                            BTW += bestellingProducten[i - 2].Product.BTWVerschil() * bestellingProducten[i - 2].AantalProtuctBesteld;
+                            Totaal += bestellingProducten[i - 2].Product.Bruto() * bestellingProducten[i - 2].AantalProtuctBesteld;
+                        }
+                        else
+                        {
+
+                            if (firstTable.Rows.Count + 1 - i == 3)
+                            {
+                                firstTable.Cell(i, 2).Range.Text = "Exclusief BTW";
+                                firstTable.Cell(i, 2).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 2).Range.Font.Size = 10;
+                                firstTable.Cell(i, 2).Range.Font.Bold = 1;
+                                firstTable.Cell(i, 4).Range.Text = $"€ {excBTW}";
+                                firstTable.Cell(i, 4).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 4).Range.Font.Size = 10;
+                                firstTable.Cell(i, 4).Range.Font.Bold = 1;
+                            }
+                            else if (firstTable.Rows.Count + 1 - i == 2)
+                            {
+                                firstTable.Cell(i, 2).Range.Text = "BTW";
+                                firstTable.Cell(i, 2).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 2).Range.Font.Size = 10;
+                                firstTable.Cell(i, 2).Range.Font.Bold = 1;
+                                firstTable.Cell(i, 4).Range.Text = $"€ {BTW}";
+                                firstTable.Cell(i, 4).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 4).Range.Font.Size = 10;
+                                firstTable.Cell(i, 4).Range.Font.Bold = 1;
+                            }
+                            else if (firstTable.Rows.Count + 1 - i == 1)
+                            {
+                                firstTable.Cell(i, 2).Range.Text = "Totaal:";
+                                firstTable.Cell(i, 2).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 2).Range.Font.Size = 10;
+                                firstTable.Cell(i, 2).Range.Font.Bold = 1;
+                                firstTable.Cell(i, 4).Range.Text = $"€ {Totaal}";
+                                firstTable.Cell(i, 4).Range.Font.Name = "verdana";
+                                firstTable.Cell(i, 4).Range.Font.Size = 10;
+                                firstTable.Cell(i, 4).Range.Font.Bold = 1;
+                            }
+                        }
+
+                    }
+                    //foreach (Row row in firstTable.Rows)
+                    //{
+
+                    //    foreach (Cell cell in row.Cells)
+                    //    {
+                    //        //Header row  
+                    //        if (cell.RowIndex == 1)
+                    //        {
+                    //            cell.Range.Text = "Column " + cell.ColumnIndex.ToString();
+                    //            cell.Range.Font.Bold = 1;
+                    //            //other format properties goes here  
+                    //            cell.Range.Font.Name = "verdana";
+                    //            cell.Range.Font.Size = 10;
+                    //            //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                              
+
+                    //            //Center alignment for the Header cells  
+                    //            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                    //            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
+
+                    //        }
+                    //        //Data row  
+                    //        else
+                    //        {
+                    //            cell.Range.Text = (cell.RowIndex - 2 + cell.ColumnIndex).ToString();
+                    //        }
+                    //    }
+                    //}
+
+                    //Save the document  
+                    object filename = $"{Directory.GetCurrentDirectory()}/Besrelling{bestelling.BestellingID}.docx";
+                    document.SaveAs2(ref filename);
+                    document.Close(ref missing, ref missing, ref missing);
+                    document = null;
+                    winword.Quit(ref missing, ref missing, ref missing);
+                    winword = null;
+                    MessageBox.Show("Document created successfully !");
+                    MAPI mapi = new MAPI();
+
+                    mapi.AddAttachment($"{Directory.GetCurrentDirectory()}/Besrelling{bestelling.BestellingID}.docx");
+                    mapi.AddRecipientTo(bestelling.Klant.Emailadres);
+                    mapi.SendMailPopup("factuur bestelling", $"Beste {bestelling.Klant.Voornaam} {bestelling.Klant.Achternaam},\n" +
+                        $"\n" +
+                        $"Bedankt dat u voor ons gekozen heeft.\n" +
+                        $"in bijlagen vind u de factuur van uw bestelling.\n" +
+                        $"\n" +
+                        $"met vriendelijke groeten {Selected.Voornaam} {Selected.Achternaam}\n" +
+                        $"team Bedrijfsnaam");
                 }
-                //foreach (Row row in firstTable.Rows)
-                //{
-
-                //    foreach (Cell cell in row.Cells)
-                //    {
-                //        //Header row  
-                //        if (cell.RowIndex == 1)
-                //        {
-                //            cell.Range.Text = "Column " + cell.ColumnIndex.ToString();
-                //            cell.Range.Font.Bold = 1;
-                //            //other format properties goes here  
-                //            cell.Range.Font.Name = "verdana";
-                //            cell.Range.Font.Size = 10;
-                //            //cell.Range.Font.ColorIndex = WdColorIndex.wdGray25;                              
-
-                //            //Center alignment for the Header cells  
-                //            cell.VerticalAlignment = WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-                //            cell.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphCenter;
-
-                //        }
-                //        //Data row  
-                //        else
-                //        {
-                //            cell.Range.Text = (cell.RowIndex - 2 + cell.ColumnIndex).ToString();
-                //        }
-                //    }
-                //}
-
-                //Save the document  
-                object filename = $"{Directory.GetCurrentDirectory()}/Besrelling{bestelling.BestellingID}.docx";
-                document.SaveAs2(ref filename);
-                document.Close(ref missing, ref missing, ref missing);
-                document = null;
-                winword.Quit(ref missing, ref missing, ref missing);
-                winword = null;
-                MessageBox.Show("Document created successfully !");
             }
-            //}
-            //    catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void btnCancelBestelling_Click(object sender, RoutedEventArgs e)
         {
@@ -665,6 +684,7 @@ namespace TussentijdsProjectYannick
                 winword = null;
                 MessageBox.Show("Document created successfully !");
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

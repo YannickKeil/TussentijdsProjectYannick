@@ -95,11 +95,11 @@ namespace TussentijdsProjectYannick
                     byte[] salt = Convert.FromBase64String(ctx.Personeelslids.Single(pl => pl.Username == txtUsername.Text).Salt);
                     string password = txtWachtwoord.Password;                    
                     var success = VerifyHash(password, salt, hash);
-                    MessageBox.Show(success ? "Success!" : "Failure!");
+                    //MessageBox.Show(success ? "Success!" : "Failure!");
                     if (success)
                     {
                         Personeelslid logedIn = ctx.Personeelslids.Single(pl => pl.Username == txtUsername.Text);
-                        MessageBox.Show("account verrified");
+                        //MessageBox.Show("account verrified");
                         MainMenu mm = new MainMenu(logedIn);
                         mm.Owner = this;
                         Hide();
@@ -113,7 +113,9 @@ namespace TussentijdsProjectYannick
                         }
 
                     }
-                    else { /*verkeerde pw*/MessageBox.Show("account failed verrification"); }
+                    else { /*verkeerde pw*/MessageBox.Show("account failed verrification"); 
+                         
+                    }
                 }
                 else { /*username doen't exist*/MessageBox.Show("account failed verrification"); }
             }

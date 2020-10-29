@@ -5,26 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TussentijdsProjectYannick"
         mc:Ignorable="d"
-        Title="BestellingMenu" Height="450" Width="800">
+        Title="BestellingMenu" Height="450" Width="800"
+         Background="#FFA7AFF1" OpacityMask="{DynamicResource MenuPopupBrush}">
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <ToggleButton x:Name="tbLeverancierKlant" Content="Leverancier/Klant" ToggleButton.Checked="tbLeverancierKlant_Checked" ToggleButton.Unchecked="tbLeverancierKlant_Unchecked" Margin="5" Width="100" Visibility="Visible">
-                </ToggleButton>
+            <ToggleButton x:Name="tbLeverancierKlant" Content="Leverancier/Klant" ToggleButton.Checked="tbLeverancierKlant_Checked" ToggleButton.Unchecked="tbLeverancierKlant_Unchecked" Margin="5" Width="100" Visibility="Visible" Background="#FFA7AFF1" OpacityMask="{DynamicResource MenuPopupBrush}">
+            </ToggleButton>
             <WrapPanel HorizontalAlignment="Center">
                 <Grid Margin="5">
                     <ComboBox x:Name="cbLeveranciers" ></ComboBox>
                     <ComboBox x:Name="cbKlants" ></ComboBox>
                 </Grid>
                 <Button x:Name="btnAddNewKlant" Content="Voeg Nieuwe Klant Toe" Click="btnAddNewKlant_Click" Margin="5"></Button>
-                
+
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <ComboBox x:Name="cbProducten" Margin="5" Height="30"/>
                 <WrapPanel Margin="5" VerticalAlignment="Center">
                     <TextBox x:Name="nudAantal" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" />
                     <StackPanel>
-                        <RepeatButton x:Name="btnNumUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNumUp_Click" ClickMode="Press"/>
-                        <RepeatButton x:Name="btnNumDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNumDown_Click" ClickMode="Press"/>
+                        <RepeatButton x:Name="btnNumUp" Content="⮝" FontSize="7" Height="15" Width="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNumUp_Click" ClickMode="Press" Background="#FF99A1DE" OpacityMask="{DynamicResource MenuPopupBrush}"/>
+
+                        <RepeatButton x:Name="btnNumDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNumDown_Click" ClickMode="Press" Background="#FF99A1DE" OpacityMask="{DynamicResource MenuPopupBrush}"/>
                     </StackPanel>
                     <TextBlock x:Name="txtEenheid" VerticalAlignment="Center"/>
                 </WrapPanel>
@@ -32,7 +34,7 @@
                     <Button x:Name="btnToevoegenAanList" Content="Toevoegen aan lijst" Click="btnToevoegenAanList_Click" Margin="5"></Button>
                     <Button x:Name="btnVerwijderUitList" Content="Verwijder uit lijst" Click="btnVerwijderUitList_Click" Margin="5"></Button>
                 </StackPanel>
-                <ListView x:Name="lbProductenBestelling" Width="300">
+                <ListBox x:Name="lbProductenBestelling" Width="300">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel>
@@ -44,7 +46,7 @@
                             </WrapPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListView>
+                </ListBox>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Button x:Name="btnPlaatsBestelling" Content="Plaats Bestelling" Margin="5" Click="btnPlaatsBestelling_Click"></Button>

@@ -23,6 +23,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Diagnostics;
 
+
 namespace TussentijdsProjectYannick
 {
     /// <summary>
@@ -41,7 +42,7 @@ namespace TussentijdsProjectYannick
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
-            
+            //tbSwitching();
         }
         public Personeelslid Selected { get; set; }
         public Databeheer(Personeelslid selected)
@@ -56,6 +57,11 @@ namespace TussentijdsProjectYannick
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
             EditBestellingProductfillCombobox();
+            //tbSwitching();
+            ReloadTextBoxKlant();
+            ReloadTextBoxLeverancier();
+            ReloadTextBoxProducten();
+            ResetTextBoxPersoneel();
             if (selected.AdminRechtenID == 1)
             {
                 tabPersoneellid.IsEnabled = true;
@@ -96,9 +102,11 @@ namespace TussentijdsProjectYannick
             }
 
         }
+        public string GetSource = $"{Directory.GetCurrentDirectory()}/cross-mark.png";
+
         private void EditPersoneel()
         {
-            
+
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 cbEditPersoneellid.ItemsSource = null;
@@ -126,9 +134,9 @@ namespace TussentijdsProjectYannick
                 cbAdminRechten.SelectedValuePath = "AdminRechtenID";
                 cbAdminRechten.ItemsSource = listRechten;
                 cbAdminRechten.SelectedIndex = 0;
+
             }
         }
-
 
         private void EditCategorie()
         {
@@ -201,6 +209,7 @@ namespace TussentijdsProjectYannick
                 cbCategorieEditProducten.SelectedValuePath = "CategorieID";
                 cbCategorieEditProducten.ItemsSource = listCategorie;
                 cbCategorieEditProducten.SelectedIndex = 0;
+
             }
         }
         private void EditBestelling()
@@ -219,10 +228,10 @@ namespace TussentijdsProjectYannick
                     x.Leverancier.LeverancierID +
                     " " +
                     x.Leverancier.Contactpersoon +
-                    " " +                   
+                    " " +
                     x.DatumOpgemaakt,
                     Id = x.BestellingID
-                }).ToList();               
+                }).ToList();
                 cbEditBestelling.DisplayMemberPath = "Naam";
                 cbEditBestelling.SelectedValuePath = "Id";
                 cbEditBestelling.ItemsSource = listBestellingen;
@@ -252,6 +261,7 @@ namespace TussentijdsProjectYannick
                 cbKlantEditBestelling.SelectedValuePath = "Id";
                 cbKlantEditBestelling.ItemsSource = listKlant;
                 cbKlantEditBestelling.SelectedIndex = 0;
+
             }
         }
         private void EditBestellingProduct()
@@ -267,10 +277,10 @@ namespace TussentijdsProjectYannick
                     " " +
                     x.Bestelling.Klant.Achternaam +
                     " " +
-                    x.Bestelling.DatumOpgemaakt+
-                    " "+
-                    x.Product.Naam+
-                    " "+
+                    x.Bestelling.DatumOpgemaakt +
+                    " " +
+                    x.Product.Naam +
+                    " " +
                     x.Product.Eenheid,
                     Id = x.BestellingID
                 }).ToList();
@@ -278,6 +288,7 @@ namespace TussentijdsProjectYannick
                 cbEditBestellingProduct.SelectedValuePath = "Id";
                 cbEditBestellingProduct.ItemsSource = listBestellingProducten;
                 cbEditBestellingProduct.SelectedIndex = 0;
+
             }
         }
         private void EditBestellingProductfillCombobox()
@@ -364,28 +375,111 @@ namespace TussentijdsProjectYannick
         }
         private void btnAddPersoneellid_Click(object sender, RoutedEventArgs e)
         {
-            //if (checks)
-            //{
             var password = txtPasswordPersoneellidEdit.Password;
-            var salt = CreateSalt();
-            var hash = HashPassword(password, salt);
+            bool checks = true;
+            string errorPassword = "Het wachtwoord voldoet niet aan de regels.";
+            string errorUsername = "";
+            if (!password.Any(char.IsUpper))
+            {
+                errorPassword += "Het bevat geen hoofdletters.";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (!password.Any(char.IsLower))
+            {
+                errorPassword += " Het bevat geen kleine letters.";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (!password.Any(char.IsDigit))
+            {
+                errorPassword += " Het bevat geen cijfers.";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (password.Length < 8)
+            {
+                errorPassword += " Het is te kort";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (password.Length > 20)
+            {
+                errorPassword += " Het is te lang";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (Regex.IsMatch(password, @"^[a-zA-Z0-9]+$"))
+            {
+                errorPassword += " Het bevat geen vreemd teken";
+                checks = false;
+                txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (txtVoornaamPersoneellidEdit.Text == "")
+            {
+                txtVoornaamPersoneellidEdit.ToolTip = "Voornaam mag niet leeg zijn";
+                checks = false;
+                imgVoornaamPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (txtAchternaamPersoneellidEdit.Text == "")
+            {
+                txtAchternaamPersoneellidEdit.ToolTip = "Achternaam mag niet leeg zijn";
+                checks = false;
+                imgAchternaamPersoneellidEdit.Visibility = Visibility.Visible;
+            }
+            if (txtUsernamePersoneellidEdit.Text == "")
+            {
+                checks = false;
+                errorUsername += "Username mag niet leeg zijn";
+                txtUsernamePersoneellidEdit.ToolTip = errorUsername;
+                imgUsernamePersoneellidEdit.Visibility = Visibility.Visible;
+            }
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                ctx.Personeelslids.Add(new Personeelslid()
+                if (ctx.Personeelslids.Where(p => p.Username == txtUsernamePersoneellidEdit.Text).Any())
                 {
-                    Voornaam = txtVoornaamPersoneellidEdit.Text,
-                    Achternaam = txtAchternaamPersoneellidEdit.Text,
-                    Wachtwoord = Convert.ToBase64String(hash),
-                    AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue,
-                    Salt = Convert.ToBase64String(salt),
-                    Username = txtUsernamePersoneellidEdit.Text,
-                    Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value,
-                    GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value
-                });
-                ctx.SaveChanges();
-                MessageBox.Show("toegevoegt");
-                EditPersoneel();
-                ResetTextBoxPersoneel();
+                    checks = false;
+                    errorUsername += "het moet een unique Username zijn.";
+                    txtUsernamePersoneellidEdit.ToolTip = errorUsername;
+                    imgUsernamePersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (checks)
+                {
+                    imgPasswordPersoneellidEdit.Visibility =
+                    imgVoornaamPersoneellidEdit.Visibility =
+                    imgAchternaamPersoneellidEdit.Visibility =
+                    imgUsernamePersoneellidEdit.Visibility = Visibility.Hidden;
+
+                    txtPasswordPersoneellidEdit.ToolTip = "wachtwoord voorwaarden Minstens 1 hoofdletter Minstens 1 kleine letter Minstens 1 cijfer Minstens 1 vreemd teken Een lengte van 8 - 20 characters";
+                    txtVoornaamPersoneellidEdit.ToolTip = "";
+                    txtAchternaamPersoneellidEdit.ToolTip = "";
+                    txtUsernamePersoneellidEdit.ToolTip = "";
+                    var salt = CreateSalt();
+                    var hash = HashPassword(password, salt);
+
+                    ctx.Personeelslids.Add(new Personeelslid()
+                    {
+                        Voornaam = txtVoornaamPersoneellidEdit.Text,
+                        Achternaam = txtAchternaamPersoneellidEdit.Text,
+                        Wachtwoord = Convert.ToBase64String(hash),
+                        AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue,
+                        Salt = Convert.ToBase64String(salt),
+                        Username = txtUsernamePersoneellidEdit.Text,
+                        Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value,
+                        GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value
+                    });
+                    ctx.SaveChanges();
+                    MessageBox.Show("toegevoegt");
+                    EditPersoneel();
+                    ResetTextBoxPersoneel();
+
+                }
             }
             //}
             // else
@@ -428,26 +522,105 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue);
-
-                selectedPersoneel.Voornaam = txtVoornaamPersoneellidEdit.Text;
-                selectedPersoneel.Achternaam = txtAchternaamPersoneellidEdit.Text;
-                selectedPersoneel.AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue;
-                if (txtPasswordPersoneellidEdit.Password != "")
+                var password = txtPasswordPersoneellidEdit.Password;
+                bool checks = true;
+                string errorPassword = "Het wachtwoord voldoet niet aan de regels.";
+                string errorUsername = "";
+                if (!password.Any(char.IsUpper))
                 {
-                    var password = txtPasswordPersoneellidEdit.Password;
-                    var salt = CreateSalt();
-                    var hash = HashPassword(password, salt);
-                    selectedPersoneel.Wachtwoord = Convert.ToBase64String(hash);
-                    selectedPersoneel.Salt = Convert.ToBase64String(salt);
+                    errorPassword += "Het bevat geen hoofdletters.";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
                 }
-                selectedPersoneel.Username = txtUsernamePersoneellidEdit.Text;
-                selectedPersoneel.Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value;
-                selectedPersoneel.GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value;
-                ctx.SaveChanges();
+                if (!password.Any(char.IsLower))
+                {
+                    errorPassword += " Het bevat geen kleine letters.";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (!password.Any(char.IsDigit))
+                {
+                    errorPassword += " Het bevat geen cijfers.";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (password.Length < 8)
+                {
+                    errorPassword += " Het is te kort";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (password.Length > 20)
+                {
+                    errorPassword += " Het is te lang";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (Regex.IsMatch(password, @"^[a-zA-Z0-9]+$"))
+                {
+                    errorPassword += " Het bevat geen vreemd teken";
+                    checks = false;
+                    txtPasswordPersoneellidEdit.ToolTip = errorPassword;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (txtVoornaamPersoneellidEdit.Text == "")
+                {
+                    txtVoornaamPersoneellidEdit.ToolTip = "Voornaam mag niet leeg zijn";
+                    checks = false;
+                    imgVoornaamPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (txtAchternaamPersoneellidEdit.Text == "")
+                {
+                    txtAchternaamPersoneellidEdit.ToolTip = "Achternaam mag niet leeg zijn";
+                    checks = false;
+                    imgAchternaamPersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (txtUsernamePersoneellidEdit.Text == "")
+                {
+                    checks = false;
+                    errorUsername += "Username mag niet leeg zijn";
+                    txtUsernamePersoneellidEdit.ToolTip = errorUsername;
+                    imgUsernamePersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (ctx.Personeelslids.Where(p => p.Username == txtUsernamePersoneellidEdit.Text).Any())
+                {
+                    checks = false;
+                    errorUsername += "het moet een unique Username zijn.";
+                    txtUsernamePersoneellidEdit.ToolTip = errorUsername;
+                    imgUsernamePersoneellidEdit.Visibility = Visibility.Visible;
+                }
+                if (checks)
+                {
+                    imgPasswordPersoneellidEdit.Visibility =
+                    imgVoornaamPersoneellidEdit.Visibility =
+                    imgAchternaamPersoneellidEdit.Visibility =
+                    imgUsernamePersoneellidEdit.Visibility = Visibility.Hidden;
+                    var selectedPersoneel = ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue);
+
+                    selectedPersoneel.Voornaam = txtVoornaamPersoneellidEdit.Text;
+                    selectedPersoneel.Achternaam = txtAchternaamPersoneellidEdit.Text;
+                    selectedPersoneel.AdminRechtenID = (int)cbAdminRechtenPersoneellidEdit.SelectedValue;
+                    if (txtPasswordPersoneellidEdit.Password != "")
+                    {
+                        var salt = CreateSalt();
+                        var hash = HashPassword(password, salt);
+                        selectedPersoneel.Wachtwoord = Convert.ToBase64String(hash);
+                        selectedPersoneel.Salt = Convert.ToBase64String(salt);
+                    }
+                    selectedPersoneel.Username = txtUsernamePersoneellidEdit.Text;
+                    selectedPersoneel.Indiensttreding = dtIndiensttredingPersoneellidEdit.SelectedDate.Value;
+                    selectedPersoneel.GeboorteDatum = dtGeboortedatumPersoneellidEdit.SelectedDate.Value;
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("edited");
+                EditPersoneel();
             }
-            MessageBox.Show("edited");
-            EditPersoneel();
+
         }
 
         private void btnDeletePersoneellid_Click(object sender, RoutedEventArgs e)
@@ -466,64 +639,132 @@ namespace TussentijdsProjectYannick
             {
                 this.DialogResult = false;
             }
+            //tbSwitching();
         }
 
         private void btnAddAdminRechten_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtAdminRechtenToevoegen.Text == "")
             {
-                ctx.AdminRechtens.Add(new AdminRechten { titel = txtAdminRechtenToevoegen.Text });
-                //ctx.SaveChanges();
+                check = false;
+                txtAdminRechtenToevoegen.ToolTip = "Textbox mag niet leeg zijn";
+                imgAdminRechtenToevoegen.Visibility = Visibility.Visible;
             }
-            EditAdminrechten();
-            txtAdminRechtenToevoegen.Text = "";
-            txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
+            if (check)
+            {
+                imgAdminRechtenToevoegen.Visibility = Visibility.Hidden;
+               
+                if (MessageBox.Show("Ben je zeker dat je rechten wil toevoegen?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                    {
+                        ctx.AdminRechtens.Add(new AdminRechten { titel = txtAdminRechtenToevoegen.Text });
+                        ctx.SaveChanges();
+                    }
+                    EditAdminrechten();
+                    txtAdminRechtenToevoegen.Text = "";
+                    txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
+                }
+
+                
+            }
         }
         private void btnEditAdminRechten_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtAdminRechtenToevoegen.Text == "")
             {
-                ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue).titel = txtAdminRechtenToevoegen.Text;
-                //ctx.SaveChanges();
+                check = false;
+                txtAdminRechtenToevoegen.ToolTip = "Textbox mag niet leeg zijn";
+                imgAdminRechtenToevoegen.Visibility = Visibility.Visible;
             }
-            EditAdminrechten();
-            txtAdminRechtenToevoegen.Text = "";
-            txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
+            if (check)
+            {
+                imgAdminRechtenToevoegen.Visibility = Visibility.Hidden;
+                if (MessageBox.Show("Ben je zeker dat je rechten wil editeren?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                    {
+                        ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue).titel = txtAdminRechtenToevoegen.Text;
+                        ctx.SaveChanges();
+                    }
+                    EditAdminrechten();
+                }
+                txtAdminRechtenToevoegen.Text = "";
+                txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnDeleteAdminRechten_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtAdminRechtenToevoegen.Text == "")
             {
-                ctx.AdminRechtens.Remove(ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue));
-                //ctx.SaveChanges();
+                check = false;
+                txtAdminRechtenToevoegen.ToolTip = "Textbox mag niet leeg zijn";
+                imgAdminRechtenToevoegen.Visibility = Visibility.Visible;
             }
-            EditAdminrechten();
+            if (check)
+            {
+                imgAdminRechtenToevoegen.Visibility = Visibility.Hidden;
+                if (MessageBox.Show("Ben je zeker dat je rechten wil verwijderen.? programa gaat niet meer werken zoals het hoort.", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                    {
+                        ctx.AdminRechtens.Remove(ctx.AdminRechtens.Single(x => x.AdminRechtenID == (int)cbAdminRechten.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    EditAdminrechten();
+                }
+            }
         }
 
         private void btnAddCategorie_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtCategorieToevoegen.Text == "")
             {
-                ctx.Categories.Add(new Categorie { CategorieNaam = txtCategorieToevoegen.Text });
-                ctx.SaveChanges();
+                check = false;
+                txtCategorieToevoegen.ToolTip = "Textbox mag niet leeg zijn";
+                imgCategorieToevoegen.Visibility = Visibility.Visible;
             }
-            EditCategorie();
-            EditProductenfillCombobox();
-            txtCategorieToevoegen.Text = "";
-            txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
+            if (check)
+            {
+                imgUsernamePersoneellidEdit.Visibility = Visibility.Hidden;
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    ctx.Categories.Add(new Categorie { CategorieNaam = txtCategorieToevoegen.Text });
+                    ctx.SaveChanges();
+                }
+                EditCategorie();
+                EditProductenfillCombobox();
+                txtCategorieToevoegen.Text = "";
+                txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
+            }
         }
         private void btnEditCategorie_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtCategorieToevoegen.Text == "")
             {
-                ctx.Categories.Single(x => x.CategorieID == (int)cbCategorie.SelectedValue).CategorieNaam = txtCategorieToevoegen.Text;
-                ctx.SaveChanges();
+                check = false;
+                txtCategorieToevoegen.ToolTip = "Textbox mag niet leeg zijn";
+                imgCategorieToevoegen.Visibility = Visibility.Visible;
             }
-            EditCategorie();
-            EditProductenfillCombobox();
-            txtCategorieToevoegen.Text = "";
-            txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
+            if (check)
+            {
+                imgUsernamePersoneellidEdit.Visibility = Visibility.Hidden;
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    ctx.Categories.Single(x => x.CategorieID == (int)cbCategorie.SelectedValue).CategorieNaam = txtCategorieToevoegen.Text;
+                    ctx.SaveChanges();
+                }
+                EditCategorie();
+                EditProductenfillCombobox();
+                txtCategorieToevoegen.Text = "";
+                txtCategorieToevoegenWordHint.Visibility = Visibility.Visible;
+            }
         }
 
         private void btnDeleteCategorie_Click(object sender, RoutedEventArgs e)
@@ -606,7 +847,7 @@ namespace TussentijdsProjectYannick
             txtGemeenteEditKlant.Text = "";
             txtTelefoonnummerEditKlant.Text = "";
             txtEmailadresEditKlant.Text = "";
-            txtOpmerkingEditKlant.Text = "";            
+            txtOpmerkingEditKlant.Text = "";
             txtVoornaamEditKlantWordHint.Visibility = Visibility.Visible;
             txtAchternaamEditKlantWordHint.Visibility = Visibility.Visible;
             txtStraatnaamEditKlantWordHint.Visibility = Visibility.Visible;
@@ -665,11 +906,12 @@ namespace TussentijdsProjectYannick
                         txtAchternaamEditKlant.Text = selectedKlant.Achternaam;
                         txtStraatnaamEditKlant.Text = selectedKlant.Straatnaam;
                         txtHuisnummerEditKlant.Text = selectedKlant.Huisnummer.ToString();
-                        if(selectedKlant.Bus == "") { txtBusEditKlantWordHint.Visibility = Visibility.Visible; }
-                        else {
+                        if (selectedKlant.Bus == "") { txtBusEditKlantWordHint.Visibility = Visibility.Visible; }
+                        else
+                        {
                             txtBusEditKlantWordHint.Visibility = Visibility.Hidden;
-                            txtBusEditKlant.Text = selectedKlant.Bus; 
-                        }                       
+                            txtBusEditKlant.Text = selectedKlant.Bus;
+                        }
                         txtPostcodeEditKlant.Text = selectedKlant.Postcode;
                         txtGemeenteEditKlant.Text = selectedKlant.Gemeente;
                         txtTelefoonnummerEditKlant.Text = selectedKlant.Telefoonnummer;
@@ -809,7 +1051,7 @@ namespace TussentijdsProjectYannick
                         {
                             txtBusEditLeverancierWordHint.Visibility = Visibility.Hidden;
                             txtBusEditLeverancier.Text = selectedPersoneel.Bus;
-                        }                      
+                        }
                         txtPostcodeEditLeverancier.Text = selectedPersoneel.Postcode;
                         txtGemeenteEditLeverancier.Text = selectedPersoneel.Gemeente;
                     }
@@ -872,7 +1114,7 @@ namespace TussentijdsProjectYannick
                 btnDeleteProducten.IsEnabled = false;
                 cbEditProducten.IsEnabled = false;
                 btnToevoegenProducten.IsEnabled = true;
-                
+
                 EditProductenfillCombobox();
                 ReloadTextBoxProducten();
             }
@@ -884,7 +1126,7 @@ namespace TussentijdsProjectYannick
             txtMargeEditProducten.Text = "";
             txtEenheidEditProducten.Text = "";
             txtBTWEditProducten.Text = "";
-            nudAantalOpVooraadProducten.Text = "0";           
+            nudAantalOpVooraadProducten.Text = "0";
             nudAankoopPrijs.Text = "0.00";
             txtNaamEditProductenWordHint.Visibility = Visibility.Visible;
             txtMargeEditProductenWordHint.Visibility = Visibility.Visible;
@@ -922,7 +1164,7 @@ namespace TussentijdsProjectYannick
         private void btnNudAantalOpVooraadProductenDown_Click(object sender, RoutedEventArgs e)
         {
             if (Convert.ToDecimal(nudAantalOpVooraadProducten.Text) > 0)
-            nudAantalOpVooraadProducten.Text = $"{Convert.ToDecimal(nudAantalOpVooraadProducten.Text) - 1}";
+                nudAantalOpVooraadProducten.Text = $"{Convert.ToDecimal(nudAantalOpVooraadProducten.Text) - 1}";
         }
         private static readonly Regex _regex2 = new Regex("[^0-9,]+"); //regex that matches disallowed text
         private static bool IsTextAllowed2(string text)
@@ -1119,7 +1361,7 @@ namespace TussentijdsProjectYannick
                         var selectedBestellingProduct = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
                         cbBestellingenEditBestellingProduct.SelectedValue = selectedBestellingProduct.BestellingID;
                         cbProductenEditBestellingProduct.SelectedValue = selectedBestellingProduct.ProductID;
-                        
+
                     }
                 }
             }
@@ -1136,7 +1378,7 @@ namespace TussentijdsProjectYannick
                     AantalProtuctBesteld = Convert.ToInt32(nudAantalProductenBesteld.Text)
 
                 });
-                if (ctx.Bestellings.Single(b=>b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).LeverancierID == null)
+                if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).LeverancierID == null)
                 { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad -= Convert.ToInt32(nudAantalProductenBesteld.Text); }
                 else if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).KlantID == null)
                 { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad += Convert.ToInt32(nudAantalProductenBesteld.Text); }
@@ -1175,7 +1417,7 @@ namespace TussentijdsProjectYannick
                 else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
                 { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
 
-                
+
                 ctx.BestellingProducts.Remove(ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue));
                 ctx.SaveChanges();
             }
@@ -1195,7 +1437,7 @@ namespace TussentijdsProjectYannick
                 nudAantalProductenBesteld.Text = $"{Convert.ToDecimal(nudAantalProductenBesteld.Text) - 1}";
         }
         public class JsonProductenLeverancier
-        {  
+        {
             public int ProductID { get; set; }
             public string Naam { get; set; }
             public string Eenheid { get; set; }
@@ -1215,18 +1457,18 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var producten = ctx.Products.Where(p=>p.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(p => p);
+                var producten = ctx.Products.Where(p => p.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(p => p);
                 List<object> ListProducten = new List<object>();
                 foreach (var item in producten)
                 {
 
-                    JsonProductenLeverancier productsForList = new JsonProductenLeverancier(item.ProductID,item.Naam,item.Eenheid,item.BTW,item.AankoopPrijs);
+                    JsonProductenLeverancier productsForList = new JsonProductenLeverancier(item.ProductID, item.Naam, item.Eenheid, item.BTW, item.AankoopPrijs);
                     ListProducten.Add(productsForList);
                 }
                 JsonCreate(ListProducten);
 
                 MessageBox.Show("Template created");
-                
+
             }
         }
 
@@ -1239,15 +1481,15 @@ namespace TussentijdsProjectYannick
                 foreach (var item in listProducten)
                 {
                     var selectedProduct = ctx.Products.Single(p => p.ProductID == item.ProductID);
-                    selectedProduct.Naam = item.Naam;                    
+                    selectedProduct.Naam = item.Naam;
                     selectedProduct.Eenheid = item.Eenheid;
                     selectedProduct.BTW = item.BTW;
                     selectedProduct.AankoopPrijs = item.AankoopPrijs;
-                   ctx.SaveChanges();
+                    ctx.SaveChanges();
                 }
                 MessageBox.Show("Edited");
                 EditProducten();
-            }           
+            }
         }
         public void JsonCreate(List<object> listObject)
         {
@@ -1266,7 +1508,7 @@ namespace TussentijdsProjectYannick
                 //string uri = $"mailto:{ctx.Leveranciers.Where(l=>l.LeverancierID==(int)cbJsonLeveranciers.SelectedValue).Select(l=>l.Emailadres).FirstOrDefault()}?subject=Gegevens Producten&body={jsonString.ToString()}";
                 //Uri myUri = new Uri(uri);
                 //Process.Start(myUri.AbsoluteUri);
-                
+
                 MAPI mapi = new MAPI();
 
                 mapi.AddAttachment($"{Directory.GetCurrentDirectory()}/gegevens.Json");
@@ -1337,7 +1579,7 @@ namespace TussentijdsProjectYannick
 
         private void txtPasswordPersoneellidEdit_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(txtPasswordPersoneellidEdit.Password.Length == 0)
+            if (txtPasswordPersoneellidEdit.Password.Length == 0)
             {
                 passWordHint.Visibility = Visibility.Hidden;
             }
@@ -1727,6 +1969,6 @@ namespace TussentijdsProjectYannick
             }
         }
 
-      
+
     }
 }
