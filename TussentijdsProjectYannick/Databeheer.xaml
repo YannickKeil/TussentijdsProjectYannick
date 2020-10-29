@@ -171,51 +171,75 @@
                             </ToggleButton>
                             <ComboBox x:Name="cbEditKlant" SelectionChanged="cbEditKlant_SelectionChanged" IsEnabled="False"/>
                         </WrapPanel>
-                        <WrapPanel Width ="400">
+                        <WrapPanel Width ="460">
+                            <WrapPanel>
                             <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10" >
                                 <TextBox x:Name="txtVoornaamEditKlant" VerticalContentAlignment="Center" LostFocus="txtVoornaamEditKlant_LostFocus" GotFocus="txtVoornaamEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtVoornaamEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Voornaam"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
+                                <Image x:Name="imgVoornaamEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
                                 <TextBox x:Name="txtAchternaamEditKlant" VerticalContentAlignment="Center" LostFocus="txtAchternaamEditKlant_LostFocus" GotFocus="txtAchternaamEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtAchternaamEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Achternaam"/>
                             </Grid>
+                                <Image x:Name="imgAchternaamEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
                         </WrapPanel>
-                        <WrapPanel Width ="400">
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
+                        <WrapPanel Width ="460">
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
                                 <TextBox x:Name="txtStraatnaamEditKlant" VerticalContentAlignment="Center"  LostFocus="txtStraatnaamEditKlant_LostFocus" GotFocus="txtStraatnaamEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtStraatnaamEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Straatnaam"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="80" Height="25" Margin="10">
-                                <TextBox x:Name="txtHuisnummerEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtHuisnummerEditKlant_LostFocus" GotFocus="txtHuisnummerEditKlant_GotFocus"/>
-                                <TextBlock x:Name="txtHuisnummerEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Huisnummer"/>
-                            </Grid>
+                                <Image x:Name="imgStraatnaamEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="80" Height="25" Margin="10">
+                                    <TextBox x:Name="txtHuisnummerEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtHuisnummerEditKlant_LostFocus" GotFocus="txtHuisnummerEditKlant_GotFocus"/>
+                                    <TextBlock x:Name="txtHuisnummerEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Huisnummer"/>
+                                </Grid>
+                                <Image x:Name="imgHuisnummerEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
                             <Grid HorizontalAlignment="Center" Width="80" Height="25" Margin="10">
                                 <TextBox x:Name="txtBusEditKlant" VerticalContentAlignment="Center" LostFocus="txtBusEditKlant_LostFocus" GotFocus="txtBusEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtBusEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Bus"/>
                             </Grid>
                         </WrapPanel>
-                        <WrapPanel Width ="400">
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
+                        <WrapPanel Width ="460">
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
                                 <TextBox x:Name="txtGemeenteEditKlant" VerticalContentAlignment="Center" LostFocus="txtGemeenteEditKlant_LostFocus" GotFocus="txtGemeenteEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtGemeenteEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Gemeente"/>
-                            </Grid>
-                            <Grid HorizontalAlignment="Center" Width="80" Height="25" Margin="10">
+                                </Grid>
+                                <Image x:Name="imgGemeenteEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="80" Height="25" Margin="10">
                                 <TextBox x:Name="txtPostcodeEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtPostcodeEditKlant_LostFocus" GotFocus="txtPostcodeEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtPostcodeEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Postcode"/>
                             </Grid>
+                                <Image x:Name="imgPostcodeEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
                         </WrapPanel>
-                        <WrapPanel Width="400">
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
+                        <WrapPanel Width="460">
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
                                 <TextBox x:Name="txtTelefoonnummerEditKlant" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtTelefoonnummerEditKlant_LostFocus" GotFocus="txtTelefoonnummerEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtTelefoonnummerEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Telefoon nummer"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
+                                <Image x:Name="imgTelefoonnummerEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10">
                                 <TextBox x:Name="txtEmailadresEditKlant" VerticalContentAlignment="Center" LostFocus="txtEmailadresEditKlant_LostFocus" GotFocus="txtEmailadresEditKlant_GotFocus"/>
                                 <TextBlock x:Name="txtEmailadresEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" e-mail"/>
                             </Grid>
+                                <Image x:Name="imgEmailadresEditKlant"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
                         </WrapPanel>
-                        <Grid HorizontalAlignment="Center" Width="380" Height="auto" MinHeight="25" MaxHeight="150" Margin="10">
+                        <Grid HorizontalAlignment="Center" Width="440" Height="auto" MinHeight="25" MaxHeight="150" Margin="10">
                             <TextBox x:Name="txtOpmerkingEditKlant" TextWrapping="Wrap" VerticalContentAlignment="Center" LostFocus="txtOpmerkingEditKlant_LostFocus" GotFocus="txtOpmerkingEditKlant_GotFocus"/>
                             <TextBlock x:Name="txtOpmerkingEditKlantWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Opmerking"/>
                         </Grid>
@@ -434,6 +458,21 @@
                 </TabItem>
                 <TabItem Header="Bestellingen" x:Name="tabBestellingen">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
+                        <ToggleButton x:Name="tbEditBestellingKlantLeverancier" Content="klant/Leverancier" Checked="tbEditBestellingKlantLeverancier_Checked" Unchecked="tbEditBestellingKlantLeverancier_Checked" OpacityMask="{DynamicResource MenuPopupBrush}" Margin="0 10 0 10">
+                            <ToggleButton.Background>
+                                <LinearGradientBrush StartPoint="0,0"
+                                   EndPoint="0,1">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="White"
+                                  Offset="0.0" />
+                                            <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                  Offset="1.0" />
+                                        </GradientStopCollection>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </ToggleButton.Background>
+                        </ToggleButton>
                         <WrapPanel>
                             <ToggleButton x:Name="tbEditBestelling" Content="edit/delete" Checked="tbEditBestelling_Checked" Unchecked="tbEditBestelling_Checked" OpacityMask="{DynamicResource MenuPopupBrush}">
                                 <ToggleButton.Background>
@@ -456,11 +495,11 @@
                         <DatePicker x:Name="dtDatumOpgemaakt"/>
                         <TextBlock Text="Persooneel"/>
                         <ComboBox x:Name="cbPersoneelslidEditBestelling"/>
-                        <TextBlock Text="Leverancier"/>
+                        <TextBlock x:Name="lblCbLeverancierKlantEditBestelling" Text="Leverancier"/>
                         <!--<ToggleButton x:Name="tbKlantLeverancierEditBetselling" Content="Klant"/> -->
-                        <ComboBox x:Name="cbLeverancierEditBestelling"/>
-                        <TextBlock Text="Klant"/>
-                        <ComboBox x:Name="cbKlantEditBestelling"/>
+                        <ComboBox x:Name="cbLeverancierKlantEditBestelling"/>
+                        <!--<TextBlock Text="Klant"/>-->
+                        <!--<ComboBox x:Name="cbLeverancierKlantEditBestelling"/>-->
                         <WrapPanel>
                             <Button x:Name="btnToevoegenBestelling" Click="btnToevoegenBestelling_Click" Content="Toevoegen"/>
                             <Button x:Name="btnEditBestelling" Click="btnEditBestelling_Click" IsEnabled="False" Content="Edit"/>
@@ -470,10 +509,56 @@
                 </TabItem>
                 <TabItem Header="BestellingProducten" x:Name="tabBestellingProducten">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="100">
+                        <ToggleButton x:Name="tbEditBestellingProductKlantLeverancier" Content="Klant/Leverancier" Checked="tbEditBestellingProductKlantLeverancier_Checked" Unchecked="tbEditBestellingProductKlantLeverancier_Checked" OpacityMask="{DynamicResource MenuPopupBrush}">
+                            <ToggleButton.Background>
+                                <LinearGradientBrush StartPoint="0,0"
+                                   EndPoint="0,1">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="White"
+                                  Offset="0.0" />
+                                            <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                  Offset="1.0" />
+                                        </GradientStopCollection>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </ToggleButton.Background>
+                        </ToggleButton>
                         <WrapPanel>
-                            <ToggleButton x:Name="tbEditBestellingProduct" Content="edit/delete" Checked="tbEditBestellingProduct_Checked" Unchecked="tbEditBestellingProduct_Checked" OpacityMask="{DynamicResource MenuPopupBrush}">
-                                <ToggleButton.Background>
-                                    <LinearGradientBrush StartPoint="0,0"
+                            <ComboBox x:Name="cbEditBestellingProduct" SelectionChanged="cbEditBestellingProduct_SelectionChanged" IsEnabled="true" Width="200"/>
+                        </WrapPanel>
+                        <ListView x:Name="lbBestellingenEditBestellingProduct"  Width="auto" Height="200" MaxHeight="200" IsManipulationEnabled="True" SelectionChanged="lbBestellingenEditBestellingProduct_SelectionChanged">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Product" DisplayMemberBinding="{Binding  Naam}" />
+                                    <GridViewColumn Header="Vooraad" DisplayMemberBinding="{Binding Vooraad}" />
+                                    <GridViewColumn Header="Eenheid" DisplayMemberBinding="{Binding Eenheid}" />
+                                    <GridViewColumn Header="Prijs" DisplayMemberBinding="{Binding Prijs}" />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ComboBox x:Name="cbProductenEditBestellingProduct"/>
+                        <WrapPanel  >
+                            <TextBox  x:Name="nudAantalProductenBesteld" Text="1" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="150" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
+                            <StackPanel>
+
+                                <RepeatButton x:Name="btnNudAantalProductenBesteldUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalProductenBesteldUp_Click" ClickMode="Press" OpacityMask="{DynamicResource MenuPopupBrush}" >
+                                    <RepeatButton.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="White"
+                                  Offset="0.0" />
+                                                <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                  Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                    </RepeatButton.Background>
+                                </RepeatButton>
+                                <RepeatButton x:Name="btnNudProductenBesteldDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudProductenBesteldDown_Click" ClickMode="Press" OpacityMask="{DynamicResource MenuPopupBrush}" >
+                                    <RepeatButton.Background>
+                                        <LinearGradientBrush StartPoint="0,0"
                                    EndPoint="0,1">
                                         <LinearGradientBrush.GradientStops>
                                             <GradientStopCollection>
@@ -484,18 +569,8 @@
                                             </GradientStopCollection>
                                         </LinearGradientBrush.GradientStops>
                                     </LinearGradientBrush>
-                                </ToggleButton.Background>
-                            </ToggleButton>
-                            <ComboBox x:Name="cbEditBestellingProduct" SelectionChanged="cbEditBestellingProduct_SelectionChanged" IsEnabled="False"/>
-                        </WrapPanel>
-                        <ComboBox x:Name="cbBestellingenEditBestellingProduct"/>
-                        <ComboBox x:Name="cbProductenEditBestellingProduct"/>
-                        <WrapPanel>
-                            <TextBox x:Name="nudAantalProductenBesteld" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting"/>
-                            <StackPanel>
-
-                                <RepeatButton x:Name="btnNudAantalProductenBesteldUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalProductenBesteldUp_Click" ClickMode="Press" />
-                                <RepeatButton x:Name="btnNudProductenBesteldDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNudProductenBesteldDown_Click" ClickMode="Press" />
+                                    </RepeatButton.Background>
+                                </RepeatButton>
 
                             </StackPanel>
                             <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center"><Run Text="Aantal"/></TextBlock>

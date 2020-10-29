@@ -198,7 +198,7 @@ namespace TussentijdsProjectYannick
 
         private void btnNumDown_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToDecimal(nudAantal.Text) > 0)
+            if (Convert.ToDecimal(nudAantal.Text) > 1)
                 nudAantal.Text = $"{Convert.ToDecimal(nudAantal.Text) - 1}";
         }
         private void btnToevoegenAanList_Click(object sender, RoutedEventArgs e)

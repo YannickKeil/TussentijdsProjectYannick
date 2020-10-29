@@ -41,7 +41,7 @@ namespace TussentijdsProjectYannick
             EditLeverancier();
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
-            EditBestellingProductfillCombobox();
+            EditBestellingProductfillListbox();
             //tbSwitching();
         }
         public Personeelslid Selected { get; set; }
@@ -56,7 +56,7 @@ namespace TussentijdsProjectYannick
             EditLeverancier();
             EditProductenfillCombobox();
             EditBestellingfillCombobox();
-            EditBestellingProductfillCombobox();
+            //EditBestellingProductfillListbox();
             //tbSwitching();
             ReloadTextBoxKlant();
             ReloadTextBoxLeverancier();
@@ -83,9 +83,13 @@ namespace TussentijdsProjectYannick
                 tabKlanten.IsEnabled = false;
                 tabLeverancier.IsEnabled = true;
                 tabProducten.IsEnabled = true;
-                tabBestellingen.IsEnabled = false;
-                tabBestellingProducten.IsEnabled = false;
+                tabBestellingen.IsEnabled = true;
+                tabBestellingProducten.IsEnabled = true;
                 tabJsonProducten.IsEnabled = false;
+                tbEditBestellingKlantLeverancier.IsChecked = true;
+                tbEditBestellingKlantLeverancier.Visibility = Visibility.Hidden;
+                tbEditBestellingProductKlantLeverancier.IsChecked = true;
+                tbEditBestellingProductKlantLeverancier.Visibility = Visibility.Hidden;
             }
             else if (selected.AdminRechtenID == 3)
             {
@@ -96,9 +100,13 @@ namespace TussentijdsProjectYannick
                 tabKlanten.IsEnabled = true;
                 tabLeverancier.IsEnabled = false;
                 tabProducten.IsEnabled = false;
-                tabBestellingen.IsEnabled = false;
-                tabBestellingProducten.IsEnabled = false;
+                tabBestellingen.IsEnabled = true;
+                tabBestellingProducten.IsEnabled = true;
                 tabJsonProducten.IsEnabled = false;
+                tbEditBestellingKlantLeverancier.IsChecked = false;
+                tbEditBestellingKlantLeverancier.Visibility = Visibility.Hidden;
+                tbEditBestellingProductKlantLeverancier.IsChecked = false;
+                tbEditBestellingProductKlantLeverancier.Visibility = Visibility.Hidden;
             }
 
         }
@@ -191,7 +199,7 @@ namespace TussentijdsProjectYannick
                 cbEditProducten.SelectedValuePath = "ProductID";
                 cbEditProducten.ItemsSource = listProducten;
                 cbEditProducten.SelectedIndex = 0;
-                EditBestellingProductfillCombobox();
+                EditBestellingProductfillListbox();
             }
         }
         private void EditProductenfillCombobox()
@@ -216,27 +224,45 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                cbEditBestelling.ItemsSource = null;
-                var listBestellingen = ctx.Bestellings.Select(x => new
+                if (tbEditBestellingKlantLeverancier.IsChecked == true)
                 {
-                    Naam = x.Klant.KlantID +
-                    " " +
-                    x.Klant.Voornaam +
-                    " " +
-                    x.Klant.Achternaam +
-                    " " +
-                    x.Leverancier.LeverancierID +
-                    " " +
-                    x.Leverancier.Contactpersoon +
-                    " " +
-                    x.DatumOpgemaakt,
-                    Id = x.BestellingID
-                }).ToList();
-                cbEditBestelling.DisplayMemberPath = "Naam";
-                cbEditBestelling.SelectedValuePath = "Id";
-                cbEditBestelling.ItemsSource = listBestellingen;
-                cbEditBestelling.SelectedIndex = 0;
-                EditBestellingProductfillCombobox();
+                    cbEditBestelling.ItemsSource = null;
+                    var listBestellingen = ctx.Bestellings.Where(b => b.LeverancierID != null).Select(x => new
+                    {
+                        Naam = x.Leverancier.LeverancierID +
+                        " " +
+                        x.Leverancier.Contactpersoon +
+                        " " +
+                        x.DatumOpgemaakt,
+                        Id = x.BestellingID
+                    }).ToList();
+                    cbEditBestelling.DisplayMemberPath = "Naam";
+                    cbEditBestelling.SelectedValuePath = "Id";
+                    cbEditBestelling.ItemsSource = listBestellingen;
+                    cbEditBestelling.SelectedIndex = 0;
+                    EditBestellingProductfillListbox();
+                }
+                else if (tbEditBestellingKlantLeverancier.IsChecked == false)
+                {
+                    cbEditBestelling.ItemsSource = null;
+                    var listBestellingen = ctx.Bestellings.Where(b => b.KlantID != null).Select(x => new
+                    {
+                        Naam = x.Klant.KlantID +
+                       " " +
+                       x.Klant.Voornaam +
+                       " " +
+                       x.Klant.Achternaam +
+                       " " +
+                       x.DatumOpgemaakt,
+                        Id = x.BestellingID
+                    }).ToList();
+                    cbEditBestelling.DisplayMemberPath = "Naam";
+                    cbEditBestelling.SelectedValuePath = "Id";
+                    cbEditBestelling.ItemsSource = listBestellingen;
+                    cbEditBestelling.SelectedIndex = 0;
+                    EditBestellingProductfillListbox();
+                }
+
             }
         }
         private void EditBestellingfillCombobox()
@@ -249,18 +275,26 @@ namespace TussentijdsProjectYannick
                 cbPersoneelslidEditBestelling.SelectedValuePath = "id";
                 cbPersoneelslidEditBestelling.ItemsSource = listPersoneellid;
                 cbPersoneelslidEditBestelling.SelectedIndex = 0;
-                cbLeverancierEditBestelling.ItemsSource = null;
-                var listLeverancier = ctx.Leveranciers.Select(x => x).ToList();
-                cbLeverancierEditBestelling.DisplayMemberPath = "Contactpersoon";
-                cbLeverancierEditBestelling.SelectedValuePath = "LeverancierID";
-                cbLeverancierEditBestelling.ItemsSource = listLeverancier;
-                cbLeverancierEditBestelling.SelectedIndex = 0;
-                cbKlantEditBestelling.ItemsSource = null;
-                var listKlant = ctx.Klants.Select(x => new { Naam = x.Voornaam + " " + x.Achternaam, Id = x.KlantID }).ToList();
-                cbKlantEditBestelling.DisplayMemberPath = "Naam";
-                cbKlantEditBestelling.SelectedValuePath = "Id";
-                cbKlantEditBestelling.ItemsSource = listKlant;
-                cbKlantEditBestelling.SelectedIndex = 0;
+                if (tbEditBestellingKlantLeverancier.IsChecked == true)
+                {
+                    lblCbLeverancierKlantEditBestelling.Text = "Leverancier";
+                    cbLeverancierKlantEditBestelling.ItemsSource = null;
+                    var listLeverancier = ctx.Leveranciers.Select(x => x).ToList();
+                    cbLeverancierKlantEditBestelling.DisplayMemberPath = "Contactpersoon";
+                    cbLeverancierKlantEditBestelling.SelectedValuePath = "LeverancierID";
+                    cbLeverancierKlantEditBestelling.ItemsSource = listLeverancier;
+                    cbLeverancierKlantEditBestelling.SelectedIndex = 0;
+                }
+                else if (tbEditBestellingKlantLeverancier.IsChecked == false)
+                {
+                    lblCbLeverancierKlantEditBestelling.Text = "Klant";
+                    cbLeverancierKlantEditBestelling.ItemsSource = null;
+                    var listKlant = ctx.Klants.Select(x => new { Naam = x.Voornaam + " " + x.Achternaam, Id = x.KlantID }).ToList();
+                    cbLeverancierKlantEditBestelling.DisplayMemberPath = "Naam";
+                    cbLeverancierKlantEditBestelling.SelectedValuePath = "Id";
+                    cbLeverancierKlantEditBestelling.ItemsSource = listKlant;
+                    cbLeverancierKlantEditBestelling.SelectedIndex = 0;
+                }
 
             }
         }
@@ -268,56 +302,132 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                cbEditBestellingProduct.ItemsSource = null;
-                var listBestellingProducten = ctx.BestellingProducts.Select(x => new
+                if (tbEditBestellingProductKlantLeverancier.IsChecked == true)
                 {
-                    Naam = x.Bestelling.Klant.KlantID +
-                    " " +
-                    x.Bestelling.Klant.Voornaam +
-                    " " +
-                    x.Bestelling.Klant.Achternaam +
-                    " " +
-                    x.Bestelling.DatumOpgemaakt +
-                    " " +
-                    x.Product.Naam +
-                    " " +
-                    x.Product.Eenheid,
-                    Id = x.BestellingID
-                }).ToList();
-                cbEditBestellingProduct.DisplayMemberPath = "Naam";
-                cbEditBestellingProduct.SelectedValuePath = "Id";
-                cbEditBestellingProduct.ItemsSource = listBestellingProducten;
-                cbEditBestellingProduct.SelectedIndex = 0;
+                    cbEditBestellingProduct.ItemsSource = null;
+                    var listBestellingProducten = ctx.BestellingProducts.Where(x => x.Bestelling.LeverancierID != null).Select(x => new
+                    {
+                        Naam = x.BestellingID +
+                          " " +
+                          x.Bestelling.Leverancier.LeverancierID +
+                          " " +
+                          x.Bestelling.Leverancier.Contactpersoon +
+                          " " +
+                          x.Bestelling.DatumOpgemaakt
+                          //" " +
+                          //x.Product.Naam +
+                          //" " +
+                          //x.Product.AantalOpVooraad+
+                          //" "+
+                          //x.Product.Eenheid
+                          ,
+                        Id = x.BestellingID
+                    }).ToList();
+
+                    cbEditBestellingProduct.DisplayMemberPath = "Naam";
+                    cbEditBestellingProduct.SelectedValuePath = "Id";
+                    cbEditBestellingProduct.ItemsSource = listBestellingProducten;
+                    cbEditBestellingProduct.SelectedIndex = 0;
+                }
+                else if (tbEditBestellingProductKlantLeverancier.IsChecked == false)
+                {
+                    var listBestellingProducten = ctx.BestellingProducts.Where(x => x.Bestelling.KlantID != null).Select(x => new
+                    {
+                        Naam = x.BestellingID +
+                        " " +
+                        x.Bestelling.Klant.KlantID +
+                          " " +
+                          x.Bestelling.Klant.Voornaam +
+                          " " +
+                          x.Bestelling.Klant.Achternaam +
+                          " " +
+                          x.Bestelling.DatumOpgemaakt
+                          //" " +
+                          //x.Product.Naam +
+                          //" " +
+                          //x.Product.Eenheid
+                          ,
+                        Id = x.BestellingID
+                    }).ToList();
+
+                    cbEditBestellingProduct.DisplayMemberPath = "Naam";
+                    cbEditBestellingProduct.SelectedValuePath = "Id";
+                    cbEditBestellingProduct.ItemsSource = listBestellingProducten;
+                    cbEditBestellingProduct.SelectedIndex = 0;
+                }
 
             }
         }
-        private void EditBestellingProductfillCombobox()
+        private void EditBestellingProductfillListbox()
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                cbBestellingenEditBestellingProduct.ItemsSource = null;
-                var listBestellingen = ctx.Bestellings.Select(x => new
-                {
-                    Naam = x.Klant.KlantID +
-                    " " +
-                    x.Klant.Voornaam +
-                    " " +
-                    x.Klant.Achternaam +
-                    " " +
-                    x.DatumOpgemaakt,
-                    Id = x.BestellingID
-                }).ToList();
-                cbBestellingenEditBestellingProduct.DisplayMemberPath = "Naam";
-                cbBestellingenEditBestellingProduct.SelectedValuePath = "Id";
-                cbBestellingenEditBestellingProduct.ItemsSource = listBestellingen;
-                cbBestellingenEditBestellingProduct.SelectedIndex = 0;
-                cbProductenEditBestellingProduct.ItemsSource = null;
-                var listProducten = ctx.Products.Select(x => x).ToList();
-                cbProductenEditBestellingProduct.DisplayMemberPath = "Naam";
-                cbProductenEditBestellingProduct.SelectedValuePath = "ProductID";
-                cbProductenEditBestellingProduct.ItemsSource = listProducten;
-                cbProductenEditBestellingProduct.SelectedIndex = 0;
+                if (cbEditBestellingProduct.SelectedValue != null)
 
+                {
+                    if (tbEditBestellingProductKlantLeverancier.IsChecked == true)
+                    {
+                        if (ctx.BestellingProducts.Where(x => x.Bestelling.LeverancierID == (int)cbEditBestellingProduct.SelectedValue) != null)
+                        {
+                            lbBestellingenEditBestellingProduct.ItemsSource = null;
+                            var listBestellingen = ctx.BestellingProducts.Where(x => x.BestellingID == (int)cbEditBestellingProduct.SelectedValue).Select(x => new
+                            {
+                                Naam = x.Product.Naam,
+                                Vooraad = x.Product.AantalOpVooraad,
+                                Eenheid = x.Product.Eenheid,
+                                Prijs = x.Product.AankoopPrijs,
+                                Id = x.BestellingProductID
+                            }).ToList();
+                            //MessageBox.Show("test Leverancier");
+                            lbBestellingenEditBestellingProduct.SelectedValuePath = "Id";
+                            lbBestellingenEditBestellingProduct.ItemsSource = listBestellingen;
+                            cbProductenEditBestellingProduct.ItemsSource = null;
+                            var listProducten = ctx.Products.Select(x => x).ToList();
+                            cbProductenEditBestellingProduct.DisplayMemberPath = "Naam";
+                            cbProductenEditBestellingProduct.SelectedValuePath = "ProductID";
+                            cbProductenEditBestellingProduct.ItemsSource = listProducten;
+                        }
+                        cbProductenEditBestellingProduct.SelectedIndex = 0;
+                    }
+                    else if (tbEditBestellingProductKlantLeverancier.IsChecked == false)
+                    {
+                        if (ctx.BestellingProducts.Where(x => x.BestellingID == (int)cbEditBestellingProduct.SelectedValue) != null)
+                        {
+                            lbBestellingenEditBestellingProduct.ItemsSource = null;
+                            var listBestellingen = ctx.BestellingProducts.Where(x => x.BestellingID == (int)cbEditBestellingProduct.SelectedValue).Select(x => new
+                            {
+                                Naam = x.Product.Naam,
+                                Vooraad = x.Product.AantalOpVooraad,
+                                Eenheid = x.Product.Eenheid,
+                                Prijs = x.Product.AankoopPrijs,
+                                Id = x.BestellingProductID
+                            }).ToList();
+                            //MessageBox.Show("test klant");
+                            lbBestellingenEditBestellingProduct.SelectedValuePath = "Id";
+                            lbBestellingenEditBestellingProduct.ItemsSource = listBestellingen;
+
+                            cbProductenEditBestellingProduct.ItemsSource = null;
+                            var listProducten = ctx.Products.Select(x => x).ToList();
+                            cbProductenEditBestellingProduct.DisplayMemberPath = "Naam";
+                            cbProductenEditBestellingProduct.SelectedValuePath = "ProductID";
+                            cbProductenEditBestellingProduct.ItemsSource = listProducten;
+                            cbProductenEditBestellingProduct.SelectedIndex = 0;
+                        }
+                    }
+
+
+                }
+
+                else
+                {
+                    lbBestellingenEditBestellingProduct.ItemsSource = null;
+                    cbProductenEditBestellingProduct.ItemsSource = null;
+                    var listProducten = ctx.Products.Select(x => x).ToList();
+                    cbProductenEditBestellingProduct.DisplayMemberPath = "Naam";
+                    cbProductenEditBestellingProduct.SelectedValuePath = "ProductID";
+                    cbProductenEditBestellingProduct.ItemsSource = listProducten;
+                    cbProductenEditBestellingProduct.SelectedIndex = 0;
+                }
             }
         }
         //private void btnToevoegenPersoneellid_Click(object sender, RoutedEventArgs e)
@@ -654,7 +764,7 @@ namespace TussentijdsProjectYannick
             if (check)
             {
                 imgAdminRechtenToevoegen.Visibility = Visibility.Hidden;
-               
+
                 if (MessageBox.Show("Ben je zeker dat je rechten wil toevoegen?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
@@ -667,7 +777,7 @@ namespace TussentijdsProjectYannick
                     txtAdminRechtenToevoegenWordHint.Visibility = Visibility.Visible;
                 }
 
-                
+
             }
         }
         private void btnEditAdminRechten_Click(object sender, RoutedEventArgs e)
@@ -1243,6 +1353,11 @@ namespace TussentijdsProjectYannick
             MessageBox.Show("Deleted");
             EditProducten();
         }
+        private void tbEditBestellingKlantLeverancier_Checked(object sender, RoutedEventArgs e)
+        {
+            EditBestelling();
+            EditBestellingfillCombobox();
+        }
 
         private void tbEditBestelling_Checked(object sender, RoutedEventArgs e)
         {
@@ -1254,7 +1369,7 @@ namespace TussentijdsProjectYannick
                 cbEditBestelling.IsEnabled = true;
                 btnToevoegenBestelling.IsEnabled = false;
             }
-            else if (tbEditProducten.IsChecked == false)
+            else if (tbEditBestelling.IsChecked == false)
             {
                 btnEditBestelling.IsEnabled = false;
                 btnDeleteBestelling.IsEnabled = false;
@@ -1278,8 +1393,14 @@ namespace TussentijdsProjectYannick
                         dtDatumOpgemaakt.SelectedDate = selectedBestelling.DatumOpgemaakt;
                         dtDatumOpgemaakt.DisplayDate = selectedBestelling.DatumOpgemaakt;
                         cbPersoneelslidEditBestelling.SelectedValue = selectedBestelling.PersoneelslidID;
-                        cbLeverancierEditBestelling.SelectedValue = selectedBestelling.LeverancierID;
-                        cbKlantEditBestelling.SelectedValue = selectedBestelling.KlantID;
+                        if (tbEditBestellingKlantLeverancier.IsChecked == true)
+                        {
+                            cbLeverancierKlantEditBestelling.SelectedValue = selectedBestelling.LeverancierID;
+                        }
+                        else if (tbEditBestellingKlantLeverancier.IsChecked == false)
+                        {
+                            cbLeverancierKlantEditBestelling.SelectedValue = selectedBestelling.KlantID;
+                        }
                     }
                 }
             }
@@ -1289,13 +1410,24 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                ctx.Bestellings.Add(new Bestelling
+                if (tbEditBestellingKlantLeverancier.IsChecked == true)
                 {
-                    DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate,
-                    PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue,
-                    LeverancierID = (int)cbLeverancierEditBestelling.SelectedValue,
-                    KlantID = (int)cbKlantEditBestelling.SelectedValue
-                });
+                    ctx.Bestellings.Add(new Bestelling
+                    {
+                        DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate,
+                        PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue,
+                        LeverancierID = (int)cbLeverancierKlantEditBestelling.SelectedValue
+                    });
+                }
+                else if (tbEditBestellingKlantLeverancier.IsChecked == false)
+                {
+                    ctx.Bestellings.Add(new Bestelling
+                    {
+                        DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate,
+                        PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue,
+                        KlantID = (int)cbLeverancierKlantEditBestelling.SelectedValue
+                    });
+                }
                 ctx.SaveChanges();
             }
             MessageBox.Show("Toevoegen");
@@ -1309,8 +1441,14 @@ namespace TussentijdsProjectYannick
                 var selectedBestelling = ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue);
                 selectedBestelling.DatumOpgemaakt = (DateTime)dtDatumOpgemaakt.SelectedDate;
                 selectedBestelling.PersoneelslidID = (int)cbPersoneelslidEditBestelling.SelectedValue;
-                selectedBestelling.LeverancierID = (int)cbLeverancierEditBestelling.SelectedValue;
-                selectedBestelling.KlantID = (int)cbKlantEditBestelling.SelectedValue;
+                if (tbEditBestellingKlantLeverancier.IsChecked == true)
+                {
+                    selectedBestelling.LeverancierID = (int)cbLeverancierKlantEditBestelling.SelectedValue;
+                }
+                else if (tbEditBestellingKlantLeverancier.IsChecked == false)
+                {
+                    selectedBestelling.KlantID = (int)cbLeverancierKlantEditBestelling.SelectedValue;
+                }
                 ctx.SaveChanges();
             }
             MessageBox.Show("Edited");
@@ -1321,66 +1459,72 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
+                var CanceledOrder = ctx.BestellingProducts.Where(x => x.BestellingID == (int)cbEditBestelling.SelectedValue);
+                foreach (var item in CanceledOrder)
+                {
+                    if (item.Bestelling.Klant == null)
+                    {
+                        item.Product.AantalOpVooraad += item.AantalProtuctBesteld;
+                    }
+                    else if (item.Bestelling.Leverancier == null)
+                    {
+                        item.Product.AantalOpVooraad -= item.AantalProtuctBesteld;
+                    }
+
+                }
+                ctx.BestellingProducts.RemoveRange(CanceledOrder);
                 ctx.Bestellings.Remove(ctx.Bestellings.Single(b => b.BestellingID == (int)cbEditBestelling.SelectedValue));
                 ctx.SaveChanges();
             }
             MessageBox.Show("Deleted");
             EditProducten();
         }
-
-        private void tbEditBestellingProduct_Checked(object sender, RoutedEventArgs e)
+        private void tbEditBestellingProductKlantLeverancier_Checked(object sender, RoutedEventArgs e)
         {
-            if (tbEditBestelling.IsChecked == true)
-            {
-                EditBestellingProduct();
-                btnEditBestellingProduct.IsEnabled = true;
-                btnDeleteBestellingProduct.IsEnabled = true;
-                cbEditBestellingProduct.IsEnabled = true;
-                btnToevoegenBestellingProduct.IsEnabled = false;
-                nudAantalProductenBesteld.Text = "0";
-            }
-            else if (tbEditProducten.IsChecked == false)
-            {
-                btnEditBestellingProduct.IsEnabled = false;
-                btnDeleteBestellingProduct.IsEnabled = false;
-                cbEditBestellingProduct.IsEnabled = false;
-                btnToevoegenBestellingProduct.IsEnabled = true;
-                EditBestellingProductfillCombobox();
-            }
-
+            EditBestellingProduct();
+            EditBestellingProductfillListbox();
         }
+
 
         private void cbEditBestellingProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            EditBestellingProductfillListbox();
+            //using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            //{
+            //    if (cbEditBestellingProduct.SelectedValue != null)
+            //    {
+            //        if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue) != null)
+            //        {
+            //            var selectedBestellingProduct = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
+            //            lbBestellingenEditBestellingProduct.SelectedValue = selectedBestellingProduct.BestellingID;
+            //            cbProductenEditBestellingProduct.SelectedValue = selectedBestellingProduct.ProductID;
+
+            //        }
+            //    }
+            //}
+        }
+        private void lbBestellingenEditBestellingProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                if (cbEditBestellingProduct.SelectedValue != null)
-                {
-                    if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue) != null)
-                    {
-                        var selectedBestellingProduct = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
-                        cbBestellingenEditBestellingProduct.SelectedValue = selectedBestellingProduct.BestellingID;
-                        cbProductenEditBestellingProduct.SelectedValue = selectedBestellingProduct.ProductID;
-
-                    }
-                }
+                cbProductenEditBestellingProduct.SelectedValue = ctx.BestellingProducts.Single(x => x.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).ProductID;
             }
-        }
 
+        }
         private void btnToevoegenBestellingProduct_Click(object sender, RoutedEventArgs e)
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 ctx.BestellingProducts.Add(new BestellingProduct
                 {
-                    BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue,
+                    BestellingID = (int)cbEditBestellingProduct.SelectedValue,
                     ProductID = (int)cbProductenEditBestellingProduct.SelectedValue,
                     AantalProtuctBesteld = Convert.ToInt32(nudAantalProductenBesteld.Text)
 
                 });
-                if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).LeverancierID == null)
+                if (ctx.Bestellings.Single(b => b.BestellingID == (int)lbBestellingenEditBestellingProduct.SelectedValue).LeverancierID == null)
                 { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad -= Convert.ToInt32(nudAantalProductenBesteld.Text); }
-                else if (ctx.Bestellings.Single(b => b.BestellingID == (int)cbBestellingenEditBestellingProduct.SelectedValue).KlantID == null)
+                else if (ctx.Bestellings.Single(b => b.BestellingID == (int)lbBestellingenEditBestellingProduct.SelectedValue).KlantID == null)
                 { ctx.Products.Single(p => p.ProductID == (int)cbProductenEditBestellingProduct.SelectedValue).AantalOpVooraad += Convert.ToInt32(nudAantalProductenBesteld.Text); }
 
                 ctx.SaveChanges();
@@ -1393,13 +1537,13 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var selectedBestelling = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue);
-                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
-                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += selectedBestelling.AantalProtuctBesteld - Convert.ToInt32(nudAantalProductenBesteld.Text); }
-                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
+                var selectedBestelling = ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue);
+                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += selectedBestelling.AantalProtuctBesteld - Convert.ToInt32(nudAantalProductenBesteld.Text); }
+                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
                 { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= selectedBestelling.AantalProtuctBesteld - Convert.ToInt32(nudAantalProductenBesteld.Text); }
 
-                selectedBestelling.BestellingID = (int)cbBestellingenEditBestellingProduct.SelectedValue;
+                selectedBestelling.BestellingID = (int)lbBestellingenEditBestellingProduct.SelectedValue;
                 selectedBestelling.ProductID = (int)cbProductenEditBestellingProduct.SelectedValue;
                 selectedBestelling.AantalProtuctBesteld = Convert.ToInt32(nudAantalProductenBesteld.Text);
                 ctx.SaveChanges();
@@ -1412,10 +1556,10 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
-                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
-                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
-                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
+                if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).Bestelling.LeverancierID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad += ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
+                else if (ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).Bestelling.KlantID == null)
+                { ctx.Products.Single(p => p.ProductID == ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)lbBestellingenEditBestellingProduct.SelectedValue).ProductID).AantalOpVooraad -= ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue).AantalProtuctBesteld; }
 
 
                 ctx.BestellingProducts.Remove(ctx.BestellingProducts.Single(bp => bp.BestellingProductID == (int)cbEditBestellingProduct.SelectedValue));
@@ -1433,7 +1577,7 @@ namespace TussentijdsProjectYannick
 
         private void btnNudProductenBesteldDown_Click(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToDecimal(nudAantalProductenBesteld.Text) > 0)
+            if (Convert.ToDecimal(nudAantalProductenBesteld.Text) > 1)
                 nudAantalProductenBesteld.Text = $"{Convert.ToDecimal(nudAantalProductenBesteld.Text) - 1}";
         }
         public class JsonProductenLeverancier
@@ -1971,4 +2115,5 @@ namespace TussentijdsProjectYannick
 
 
     }
+
 }

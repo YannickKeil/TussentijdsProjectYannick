@@ -22,11 +22,39 @@
             <WrapPanel HorizontalAlignment="Center">
                 <ComboBox x:Name="cbProducten" Margin="5" Height="30"/>
                 <WrapPanel Margin="5" VerticalAlignment="Center">
-                    <TextBox x:Name="nudAantal" Text="0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" />
+                    <TextBox x:Name="nudAantal" Text="1" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="TextBox_PreviewTextInput" DataObject.Pasting="TextBox_Pasting" />
                     <StackPanel>
-                        <RepeatButton x:Name="btnNumUp" Content="⮝" FontSize="7" Height="15" Width="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNumUp_Click" ClickMode="Press" Background="#FF99A1DE" OpacityMask="{DynamicResource MenuPopupBrush}"/>
+                        <RepeatButton x:Name="btnNumUp" Content="⮝" FontSize="7" Height="15" Width="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNumUp_Click" ClickMode="Press" OpacityMask="{DynamicResource MenuPopupBrush}">
+                        <RepeatButton.Background>
+                            <LinearGradientBrush StartPoint="0,0"
+                                   EndPoint="0,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="White"
+                                  Offset="0.0" />
+                                        <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                  Offset="1.0" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </RepeatButton.Background>
+                        </RepeatButton>
 
-                        <RepeatButton x:Name="btnNumDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNumDown_Click" ClickMode="Press" Background="#FF99A1DE" OpacityMask="{DynamicResource MenuPopupBrush}"/>
+                        <RepeatButton x:Name="btnNumDown" Content="⮟" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" Click="btnNumDown_Click" ClickMode="Press" OpacityMask="{DynamicResource MenuPopupBrush}">
+                            <RepeatButton.Background>
+                                <LinearGradientBrush StartPoint="0,0"
+                                   EndPoint="0,1">
+                                    <LinearGradientBrush.GradientStops>
+                                        <GradientStopCollection>
+                                            <GradientStop Color="White"
+                                  Offset="0.0" />
+                                            <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                  Offset="1.0" />
+                                        </GradientStopCollection>
+                                    </LinearGradientBrush.GradientStops>
+                                </LinearGradientBrush>
+                            </RepeatButton.Background>
+                        </RepeatButton>
                     </StackPanel>
                     <TextBlock x:Name="txtEenheid" VerticalAlignment="Center"/>
                 </WrapPanel>
