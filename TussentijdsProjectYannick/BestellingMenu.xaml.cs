@@ -205,10 +205,14 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbProducten.SelectedValue);
-                AantalProductBesteling productVoorList = new AantalProductBesteling(selectedProduct.ProductID, selectedProduct.Naam, Convert.ToInt32(nudAantal.Text), selectedProduct.Eenheid);
-                gekozenProducten.Add(productVoorList);
-                LoadListBox();
+                if (Convert.ToInt32(nudAantal.Text) != 0)
+                {
+                    var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbProducten.SelectedValue);
+                    AantalProductBesteling productVoorList = new AantalProductBesteling(selectedProduct.ProductID, selectedProduct.Naam, Convert.ToInt32(nudAantal.Text), selectedProduct.Eenheid);
+                    gekozenProducten.Add(productVoorList);
+                    LoadListBox();
+                }
+                else { nudAantal.ToolTip = "je kan miet nul items toevoegen."; }
             }
 
         }
@@ -223,62 +227,68 @@ namespace TussentijdsProjectYannick
         {
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                var bestelling = ctx.Bestellings.FirstOrDefault();
-                if ((bool)tbLeverancierKlant.IsChecked)
+                if (gekozenProducten.Count != 0)
                 {
-                    bestelling = ctx.Bestellings.Add(new Bestelling
-                    {
-                        DatumOpgemaakt = DateTime.Now,
-                        PersoneelslidID = Selected.PersoneelslidID,
-                        LeverancierID = (int)cbLeveranciers.SelectedValue,
-                    });
-                    MessageBox.Show("Leverancier");
-                }
-                else if (!(bool)tbLeverancierKlant.IsChecked)
-                {
-                    bestelling = ctx.Bestellings.Add(new Bestelling
-                    {
-                        DatumOpgemaakt = DateTime.Now,
-                        PersoneelslidID = Selected.PersoneelslidID,
-                        KlantID = (int)cbKlants.SelectedValue,
-                    });
-                    MessageBox.Show("klant");
-                }
-                else
-                {
-                    MessageBox.Show("Oops somthing went wrong. Please contact a dev.");
-                    return;
-                }
-                ctx.SaveChanges();
-                MessageBox.Show($"{bestelling.BestellingID} {bestelling.DatumOpgemaakt} {bestelling.KlantID}");
 
-                foreach (var item in gekozenProducten)
-                {
-                    ctx.BestellingProducts.Add(new BestellingProduct
-                    {
-                        BestellingID = bestelling.BestellingID,
-                        ProductID = item.ProductIDAPB,
-                        AantalProtuctBesteld = item.AantalGekozenProductAPB
-                    });
+
+                    var bestelling = ctx.Bestellings.FirstOrDefault();
                     if ((bool)tbLeverancierKlant.IsChecked)
                     {
-                        ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad += item.AantalGekozenProductAPB;
-                        MessageBox.Show("Leverancier2");
+                        bestelling = ctx.Bestellings.Add(new Bestelling
+                        {
+                            DatumOpgemaakt = DateTime.Now,
+                            PersoneelslidID = Selected.PersoneelslidID,
+                            LeverancierID = (int)cbLeveranciers.SelectedValue,
+                        });
+                        MessageBox.Show("Leverancier");
                     }
                     else if (!(bool)tbLeverancierKlant.IsChecked)
                     {
-                        ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad -= item.AantalGekozenProductAPB;
-                        MessageBox.Show("klant2");
+                        bestelling = ctx.Bestellings.Add(new Bestelling
+                        {
+                            DatumOpgemaakt = DateTime.Now,
+                            PersoneelslidID = Selected.PersoneelslidID,
+                            KlantID = (int)cbKlants.SelectedValue,
+                        });
+                        MessageBox.Show("klant");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Oops somthing went wrong. Please contact a dev.");
+                        return;
                     }
                     ctx.SaveChanges();
-                }
-                if (!(bool)tbLeverancierKlant.IsChecked)
-                {
-                    FactuurKlant(bestelling.BestellingID);
-                }
+                    MessageBox.Show($"{bestelling.BestellingID} {bestelling.DatumOpgemaakt} {bestelling.KlantID}");
 
+                    foreach (var item in gekozenProducten)
+                    {
+                        ctx.BestellingProducts.Add(new BestellingProduct
+                        {
+                            BestellingID = bestelling.BestellingID,
+                            ProductID = item.ProductIDAPB,
+                            AantalProtuctBesteld = item.AantalGekozenProductAPB
+                        });
+                        if ((bool)tbLeverancierKlant.IsChecked)
+                        {
+                            ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad += item.AantalGekozenProductAPB;
+                            MessageBox.Show("Leverancier2");
+                        }
+                        else if (!(bool)tbLeverancierKlant.IsChecked)
+                        {
+                            ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad -= item.AantalGekozenProductAPB;
+                            MessageBox.Show("klant2");
+                        }
+                        ctx.SaveChanges();
+                    }
+                    if (!(bool)tbLeverancierKlant.IsChecked)
+                    {
+                        FactuurKlant(bestelling.BestellingID);
+                    }
+
+                    this.DialogResult = true;
+                }
+                else { lbProductenBestelling.ToolTip = "Je Wagenlijst is leeg"; }
             }
-            this.DialogResult = true;
         }
         private void FactuurKlant(int selectedBestellingID)
         {
@@ -569,7 +579,7 @@ namespace TussentijdsProjectYannick
         }
         private void btnCancelBestelling_Click(object sender, RoutedEventArgs e)
         {
-            CreateDocument();
+            //CreateDocument();
             this.DialogResult = false;
         }
         private void CreatePDF()

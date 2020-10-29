@@ -287,41 +287,65 @@
                             </ToggleButton>
                             <ComboBox x:Name="cbEditLeverancier" SelectionChanged="cbEditLeverancier_SelectionChanged" IsEnabled="False" Margin="10"/>
                         </WrapPanel>
-                        <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
+                        <WrapPanel>
+                            <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
                             <TextBox x:Name="txtContactpersoonEditLeverancier" VerticalContentAlignment="Center" LostFocus="txtContactpersoonEditLeverancier_LostFocus" GotFocus="txtContactpersoonEditLeverancier_GotFocus"/>
                             <TextBlock x:Name="txtContactpersoonEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Contactpersoon"/>
                         </Grid>
-                        <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
+                            <Image x:Name="imgContactpersoonEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
                             <TextBox x:Name="txtTelefoonnummerEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtTelefoonnummerEditLeverancier_LostFocus" GotFocus="txtTelefoonnummerEditLeverancier_GotFocus"/>
                             <TextBlock x:Name="txtTelefoonnummerEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Telefoon nummer"/>
-                        </Grid>
-                        <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
+                            </Grid>
+                            <Image x:Name="imgTelefoonnummerEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                        </WrapPanel>
+                        <WrapPanel>
+                            <Grid HorizontalAlignment="Center" Width="400" Height="25" Margin="10" >
                             <TextBox x:Name="txtEmailadresEditLeverancier" VerticalContentAlignment="Center" LostFocus="txtEmailadresEditLeverancier_LostFocus" GotFocus="txtEmailadresEditLeverancier_GotFocus"/>
                             <TextBlock x:Name="txtEmailadresEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" e-mail"/>
                         </Grid>
-                        <WrapPanel Width="420" >
+                            <Image x:Name="imgEmailadresEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                        </WrapPanel>
+                        
+                            <WrapPanel Width="480" >
+                                <WrapPanel>
                             <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
                                 <TextBox x:Name="txtStraatnaamEditLeverancier" VerticalContentAlignment="Center" LostFocus="txtStraatnaamEditLeverancier_LostFocus" GotFocus="txtStraatnaamEditLeverancier_GotFocus"/>
                                 <TextBlock x:Name="txtStraatnaamEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Straatnaam"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="75" Height="25" Margin="10" >
+                                <Image x:Name="imgStraatnaamEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="75" Height="25" Margin="10" >
                                 <TextBox x:Name="txtHuisnummerEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtHuisnummerEditLeverancier_LostFocus" GotFocus="txtHuisnummerEditLeverancier_GotFocus"/>
                                 <TextBlock x:Name="txtHuisnummerEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Huisnummer"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="75" Height="25" Margin="10" >
+                                <Image x:Name="imgHuisnummerEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            
+                                <Grid HorizontalAlignment="Center" Width="75" Height="25" Margin="10" >
                                 <TextBox x:Name="txtBusEditLeverancier" VerticalContentAlignment="Center" LostFocus="txtBusEditLeverancier_LostFocus" GotFocus="txtBusEditLeverancier_GotFocus"/>
                                 <TextBlock x:Name="txtBusEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Bus"/>
                             </Grid>
+                                
                         </WrapPanel>
-                        <WrapPanel Width="420">
-                            <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
+                        <WrapPanel Width="480">
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
                                 <TextBox x:Name="txtGemeenteEditLeverancier" VerticalContentAlignment="Center" LostFocus="txtGemeenteEditLeverancier_LostFocus" GotFocus="txtGemeenteEditLeverancier_GotFocus"/>
                                 <TextBlock x:Name="txtGemeenteEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Gemeente"/>
                             </Grid>
-                            <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10" >
+                                <Image x:Name="imgGemeenteEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Grid HorizontalAlignment="Center" Width="180" Height="25" Margin="10" >
                                 <TextBox x:Name="txtPostcodeEditLeverancier" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtPostcodeEditLeverancier_LostFocus" GotFocus="txtPostcodeEditLeverancier_GotFocus"/>
                                 <TextBlock x:Name="txtPostcodeEditLeverancierWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Postcode"/>
                             </Grid>
+                                <Image x:Name="imgPostcodeEditLeverancier"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                            </WrapPanel>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center">
                             <Button x:Name="btnToevoegenLeverancier" Click="btnToevoegenLeverancier_Click" Margin="10" Content="Toevoegen"/>
@@ -350,27 +374,37 @@
                             </ToggleButton>
                             <ComboBox x:Name="cbEditProducten" SelectionChanged="cbEditProducten_SelectionChanged" IsEnabled="False" Margin="10"/>
                         </WrapPanel>
-                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
+                        <WrapPanel>
+                            <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
                             <TextBox x:Name="txtNaamEditProducten" VerticalContentAlignment="Center" LostFocus="txtNaamEditProducten_LostFocus" GotFocus="txtNaamEditProducten_GotFocus"/>
                             <TextBlock x:Name="txtNaamEditProductenWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Naam"/>
                         </Grid>
-                        <WrapPanel Width="200" Margin="10">
+                            <Image x:Name="imgNaamEditProducten"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                        </WrapPanel>
+                        
+                        
+                        <WrapPanel Width="240" Margin="10">
                             <Grid HorizontalAlignment="Center" Width="100" Height="25" >
                                 <TextBox x:Name="txtMargeEditProducten" PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtMargeEditProducten_LostFocus" GotFocus="txtMargeEditProducten_GotFocus"/>
                                 <TextBlock x:Name="txtMargeEditProductenWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Marge"/>
                             </Grid>
                             <TextBlock VerticalAlignment="Center"><Run Text="%"/></TextBlock>
+                            <Image x:Name="imgMargeEditProducten"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
                         </WrapPanel>
-                        <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
+                        <WrapPanel>
+                            <Grid HorizontalAlignment="Center" Width="200" Height="25" Margin="10" >
                             <TextBox x:Name="txtEenheidEditProducten" VerticalContentAlignment="Center" LostFocus="txtEenheidEditProducten_LostFocus" GotFocus="txtEenheidEditProducten_GotFocus" />
                             <TextBlock x:Name="txtEenheidEditProductenWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" Eenheid"/>
                         </Grid>
-                        <WrapPanel Width="200" Margin="10">
+                            <Image x:Name="imgEenheidEditProducten"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
+                        </WrapPanel>
+                        <WrapPanel Width="240" Margin="10">
                             <Grid HorizontalAlignment="Center" Width="100" Height="25" >
                                 <TextBox x:Name="txtBTWEditProducten"  PreviewTextInput="txtHuisnummerKlantToevoegen_PreviewTextInput" DataObject.Pasting="txtHuisnummerKlantToevoegen_Pasting" VerticalContentAlignment="Center" LostFocus="txtBTWEditProducten_LostFocus" GotFocus="txtBTWEditProducten_GotFocus"/>
                                 <TextBlock x:Name="txtBTWEditProductenWordHint" VerticalAlignment="Center" IsHitTestVisible="False" Foreground="Gray"  Text=" BTW"/>
                             </Grid>
                             <TextBlock VerticalAlignment="Center"><Run Text="%"/></TextBlock>
+                            <Image x:Name="imgBTWEditProducten"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
                         </WrapPanel>
                         <ComboBox x:Name="cbLeverancierEditProducten" Margin="10"/>
                         <ComboBox x:Name="cbCategorieEditProducten" Margin="10"/>
@@ -409,10 +443,12 @@
                                     </RepeatButton.Background>
                                 </RepeatButton>
                             </StackPanel>
+                            
                             <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center"><Run Text="Aantal"/></TextBlock>
+                            <Image x:Name="imgAantalOpVooraadProducten"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
                         </WrapPanel>
                         <WrapPanel Margin="10">
-                            <TextBox x:Name="nudAankoopPrijs" Text="0.00" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="nudAankoopPrijs_PreviewTextInput" DataObject.Pasting="nudAankoopPrijs_Pasting"/>
+                            <TextBox x:Name="nudAankoopPrijs" Text="0,00" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Width="auto" MaxWidth="100" PreviewTextInput="nudAankoopPrijs_PreviewTextInput" DataObject.Pasting="nudAankoopPrijs_Pasting"/>
                             <StackPanel>
 
                                 <RepeatButton x:Name="btnNudAankoopPrijsProductenUp" Content="⮝" FontSize="7" Height="15" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center" Click="btnNudAantalOpVooraadProductenUp_Click" ClickMode="Press" OpacityMask="{DynamicResource MenuPopupBrush}">
@@ -448,6 +484,7 @@
                                 </RepeatButton>
                             </StackPanel>
                             <TextBlock HorizontalAlignment="Center"  VerticalAlignment="Center"><Run Text="Aankoop Prijs"/></TextBlock>
+                            <Image x:Name="imgAankoopPrijs"  Source="cross-mark.png" Height="25" Visibility="Hidden"/>
                         </WrapPanel>
                         <WrapPanel HorizontalAlignment="Center">
                             <Button x:Name="btnToevoegenProducten" Click="btnToevoegenProducten_Click" Margin="10" Content="Toevoegen"/>

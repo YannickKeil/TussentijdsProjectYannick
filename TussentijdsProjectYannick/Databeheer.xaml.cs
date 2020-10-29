@@ -971,40 +971,98 @@ namespace TussentijdsProjectYannick
         }
         private void btnToevoegenKlant_Click(object sender, RoutedEventArgs e)
         {
-            string bus = "";
-            if (txtBusEditKlant.Text != "Bus")
-            { bus = txtBusEditKlant.Text; }
-            string opmerking = "";
-            if (txtOpmerkingEditKlant.Text != "Opmerking")
-            { opmerking = txtOpmerkingEditKlant.Text; }
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtVoornaamEditKlant.Text == "")
             {
-                ctx.Klants.Add(new Klant
+                check = false;
+                txtVoornaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgVoornaamEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtAchternaamEditKlant.Text == "")
+            {
+                check = false;
+                txtAchternaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgAchternaamEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtStraatnaamEditKlant.Text == "")
+            {
+                check = false;
+                txtStraatnaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgStraatnaamEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtHuisnummerEditKlant.Text == "")
+            {
+                check = false;
+                txtHuisnummerEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgHuisnummerEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtGemeenteEditKlant.Text == "")
+            {
+                check = false;
+                txtGemeenteEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgGemeenteEditKlant.Visibility = Visibility.Visible;
+            }
+             if (txtPostcodeEditKlant.Text == "")
+            {
+                check = false;
+                txtPostcodeEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgPostcodeEditKlant.Visibility = Visibility.Visible;
+            }
+             if (txtTelefoonnummerEditKlant.Text == "")
+            {
+                check = false;
+                txtTelefoonnummerEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgTelefoonnummerEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtEmailadresEditKlant.Text == "")
+            {
+                check = false;
+                txtEmailadresEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgEmailadresEditKlant.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgVoornaamEditKlant.Visibility =
+                imgAchternaamEditKlant.Visibility =
+                imgStraatnaamEditKlant.Visibility =
+                imgHuisnummerEditKlant.Visibility =
+                imgGemeenteEditKlant.Visibility =
+            imgPostcodeEditKlant.Visibility =
+                imgTelefoonnummerEditKlant.Visibility =
+                imgEmailadresEditKlant.Visibility = Visibility.Hidden;
+
+
+
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
                 {
-                    Voornaam = txtVoornaamEditKlant.Text,
-                    Achternaam = txtAchternaamEditKlant.Text,
-                    Straatnaam = txtStraatnaamEditKlant.Text,
-                    Huisnummer = Convert.ToInt32(txtHuisnummerEditKlant.Text),
-                    Bus = bus,
-                    Postcode = txtPostcodeEditKlant.Text,
-                    Gemeente = txtGemeenteEditKlant.Text,
-                    Telefoonnummer = txtTelefoonnummerEditKlant.Text,
-                    Emailadres = txtEmailadresEditKlant.Text,
-                    AangemaaktOp = DateTime.Now,
-                    Opmerking = opmerking
-                });
-                ctx.SaveChanges();
-                MessageBox.Show("Toegevoegd");
-                EditKlant();
-                ReloadTextBoxKlant();
-                if (Selected == null)
-                {
-                    this.DialogResult = true;
+                    ctx.Klants.Add(new Klant
+                    {
+                        Voornaam = txtVoornaamEditKlant.Text,
+                        Achternaam = txtAchternaamEditKlant.Text,
+                        Straatnaam = txtStraatnaamEditKlant.Text,
+                        Huisnummer = Convert.ToInt32(txtHuisnummerEditKlant.Text),
+                        Bus = txtBusEditKlant.Text,
+                        Postcode = txtPostcodeEditKlant.Text,
+                        Gemeente = txtGemeenteEditKlant.Text,
+                        Telefoonnummer = txtTelefoonnummerEditKlant.Text,
+                        Emailadres = txtEmailadresEditKlant.Text,
+                        AangemaaktOp = DateTime.Now,
+                        Opmerking = txtOpmerkingEditKlant.Text
+                    });
+                    ctx.SaveChanges();
+                    MessageBox.Show("Toegevoegd");
+                    EditKlant();
+                    ReloadTextBoxKlant();
+                    if (Selected == null)
+                    {
+                        this.DialogResult = true;
+                    }
                 }
             }
         }
         private void cbEditKlant_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
                 if (cbEditKlant.SelectedValue != null)
@@ -1034,26 +1092,84 @@ namespace TussentijdsProjectYannick
 
         private void btnEditKlant_Click(object sender, RoutedEventArgs e)
         {
-            string bus = "";
-            if (txtBusEditKlant.Text != "Bus")
-            { bus = txtBusEditKlant.Text; }
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtVoornaamEditKlant.Text == "")
             {
-                var selectedKlant = ctx.Klants.Single(k => k.KlantID == (int)cbEditKlant.SelectedValue);
-                selectedKlant.Voornaam = txtVoornaamEditKlant.Text;
-                selectedKlant.Achternaam = txtAchternaamEditKlant.Text;
-                selectedKlant.Straatnaam = txtStraatnaamEditKlant.Text;
-                selectedKlant.Huisnummer = Convert.ToInt32(txtHuisnummerEditKlant.Text);
-                selectedKlant.Bus = bus;
-                selectedKlant.Postcode = txtPostcodeEditKlant.Text;
-                selectedKlant.Gemeente = txtGemeenteEditKlant.Text;
-                selectedKlant.Telefoonnummer = txtTelefoonnummerEditKlant.Text;
-                selectedKlant.Emailadres = txtEmailadresEditKlant.Text;
-                selectedKlant.Opmerking = txtOpmerkingEditKlant.Text;
-                ctx.SaveChanges();
+                check = false;
+                txtVoornaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgVoornaamEditKlant.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Edited");
-            EditKlant();
+            if (txtAchternaamEditKlant.Text == "")
+            {
+                check = false;
+                txtAchternaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgAchternaamEditKlant.Visibility = Visibility.Visible;
+            }
+             if (txtStraatnaamEditKlant.Text == "")
+            {
+                check = false;
+                txtStraatnaamEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgStraatnaamEditKlant.Visibility = Visibility.Visible;
+            }
+             if (txtHuisnummerEditKlant.Text == "")
+            {
+                check = false;
+                txtHuisnummerEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgHuisnummerEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtGemeenteEditKlant.Text == "")
+            {
+                check = false;
+                txtGemeenteEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgGemeenteEditKlant.Visibility = Visibility.Visible;
+            }
+             if (txtPostcodeEditKlant.Text == "")
+            {
+                check = false;
+                txtPostcodeEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgPostcodeEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtTelefoonnummerEditKlant.Text == "")
+            {
+                check = false;
+                txtTelefoonnummerEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgTelefoonnummerEditKlant.Visibility = Visibility.Visible;
+            }
+            if (txtEmailadresEditKlant.Text == "")
+            {
+                check = false;
+                txtEmailadresEditKlant.ToolTip = "Textbox mag niet leeg zijn";
+                imgEmailadresEditKlant.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgVoornaamEditKlant.Visibility =
+                imgAchternaamEditKlant.Visibility =
+                imgStraatnaamEditKlant.Visibility =
+                imgHuisnummerEditKlant.Visibility =
+                imgGemeenteEditKlant.Visibility =
+            imgPostcodeEditKlant.Visibility =
+                imgTelefoonnummerEditKlant.Visibility =
+                imgEmailadresEditKlant.Visibility = Visibility.Hidden;
+
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    var selectedKlant = ctx.Klants.Single(k => k.KlantID == (int)cbEditKlant.SelectedValue);
+                    selectedKlant.Voornaam = txtVoornaamEditKlant.Text;
+                    selectedKlant.Achternaam = txtAchternaamEditKlant.Text;
+                    selectedKlant.Straatnaam = txtStraatnaamEditKlant.Text;
+                    selectedKlant.Huisnummer = Convert.ToInt32(txtHuisnummerEditKlant.Text);
+                    selectedKlant.Bus = txtBusEditKlant.Text;
+                    selectedKlant.Postcode = txtPostcodeEditKlant.Text;
+                    selectedKlant.Gemeente = txtGemeenteEditKlant.Text;
+                    selectedKlant.Telefoonnummer = txtTelefoonnummerEditKlant.Text;
+                    selectedKlant.Emailadres = txtEmailadresEditKlant.Text;
+                    selectedKlant.Opmerking = txtOpmerkingEditKlant.Text;
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Edited");
+                EditKlant();
+            }
         }
 
         private void btnDeleteKlant_Click(object sender, RoutedEventArgs e)
@@ -1114,32 +1230,83 @@ namespace TussentijdsProjectYannick
         }
         private void btnToevoegenLeverancier_Click(object sender, RoutedEventArgs e)
         {
-            string bus = "";
-            if (txtBusEditLeverancier.Text != "Bus")
-            { bus = txtBusEditLeverancier.Text; }
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtContactpersoonEditLeverancier.Text == "")
             {
-                ctx.Leveranciers.Add(new Leverancier()
-                {
-                    Contactpersoon = txtContactpersoonEditLeverancier.Text,
-                    Telefoonnummer = txtTelefoonnummerEditLeverancier.Text,
-                    Emailadres = txtEmailadresEditLeverancier.Text,
-                    Straatnaam = txtStraatnaamEditLeverancier.Text,
-                    Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text),
-                    Bus = bus,
-                    Postcode = txtPostcodeEditLeverancier.Text,
-                    Gemeente = txtGemeenteEditLeverancier.Text
-                });
-                ctx.SaveChanges();
+                check = false;
+                txtContactpersoonEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgContactpersoonEditLeverancier.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Toevoegen");
-            EditLeverancier();
-            EditProductenfillCombobox();
-            ReloadTextBoxLeverancier();
-            //cbEditLeverancier.SelectedIndex = cbEditLeverancier.Items.Count - 1;
-            if (Selected == null)
+            if (txtTelefoonnummerEditLeverancier.Text == "")
             {
-                this.DialogResult = true;
+                check = false;
+                txtTelefoonnummerEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgTelefoonnummerEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (txtEmailadresEditLeverancier.Text == "")
+            {
+                check = false;
+                txtEmailadresEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgEmailadresEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (txtStraatnaamEditLeverancier.Text == "")
+            {
+                check = false;
+                txtStraatnaamEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgStraatnaamEditLeverancier.Visibility = Visibility.Visible;
+            }
+             if (txtHuisnummerEditLeverancier.Text == "")
+            {
+                check = false;
+                txtHuisnummerEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgHuisnummerEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (txtPostcodeEditLeverancier.Text == "")
+            {
+                check = false;
+                txtPostcodeEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgPostcodeEditLeverancier.Visibility = Visibility.Visible;
+            }
+             if (txtGemeenteEditLeverancier.Text == "")
+            {
+                check = false;
+                txtGemeenteEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgGemeenteEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgContactpersoonEditLeverancier.Visibility =
+                imgTelefoonnummerEditLeverancier.Visibility =
+                imgEmailadresEditLeverancier.Visibility =
+                imgStraatnaamEditLeverancier.Visibility =
+                imgHuisnummerEditLeverancier.Visibility =
+            imgPostcodeEditKlant.Visibility =
+                imgGemeenteEditLeverancier.Visibility = Visibility.Hidden;
+
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    ctx.Leveranciers.Add(new Leverancier()
+                    {
+                        Contactpersoon = txtContactpersoonEditLeverancier.Text,
+                        Telefoonnummer = txtTelefoonnummerEditLeverancier.Text,
+                        Emailadres = txtEmailadresEditLeverancier.Text,
+                        Straatnaam = txtStraatnaamEditLeverancier.Text,
+                        Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text),
+                        Bus = txtBusEditLeverancier.Text,
+                        Postcode = txtPostcodeEditLeverancier.Text,
+                        Gemeente = txtGemeenteEditLeverancier.Text
+                    });
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Toevoegen");
+                EditLeverancier();
+                EditProductenfillCombobox();
+                ReloadTextBoxLeverancier();
+                //cbEditLeverancier.SelectedIndex = cbEditLeverancier.Items.Count - 1;
+                if (Selected == null)
+                {
+                    this.DialogResult = true;
+                }
             }
         }
         private void cbEditLeverancier_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1172,25 +1339,76 @@ namespace TussentijdsProjectYannick
 
         private void btnEditLeverancier_Click(object sender, RoutedEventArgs e)
         {
-            string bus = "";
-            if (txtBusEditLeverancier.Text != "Bus")
-            { bus = txtBusEditLeverancier.Text; }
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtContactpersoonEditLeverancier.Text == "")
             {
-                var selectedLeverancier = ctx.Leveranciers.Single(k => k.LeverancierID == (int)cbEditLeverancier.SelectedValue);
-                selectedLeverancier.Contactpersoon = txtContactpersoonEditLeverancier.Text;
-                selectedLeverancier.Telefoonnummer = txtTelefoonnummerEditLeverancier.Text;
-                selectedLeverancier.Emailadres = txtEmailadresEditLeverancier.Text;
-                selectedLeverancier.Straatnaam = txtStraatnaamEditLeverancier.Text;
-                selectedLeverancier.Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text);
-                selectedLeverancier.Bus = bus;
-                selectedLeverancier.Postcode = txtPostcodeEditLeverancier.Text;
-                selectedLeverancier.Gemeente = txtGemeenteEditLeverancier.Text;
-                ctx.SaveChanges();
+                check = false;
+                txtContactpersoonEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgContactpersoonEditLeverancier.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Edited");
-            EditLeverancier();
-            EditProductenfillCombobox();
+             if (txtTelefoonnummerEditLeverancier.Text == "")
+            {
+                check = false;
+                txtTelefoonnummerEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgTelefoonnummerEditLeverancier.Visibility = Visibility.Visible;
+            }
+             if (txtEmailadresEditLeverancier.Text == "")
+            {
+                check = false;
+                txtEmailadresEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgEmailadresEditLeverancier.Visibility = Visibility.Visible;
+            }
+             if (txtStraatnaamEditLeverancier.Text == "")
+            {
+                check = false;
+                txtStraatnaamEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgStraatnaamEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (txtHuisnummerEditLeverancier.Text == "")
+            {
+                check = false;
+                txtHuisnummerEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgHuisnummerEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (txtPostcodeEditLeverancier.Text == "")
+            {
+                check = false;
+                txtPostcodeEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgPostcodeEditLeverancier.Visibility = Visibility.Visible;
+            }
+             if (txtGemeenteEditLeverancier.Text == "")
+            {
+                check = false;
+                txtGemeenteEditLeverancier.ToolTip = "Textbox mag niet leeg zijn";
+                imgGemeenteEditLeverancier.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgContactpersoonEditLeverancier.Visibility =
+                imgTelefoonnummerEditLeverancier.Visibility =
+                imgEmailadresEditLeverancier.Visibility =
+                imgStraatnaamEditLeverancier.Visibility =
+                imgHuisnummerEditLeverancier.Visibility =
+            imgPostcodeEditKlant.Visibility =
+                imgGemeenteEditLeverancier.Visibility = Visibility.Hidden;
+
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    var selectedLeverancier = ctx.Leveranciers.Single(k => k.LeverancierID == (int)cbEditLeverancier.SelectedValue);
+                    selectedLeverancier.Contactpersoon = txtContactpersoonEditLeverancier.Text;
+                    selectedLeverancier.Telefoonnummer = txtTelefoonnummerEditLeverancier.Text;
+                    selectedLeverancier.Emailadres = txtEmailadresEditLeverancier.Text;
+                    selectedLeverancier.Straatnaam = txtStraatnaamEditLeverancier.Text;
+                    selectedLeverancier.Huisnummer = Convert.ToInt32(txtHuisnummerEditLeverancier.Text);
+                    selectedLeverancier.Bus = txtBusEditLeverancier.Text;
+                    selectedLeverancier.Postcode = txtPostcodeEditLeverancier.Text;
+                    selectedLeverancier.Gemeente = txtGemeenteEditLeverancier.Text;
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Edited");
+                EditLeverancier();
+                EditProductenfillCombobox();
+            }
         }
 
         private void btnDeleteLeverancier_Click(object sender, RoutedEventArgs e)
@@ -1303,44 +1521,136 @@ namespace TussentijdsProjectYannick
         }
         private void btnToevoegenProducten_Click(object sender, RoutedEventArgs e)
         {
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtNaamEditProducten.Text == "")
             {
-                ctx.Products.Add(new Product
-                {
-                    Naam = txtNaamEditProducten.Text,
-                    Marge = Convert.ToDecimal(txtMargeEditProducten.Text),
-                    Eenheid = txtEenheidEditProducten.Text,
-                    BTW = Convert.ToDecimal(txtBTWEditProducten.Text),
-                    LeverancierID = (int)cbLeverancierEditProducten.SelectedValue,
-                    CategorieID = (int)cbCategorieEditProducten.SelectedValue,
-                    AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text),
-                    AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text)
-                });
-                ctx.SaveChanges();
+                check = false;
+                txtNaamEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgNaamEditProducten.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Toevoegen");
-            EditProducten();
+            if (txtMargeEditProducten.Text == "")
+            {
+                check = false;
+                txtMargeEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgMargeEditProducten.Visibility = Visibility.Visible;
+            }
+            if (txtEenheidEditProducten.Text == "")
+            {
+                check = false;
+                txtEenheidEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgEenheidEditProducten.Visibility = Visibility.Visible;
+            }
+            if (txtBTWEditProducten.Text == "")
+            {
+                check = false;
+                txtBTWEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgBTWEditProducten.Visibility = Visibility.Visible;
+            }
+            if (nudAantalOpVooraadProducten.Text == "")
+            {
+                check = false;
+                nudAantalOpVooraadProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgAantalOpVooraadProducten.Visibility = Visibility.Visible;
+            }
+            if (nudAankoopPrijs.Text == "")
+            {
+                check = false;
+                nudAankoopPrijs.ToolTip = "Textbox mag niet leeg zijn";
+                imgAankoopPrijs.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgNaamEditProducten.Visibility =
+                imgMargeEditProducten.Visibility =
+                imgEenheidEditProducten.Visibility =
+                imgAantalOpVooraadProducten.Visibility =
+                imgAankoopPrijs.Visibility =
+                imgBTWEditProducten.Visibility = Visibility.Hidden;
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    ctx.Products.Add(new Product
+                    {
+                        Naam = txtNaamEditProducten.Text,
+                        Marge = Convert.ToDecimal(txtMargeEditProducten.Text),
+                        Eenheid = txtEenheidEditProducten.Text,
+                        BTW = Convert.ToDecimal(txtBTWEditProducten.Text),
+                        LeverancierID = (int)cbLeverancierEditProducten.SelectedValue,
+                        CategorieID = (int)cbCategorieEditProducten.SelectedValue,
+                        AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text),
+                        AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text)
+                    });
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Toevoegen");
+                EditProducten();
+            }
 
         }
 
         private void btnEditProducten_Click(object sender, RoutedEventArgs e)
         {
-
-            using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+            bool check = true;
+            if (txtNaamEditProducten.Text == "")
             {
-                var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
-                selectedProduct.Naam = txtNaamEditProducten.Text;
-                selectedProduct.Marge = Convert.ToDecimal(txtMargeEditProducten.Text);
-                selectedProduct.Eenheid = txtEenheidEditProducten.Text;
-                selectedProduct.BTW = Convert.ToDecimal(txtBTWEditProducten.Text);
-                selectedProduct.LeverancierID = (int)cbLeverancierEditProducten.SelectedValue;
-                selectedProduct.CategorieID = (int)cbCategorieEditProducten.SelectedValue;
-                selectedProduct.AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text);
-                selectedProduct.AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text);
-                ctx.SaveChanges();
+                check = false;
+                txtNaamEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgNaamEditProducten.Visibility = Visibility.Visible;
             }
-            MessageBox.Show("Edited");
-            EditProducten();
+            if (txtMargeEditProducten.Text == "")
+            {
+                check = false;
+                txtMargeEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgMargeEditProducten.Visibility = Visibility.Visible;
+            }
+            if (txtEenheidEditProducten.Text == "")
+            {
+                check = false;
+                txtEenheidEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgEenheidEditProducten.Visibility = Visibility.Visible;
+            }
+            if (txtBTWEditProducten.Text == "")
+            {
+                check = false;
+                txtBTWEditProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgBTWEditProducten.Visibility = Visibility.Visible;
+            }
+            if (nudAantalOpVooraadProducten.Text == "")
+            {
+                check = false;
+                nudAantalOpVooraadProducten.ToolTip = "Textbox mag niet leeg zijn";
+                imgAantalOpVooraadProducten.Visibility = Visibility.Visible;
+            }
+            if (nudAankoopPrijs.Text == "")
+            {
+                check = false;
+                nudAankoopPrijs.ToolTip = "Textbox mag niet leeg zijn";
+                imgAankoopPrijs.Visibility = Visibility.Visible;
+            }
+            if (check)
+            {
+                imgNaamEditProducten.Visibility =
+                imgMargeEditProducten.Visibility =
+                imgEenheidEditProducten.Visibility =
+                imgAantalOpVooraadProducten.Visibility =
+                imgAankoopPrijs.Visibility =
+                imgBTWEditProducten.Visibility = Visibility.Hidden;
+
+                using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
+                {
+                    var selectedProduct = ctx.Products.Single(p => p.ProductID == (int)cbEditProducten.SelectedValue);
+                    selectedProduct.Naam = txtNaamEditProducten.Text;
+                    selectedProduct.Marge = Convert.ToDecimal(txtMargeEditProducten.Text);
+                    selectedProduct.Eenheid = txtEenheidEditProducten.Text;
+                    selectedProduct.BTW = Convert.ToDecimal(txtBTWEditProducten.Text);
+                    selectedProduct.LeverancierID = (int)cbLeverancierEditProducten.SelectedValue;
+                    selectedProduct.CategorieID = (int)cbCategorieEditProducten.SelectedValue;
+                    selectedProduct.AantalOpVooraad = Convert.ToInt32(nudAantalOpVooraadProducten.Text);
+                    selectedProduct.AankoopPrijs = Convert.ToDecimal(nudAankoopPrijs.Text);
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show("Edited");
+                EditProducten();
+            }
         }
 
         private void btnDeleteProducten_Click(object sender, RoutedEventArgs e)

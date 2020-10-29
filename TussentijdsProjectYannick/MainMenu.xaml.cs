@@ -52,7 +52,7 @@ namespace TussentijdsProjectYannick
 
         private void btnOverzicht_Click(object sender, RoutedEventArgs e)
         {
-            Overzicht overzicht = new Overzicht();
+            var overzicht = new TussentijdsProjectYannickOverzicht.MainWindow();
             overzicht.ShowDialog();
         }
 
