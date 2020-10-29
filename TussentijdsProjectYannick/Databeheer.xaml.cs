@@ -1263,9 +1263,19 @@ namespace TussentijdsProjectYannick
             MessageBox.Show(jsonString.ToString());
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
-                string uri = $"mailto:{ctx.Leveranciers.Where(l=>l.LeverancierID==(int)cbJsonLeveranciers.SelectedValue).Select(l=>l.Emailadres).FirstOrDefault()}?subject=Gegevens Producten&body={jsonString.ToString()}";
-                Uri myUri = new Uri(uri);
-                Process.Start(myUri.AbsoluteUri);
+                //string uri = $"mailto:{ctx.Leveranciers.Where(l=>l.LeverancierID==(int)cbJsonLeveranciers.SelectedValue).Select(l=>l.Emailadres).FirstOrDefault()}?subject=Gegevens Producten&body={jsonString.ToString()}";
+                //Uri myUri = new Uri(uri);
+                //Process.Start(myUri.AbsoluteUri);
+                
+                MAPI mapi = new MAPI();
+
+                mapi.AddAttachment($"{Directory.GetCurrentDirectory()}/gegevens.Json");
+                mapi.AddRecipientTo(ctx.Leveranciers.Where(l => l.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(l => l.Emailadres).FirstOrDefault());
+                mapi.SendMailPopup("Json Gevens producten om bijtewerken", $"Beste {ctx.Leveranciers.Where(l => l.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(l => l.Contactpersoon).FirstOrDefault()},\n" +
+                    $"\n" +
+                    $"bij deze de Json file om uw productenlijst mee aan te passen as requested.\n" +
+                    $"\n" +
+                    $"met vriendelijke groeten {Selected.Voornaam} {Selected.Achternaam}");
             }
         }
 
