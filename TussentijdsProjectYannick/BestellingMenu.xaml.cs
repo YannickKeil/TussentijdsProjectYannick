@@ -240,7 +240,7 @@ namespace TussentijdsProjectYannick
                             PersoneelslidID = Selected.PersoneelslidID,
                             LeverancierID = (int)cbLeveranciers.SelectedValue,
                         });
-                        MessageBox.Show("Leverancier");
+                        //MessageBox.Show("Leverancier");
                     }
                     else if (!(bool)tbLeverancierKlant.IsChecked)
                     {
@@ -250,7 +250,7 @@ namespace TussentijdsProjectYannick
                             PersoneelslidID = Selected.PersoneelslidID,
                             KlantID = (int)cbKlants.SelectedValue,
                         });
-                        MessageBox.Show("klant");
+                        //MessageBox.Show("klant");
                     }
                     else
                     {
@@ -258,7 +258,7 @@ namespace TussentijdsProjectYannick
                         return;
                     }
                     ctx.SaveChanges();
-                    MessageBox.Show($"{bestelling.BestellingID} {bestelling.DatumOpgemaakt} {bestelling.KlantID}");
+                    //MessageBox.Show($"{bestelling.BestellingID} {bestelling.DatumOpgemaakt} {bestelling.KlantID}");
 
                     foreach (var item in gekozenProducten)
                     {
@@ -271,12 +271,12 @@ namespace TussentijdsProjectYannick
                         if ((bool)tbLeverancierKlant.IsChecked)
                         {
                             ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad += item.AantalGekozenProductAPB;
-                            MessageBox.Show("Leverancier2");
+                            //MessageBox.Show("Leverancier2");
                         }
                         else if (!(bool)tbLeverancierKlant.IsChecked)
                         {
                             ctx.Products.Single(p => p.ProductID == item.ProductIDAPB).AantalOpVooraad -= item.AantalGekozenProductAPB;
-                            MessageBox.Show("klant2");
+                            //MessageBox.Show("klant2");
                         }
                         ctx.SaveChanges();
                     }
@@ -292,7 +292,7 @@ namespace TussentijdsProjectYannick
         }
         private void FactuurKlant(int selectedBestellingID)
         {
-            MessageBox.Show(selectedBestellingID.ToString());
+            //MessageBox.Show(selectedBestellingID.ToString());
             try
             {
 
@@ -427,7 +427,7 @@ namespace TussentijdsProjectYannick
                     int Rows = bestellingProducten.Count + 4;
                     var firstTable = document.Tables.Add(para1.Range, Rows, 4, ref missing, ref missing);
                     string products;
-                    if (Rows == 1)
+                    if (Rows == 5)
                     {
                         products = "Product";
                     }

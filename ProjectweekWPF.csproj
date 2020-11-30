@@ -1,0 +1,1686 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{D0E14718-F263-4550-9046-3A7416A774FD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ProjectweekWPF</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+    <None Include=".git\COMMIT_EDITMSG" />
+    <None Include=".git\config" />
+    <None Include=".git\description" />
+    <None Include=".git\FETCH_HEAD" />
+    <None Include=".git\HEAD" />
+    <None Include=".git\hooks\applypatch-msg.sample" />
+    <None Include=".git\hooks\commit-msg.sample" />
+    <None Include=".git\hooks\fsmonitor-watchman.sample" />
+    <None Include=".git\hooks\post-update.sample" />
+    <None Include=".git\hooks\pre-applypatch.sample" />
+    <None Include=".git\hooks\pre-commit.sample" />
+    <None Include=".git\hooks\pre-merge-commit.sample" />
+    <None Include=".git\hooks\pre-push.sample" />
+    <None Include=".git\hooks\pre-rebase.sample" />
+    <None Include=".git\hooks\pre-receive.sample" />
+    <None Include=".git\hooks\prepare-commit-msg.sample" />
+    <None Include=".git\hooks\update.sample" />
+    <None Include=".git\index" />
+    <None Include=".git\info\exclude" />
+    <None Include=".git\logs\HEAD" />
+    <None Include=".git\logs\refs\heads\master" />
+    <None Include=".git\logs\refs\remotes\origin\master" />
+    <None Include=".git\objects\00\7370889aba0bd74ad65df9f7df806797448fdb" />
+    <None Include=".git\objects\00\b9a8c9afb7da6695d2f27d113aab97b692c97b" />
+    <None Include=".git\objects\01\885a23f74a4df5a4db7e6a6b7c4a42fc7efe78" />
+    <None Include=".git\objects\01\c53379b25e10baccfce0fc3164aabcf14a5e1e" />
+    <None Include=".git\objects\02\053bc815dbea849ddf13d216327402cfb8c172" />
+    <None Include=".git\objects\03\3d7a5e9e2266753180f4e3a9299f575046701e" />
+    <None Include=".git\objects\04\8a585d94ad5b708c849402d0ba8c78562aa179" />
+    <None Include=".git\objects\04\fce04102d620ce5ca4e2e3de9f9da989efc658" />
+    <None Include=".git\objects\05\aa12d80f8849323669e190b85fcb7f66e64f9a" />
+    <None Include=".git\objects\07\d10b5e5fe1ce415750a6eaec0411cdd5b072f8" />
+    <None Include=".git\objects\08\1165d876d42e72eea59f7b3e3904d0bba5a44e" />
+    <None Include=".git\objects\08\a362b1689e57f4cf5ea0e54c4fcad85e26e679" />
+    <None Include=".git\objects\0a\9c0f7f83cfeb5dce9ba081b63bd153d0c2c383" />
+    <None Include=".git\objects\0c\fced88fda37f358d8a21cc216b896f2796c97d" />
+    <None Include=".git\objects\0d\1e2b2c24d09dd78faba6a395dafc83c7e887e2" />
+    <None Include=".git\objects\0e\2241d0a6cf9e66843d007441d114b2da1a60a6" />
+    <None Include=".git\objects\10\a220c27267edbe8fddf0f60e5cfa9162de74b6" />
+    <None Include=".git\objects\11\b36432baeff12acc1985bc3e6ae6cb14169cbe" />
+    <None Include=".git\objects\11\c2016aa0d4312785322e88866b4317884bcdf4" />
+    <None Include=".git\objects\11\fbcc839b6b6d87f50eb0e9e9d7b4d5b38ae117" />
+    <None Include=".git\objects\12\504bef6d3c1cccfb02b4cb36333d52809ddca3" />
+    <None Include=".git\objects\13\67bb0a95111c32368a7b82a53123ab0cddb37d" />
+    <None Include=".git\objects\13\8c6ceaefb70a05b0577482541860247241c36f" />
+    <None Include=".git\objects\17\5540d744414703c2e70da16d8801ed886c6d87" />
+    <None Include=".git\objects\18\f6bd9bfc2b45b5f55998277ee2f32f60b36a2f" />
+    <None Include=".git\objects\19\60c65e4972000b91daae2408ba5d4f3ecbde71" />
+    <None Include=".git\objects\1a\ce38851e90de979cb6a2133fcc91fb94bc9189" />
+    <None Include=".git\objects\1d\3e6fbbd4dacae771d254318e06250b3ea4ac64" />
+    <None Include=".git\objects\1d\901c3ff88256ce45984821e0e548b9616e8291" />
+    <None Include=".git\objects\1e\f3acec8bd474c3a2d9a21b64bc252a02dbc111" />
+    <None Include=".git\objects\1f\5571bde07e31152b138644d1edc8348cd6fc4d" />
+    <None Include=".git\objects\1f\f0c423042b46cb1d617b81efb715defbe8054d" />
+    <None Include=".git\objects\20\84bbbbbf11bb0b704fb8052df1e04cb956dc6d" />
+    <None Include=".git\objects\20\9484107e517eda6bcb254408d0ad0eae252933" />
+    <None Include=".git\objects\21\d304ac5814fd5a477a666eee558b4f2c193e43" />
+    <None Include=".git\objects\22\c9270f603672d2777966a257da1e13b5160f73" />
+    <None Include=".git\objects\22\cc6e97784377da1f4eeba1bc37d1fe953061ea" />
+    <None Include=".git\objects\22\e8b22d93481c5b5c98165a71502933a1291e46" />
+    <None Include=".git\objects\23\034402df2f60900a52fe305f29835307e9aeff" />
+    <None Include=".git\objects\23\a8c9dd0891e491a11e7edf6e9975514af70426" />
+    <None Include=".git\objects\24\8ea18406c23c47f201c4fbe5b305b6486837b4" />
+    <None Include=".git\objects\24\bd5ac92aa0e21caeb5775727e5216f112e46a4" />
+    <None Include=".git\objects\25\def972a96051de5f5b0c06d401e0fcc524d87a" />
+    <None Include=".git\objects\28\d439ff7ee503fa7f813ba75b6d6cae31457af8" />
+    <None Include=".git\objects\29\2735b239f8569767f341d0e3f30b61635a055f" />
+    <None Include=".git\objects\29\bd7eb5fb15ca7acf744c625fc6b39bca80e1ad" />
+    <None Include=".git\objects\2d\f696dc49534a1eccf86fb00b260a351f24723d" />
+    <None Include=".git\objects\2e\845d2a5fd7a03be49efc17b08fb22f0ed73366" />
+    <None Include=".git\objects\30\c29434d5ade78aa3e4e91739ca3fc47d92365a" />
+    <None Include=".git\objects\32\011974e6b6e2c6049d2b2da5e1bc5953ca7026" />
+    <None Include=".git\objects\34\f5a182f3589a83d159da41fa60346551712416" />
+    <None Include=".git\objects\35\0b1d922408663b591ec14c9ccb59612b1ac1bf" />
+    <None Include=".git\objects\35\f9c42d653a1124e5fbc6577f9105271eed9772" />
+    <None Include=".git\objects\37\c6dd9b0129c22e742b2ceec382466d12af1b5b" />
+    <None Include=".git\objects\37\d31dad17872ef9265265c6ae431af4622b2eba" />
+    <None Include=".git\objects\38\1b963c2c134b8928594b082b493db408bd0dd5" />
+    <None Include=".git\objects\39\779da6de92e8207d314eced6e3ff35ede37b45" />
+    <None Include=".git\objects\39\da91009b6205c8ba93c8199cc1543ff182893c" />
+    <None Include=".git\objects\39\f19f1930d89713b95aa3444e0fc52c81052092" />
+    <None Include=".git\objects\3b\573d755f31cbf92c6b7bdfb88836de19b0b777" />
+    <None Include=".git\objects\3d\3cc129e1e12581bf060d042e693a7f60f93b30" />
+    <None Include=".git\objects\3f\d48f632524e1e9cf0112f4ba05a847147c952c" />
+    <None Include=".git\objects\41\1051259616bfe4570b6510c79d8314cd82f3f6" />
+    <None Include=".git\objects\42\086947de96781b15f7fb11f681995be6152b21" />
+    <None Include=".git\objects\42\ec2b2243a40020b76b2ad37020e2a1bdf7c9db" />
+    <None Include=".git\objects\43\54f74768323b9ee5117792f440db99fe1da728" />
+    <None Include=".git\objects\45\fbda094f39f23542d06eceef1cbc7dce15f217" />
+    <None Include=".git\objects\47\a05dee415393fb68ea8efadc00f8617d1d698d" />
+    <None Include=".git\objects\47\a8056741ac81425b12153349bef864fe1cddd5" />
+    <None Include=".git\objects\49\98e2eb519c5f0513affe0f8afc8e068cdfffeb" />
+    <None Include=".git\objects\4b\074a696f5c69ec7547f810c3696650b691c5e2" />
+    <None Include=".git\objects\4b\67d8483c64099fa85ddd2aa68f191f4d509696" />
+    <None Include=".git\objects\4c\e6fddec962ff3b86038d9939b6be5dfc1e6351" />
+    <None Include=".git\objects\4f\d2d9592357fa99075d30056a824e19e229d6d3" />
+    <None Include=".git\objects\50\17c5c2e879c4d94ea9c77e924cbdfdac3734b5" />
+    <None Include=".git\objects\50\7c659d961edef31fed7b45de30e7a12182ba1e" />
+    <None Include=".git\objects\53\0abc35a750c464340761f49b54381c0c5a12b9" />
+    <None Include=".git\objects\53\953ca9b841cccb80af26a9e09c93980e00d219" />
+    <None Include=".git\objects\53\d02a979db5eae864c156caacf6c4d22690d24f" />
+    <None Include=".git\objects\54\18eac46c591c98d7a3145f08f41159b3c4bccd" />
+    <None Include=".git\objects\56\513bbf8c7f2c43538fbf942f93582138c90bfe" />
+    <None Include=".git\objects\56\efbc7b5f15b5166cc89dae0406895b57de0b67" />
+    <None Include=".git\objects\58\62176120d1d34e59d2d8816d9c34449a8f2c3f" />
+    <None Include=".git\objects\59\e7ddfc0f4d042ed357937d90d0424ab44836e1" />
+    <None Include=".git\objects\5a\b6946feaf81f5bd0bdf7b77306ec7c7a42884f" />
+    <None Include=".git\objects\5b\aba920588a7f497b77b123d70dca7b76aa2498" />
+    <None Include=".git\objects\5c\d527ac27ca4082c8e1264a5f4f65031a0572bf" />
+    <None Include=".git\objects\5d\3c13999f2966b4ac99358e7e3b7d9789b6d28b" />
+    <None Include=".git\objects\5d\815496f58cc690162174b670fe831f0ad0b53c" />
+    <None Include=".git\objects\5e\a71cc0727c3bc8e307957e1d189d1cc07086f7" />
+    <None Include=".git\objects\5f\05e03c5116a6f017253a2b8c1d8feffe3b2f4b" />
+    <None Include=".git\objects\5f\d55e5b228ccb32dae65aa72fc43acbb2f1f2a7" />
+    <None Include=".git\objects\60\4fca5cc23289c823f99501830cc1b85024605b" />
+    <None Include=".git\objects\60\ed9bd77078009cd2adee0a2cd14efff716b811" />
+    <None Include=".git\objects\63\830d96285eb69f82ed4e1f0f217c21c6d3535b" />
+    <None Include=".git\objects\64\7e6b73ab7eb1e1199a8d43976242cc69bb7459" />
+    <None Include=".git\objects\65\1c0f4829f2df5afb6881b2cbb91248fedc3d04" />
+    <None Include=".git\objects\65\57521ac9383f31104f522743cc986a17588b05" />
+    <None Include=".git\objects\66\95babd74e30a677dbadbcd68bab8112ad2a445" />
+    <None Include=".git\objects\66\c6f9e8729d1e16dda79383bd5cde400384b13b" />
+    <None Include=".git\objects\66\f1f05a7247e044c4eb45caa00f5fe3b3812e66" />
+    <None Include=".git\objects\69\c3c5b809822503c8b3fd25191f7b829511eb38" />
+    <None Include=".git\objects\6a\6e8ab024902d4f41ab385c2271a23846a11133" />
+    <None Include=".git\objects\6b\57e9735db21a237d58471336f5be5c827009d6" />
+    <None Include=".git\objects\6b\eb53abd825f1c1aa7906c03ebabed4257a7a27" />
+    <None Include=".git\objects\6d\4c4c47476b11a557f7ef683b0f425c0a8b289d" />
+    <None Include=".git\objects\6d\e7cd7f85322b7fcf4139f5c395757ec1f1a57d" />
+    <None Include=".git\objects\73\bdc4a9283ff1e4da9df5b61d30d622a8f2f7d4" />
+    <None Include=".git\objects\74\1f7629b2a008d89e6794e114965de54814d6b4" />
+    <None Include=".git\objects\75\348fab2be2863c5f766f2ac4c28e2f3eafffd6" />
+    <None Include=".git\objects\76\64029b983a4fd8bcb936af9d0f7edc495c7767" />
+    <None Include=".git\objects\77\34f5c0492592367b8b137159761c6c64cdaaec" />
+    <None Include=".git\objects\78\aeba805de012a4dd52f072cb7859faaaa2808a" />
+    <None Include=".git\objects\79\d90814408e309855a5331737732652f2f4bf70" />
+    <None Include=".git\objects\7b\0867f63b2cfc2ed8248549b70569aa2691a105" />
+    <None Include=".git\objects\7b\5e38b7a74180991fd0a6411d13a9c95f622bdd" />
+    <None Include=".git\objects\7b\60767527e70b37a48d51b9ad320fe27409d424" />
+    <None Include=".git\objects\7b\c7b72408dc1eb57da7a712b57a947cd68d7bb1" />
+    <None Include=".git\objects\7c\c06622896161e7bfc9ef3780769a004f4fc1fa" />
+    <None Include=".git\objects\7e\b9423eb578406e37a5f7c483c5b21037c2df54" />
+    <None Include=".git\objects\80\1fbefc522761cc8fbd1ceed0083a910be94bbc" />
+    <None Include=".git\objects\81\e6a79a1ec920e472cc206b2a91223ae55523c8" />
+    <None Include=".git\objects\83\fee3b8df0e3a8c573bdeb46938cd2b6c4d0c12" />
+    <None Include=".git\objects\84\4b1691c826aab8b9ea9e1195192c24b572c7a8" />
+    <None Include=".git\objects\85\b7512f15f038973a858889650a449f8329c994" />
+    <None Include=".git\objects\88\65f236e982d7d369bbfb68bb18a6d98a9900d3" />
+    <None Include=".git\objects\8a\22f19d4d64d76ae3c262d5019f6fc3769ab34a" />
+    <None Include=".git\objects\8b\60838835ecd7c3584ca8698bac0bcfd2361838" />
+    <None Include=".git\objects\8b\98e494b7b4f10b4561e564535277c494941ac2" />
+    <None Include=".git\objects\8b\a2a33578941e603f4d230a9cdb7f13bd3573df" />
+    <None Include=".git\objects\8c\be8b65c7c2e6bfbe14460ef6c48d1837290e90" />
+    <None Include=".git\objects\8c\f8aa4f8b806e0d2dee66dbad75765bececf32c" />
+    <None Include=".git\objects\8d\03cc23c5e31ff5cf183d5057add82ed8206fba" />
+    <None Include=".git\objects\8e\1df53bd40573e40c0876dd0a9d48935aa41613" />
+    <None Include=".git\objects\90\dd70cf4fc2451d47753c9d5f7b37665c079e43" />
+    <None Include=".git\objects\91\a14e7ceca6643a29ad429c8a5bd75280e9ffa4" />
+    <None Include=".git\objects\93\64dcc54daf27d6b28ae7a01335e6d279e3e9ce" />
+    <None Include=".git\objects\93\814241cc1b72ba1c9a8d3c677df37d18f1d338" />
+    <None Include=".git\objects\94\33f66c8e68a37a9a29e3cd8139956ad7e61e9f" />
+    <None Include=".git\objects\94\4c16170c96107ec3ff4ec19414ea0001256ee4" />
+    <None Include=".git\objects\97\323cf3f35e768203a8abb258c51fe230470eba" />
+    <None Include=".git\objects\97\ebaeedbff80f89cad88edf98fc6b34e9b2e4e6" />
+    <None Include=".git\objects\9a\94d52c9fcd4147b29ee7ec023f77a2e47bda45" />
+    <None Include=".git\objects\9a\f0722dfad67934db607928b554812c005b2646" />
+    <None Include=".git\objects\9b\95c5900ef8b3bf9ab0e9af3388c9ef57490306" />
+    <None Include=".git\objects\9c\dfb76b1a460befe1b0ceb8490451d880403e32" />
+    <None Include=".git\objects\9c\e2e4c992dc2a6fa8cec5cb91c2a2c2d71a44e0" />
+    <None Include=".git\objects\9d\989da970f297f85d4e592c450bed92395116a1" />
+    <None Include=".git\objects\9f\354cf1c7a60b7454ce8183513cbaad3c07cf74" />
+    <None Include=".git\objects\a0\29f4c5825fb1079e668fd0cc4521237530626b" />
+    <None Include=".git\objects\a4\3a024a9541a7a47123b3a05fe246a0d6eb5c97" />
+    <None Include=".git\objects\a4\8b562c881558fda1ddee84b9b31c030dd8e9c2" />
+    <None Include=".git\objects\a8\42fcada31ea5c7da0b39d2fd0cc7cbf5872ccb" />
+    <None Include=".git\objects\aa\ccaa518c29ee693cd5c9938ebbd5169e40dd95" />
+    <None Include=".git\objects\ab\6e128b5bd036620da0869280d4bc30ef09e29f" />
+    <None Include=".git\objects\ac\22c41b877311a61a9bd13c304241ed5f8d2d6c" />
+    <None Include=".git\objects\ac\284c9e2b7e651d5e05778942ee9bc0c9f91739" />
+    <None Include=".git\objects\ac\7b3b9ec6a8aaea1802b24ae0d9422c73416535" />
+    <None Include=".git\objects\ac\aec9ca4664fd7cd7ea0c263a73e5386a47075c" />
+    <None Include=".git\objects\ad\2150eb40555070e9090c052f64d70dd47028f5" />
+    <None Include=".git\objects\ae\9b44bc6ae2c1477aeb5ccabf00949ec1a4a247" />
+    <None Include=".git\objects\ae\d4c742dd624d8fcbcf82ef8c4cca9cdc021373" />
+    <None Include=".git\objects\af\7dbebbacef595e3089c01c05671016c21a8304" />
+    <None Include=".git\objects\af\dadd3e0765a9e3ad9e412000d5ba4040ae5d66" />
+    <None Include=".git\objects\b0\940d359cc24cf735da7c65c9e7f1191ff56df3" />
+    <None Include=".git\objects\b0\be175f5ac407203d3f680bbac5d35c706049b1" />
+    <None Include=".git\objects\b1\225dd74713333c88c82b6cf1c4c4ac3a452efc" />
+    <None Include=".git\objects\b5\9ee403df1e0bb5e8f2ff21b17cb69b9592cf55" />
+    <None Include=".git\objects\ba\99cfc56849c7e1f9745a745c27daecf5ba5099" />
+    <None Include=".git\objects\ba\faad32c1b3fbb1016a42d0c900076437151824" />
+    <None Include=".git\objects\bb\eccd3b98ad6ec2d35d2c55761552127b3b8f6c" />
+    <None Include=".git\objects\bc\a7bebb7d90b2ac159b59ce28b1d51f978a980b" />
+    <None Include=".git\objects\bd\9c5813e6b4d9896fc7d6f00eb2456467afaf3a" />
+    <None Include=".git\objects\bd\eb4b8430c6d249eae45124d9d34057c678e774" />
+    <None Include=".git\objects\be\a3a2f9d63b52e6bbb5ec377b46cc2c4347a6ce" />
+    <None Include=".git\objects\bf\eaeb25066e86c847b4fb66d858c55c55213026" />
+    <None Include=".git\objects\c1\9a1f81a9843718bbc814a7fdaa8185ebd739c9" />
+    <None Include=".git\objects\c2\20f99eb20967f44481339a98a34d7475366e9d" />
+    <None Include=".git\objects\c3\84ada2301c74a5b36ca10d951740c231d403c3" />
+    <None Include=".git\objects\c4\31fa822bbba15aa78a983fa7af0444f8a84bb3" />
+    <None Include=".git\objects\c4\ee851771cfdeeb5da868b2dc0a1d35999b74fa" />
+    <None Include=".git\objects\c6\dc96f3540173f205de0caf94f5fc02b0903fce" />
+    <None Include=".git\objects\c7\8eab92286721658b8717f1515bfc9fdc4db480" />
+    <None Include=".git\objects\c8\6f324f324069e44c7514fc19d49268704a351e" />
+    <None Include=".git\objects\cc\70c873195eb1a23815e3165084d7fb59699e14" />
+    <None Include=".git\objects\cc\9a75aa8c86f8de505ca129ab80551ef002f862" />
+    <None Include=".git\objects\cc\f84fcde35a5e96e0c5c1633e8befd3369c3683" />
+    <None Include=".git\objects\cd\e65e77ad67e761226c42484872ad4340e8fc9b" />
+    <None Include=".git\objects\d0\3c28c138a42620434c4a16aa7a58e25060c68a" />
+    <None Include=".git\objects\d0\4da9403e98519b3b3670104deb26726346d7ef" />
+    <None Include=".git\objects\d2\050406b5187e94c090f0577349f5405aadc637" />
+    <None Include=".git\objects\d2\db894afcbc05857e1b64468803cd2031e9d49f" />
+    <None Include=".git\objects\d3\0833019d57d91c0733bf753624033d2921c8d5" />
+    <None Include=".git\objects\d3\a138f7aa1a69768490f9d611a0256fe3f90f91" />
+    <None Include=".git\objects\d4\8ca8a053c19d4d9e9202c867463ce0d2dc2e28" />
+    <None Include=".git\objects\d5\9d63440c0e662d59c9521473ae2773a397df24" />
+    <None Include=".git\objects\d6\aa14a2fb2c200caf909328d27ee83f6c992aac" />
+    <None Include=".git\objects\d8\80a46a390017b9ed9e753cc63b928990233d58" />
+    <None Include=".git\objects\d9\3a9b4c337ddf7ac6a4810e9e167f2e7cdf45f1" />
+    <None Include=".git\objects\d9\d01024bc289d2d8cf3e503176c5c0f34c19683" />
+    <None Include=".git\objects\db\f7f020f65f85f29a7c14da3d08d254fa967c73" />
+    <None Include=".git\objects\dc\a3a8d7820dc4d5b4e7bc6fc0283177bb596a50" />
+    <None Include=".git\objects\de\055620d8c16b23e40f59244ad0f9738a5d53c8" />
+    <None Include=".git\objects\de\0e829355ebacdedd175b5bce621c682fa2b451" />
+    <None Include=".git\objects\de\34fba77648c866ea00e39d5961587453fad334" />
+    <None Include=".git\objects\df\601b9a14a10813a0fe63d48c9b4565969e0542" />
+    <None Include=".git\objects\df\8e17d2c0b6d4fec37386fa9171554a711aaefb" />
+    <None Include=".git\objects\e0\306eddb5b3f59c5d5b67f8d8fb21ead8b86b20" />
+    <None Include=".git\objects\e1\3a62d90613eec8571692728968ac183495a9b1" />
+    <None Include=".git\objects\e2\9762b7ab12af89ab36cb198ee0726ea76ccb3a" />
+    <None Include=".git\objects\e5\0a1c96b3a4192a00d03c3f16855942fe238123" />
+    <None Include=".git\objects\e6\16cfc6726adaefd7a23381226937d5a9d4c6ca" />
+    <None Include=".git\objects\e6\bc5077992f252e2dbafdec58b5d53c8437fadb" />
+    <None Include=".git\objects\e7\7825742a81b998a1ceaa88dae4dbfe70667fdc" />
+    <None Include=".git\objects\e9\13e3d8e6e8f9b51c3f0ccf889c397b7975e99d" />
+    <None Include=".git\objects\e9\b566438fa84cfd5991185502c0b3bbcaf5cfd4" />
+    <None Include=".git\objects\e9\e388179f532f5a09aaf8a4a6b42520b15f6290" />
+    <None Include=".git\objects\eb\d7078f7b699293d14f94de60f44c8984dc3596" />
+    <None Include=".git\objects\ef\127290989896f62749a61c56c9ca3f0303a9cf" />
+    <None Include=".git\objects\f4\0b71836335a261a2b77272aa64829cf8348c5d" />
+    <None Include=".git\objects\f4\8325513209abc195d915003b595c5b8460ec03" />
+    <None Include=".git\objects\f4\efd6b0ab827328919b47b3a02c3bd3d45fed0f" />
+    <None Include=".git\objects\f5\45407296059d0d226a5471273aaad3b7ae2001" />
+    <None Include=".git\objects\f6\2033971a1a608bc990e76876230fec8f1133ec" />
+    <None Include=".git\objects\f6\b11357535d9744c8f2967a3e11fae3c7c6469b" />
+    <None Include=".git\objects\f6\ea0b754adfb0b11748313e9964fd0cef283043" />
+    <None Include=".git\objects\f8\08443eb28e8d4d0aeb3ed1f4c28e3659704c56" />
+    <None Include=".git\objects\f8\303cfcdfd398d1c929ac7d780767967c4d4a2f" />
+    <None Include=".git\objects\f9\8121d648c370c0c1f52bf57de62bef451f6468" />
+    <None Include=".git\objects\f9\ba61bab6e558d6cf1b0b6fced0cd40e7940679" />
+    <None Include=".git\ORIG_HEAD" />
+    <None Include=".git\refs\heads\master" />
+    <None Include=".git\refs\remotes\origin\master" />
+    <None Include=".vs\TussentijdsProjectYannick\v16\.suo" />
+    <None Include="packages\ControlzEx.4.3.2\.signature.p7s" />
+    <None Include="packages\ControlzEx.4.3.2\ControlzEx.4.3.2.nupkg" />
+    <None Include="packages\EntityFramework.6.2.0\Content\net40\App.config.transform" />
+    <None Include="packages\EntityFramework.6.2.0\Content\net40\Web.config.transform" />
+    <None Include="packages\EntityFramework.6.2.0\EntityFramework.6.2.0.nupkg" />
+    <None Include="packages\EntityFramework.6.2.0\tools\EntityFramework.psd1" />
+    <None Include="packages\EntityFramework.6.2.0\tools\EntityFramework.psm1" />
+    <None Include="packages\EntityFramework.6.2.0\tools\init.ps1" />
+    <None Include="packages\EntityFramework.6.2.0\tools\install.ps1" />
+    <None Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\.signature.p7s" />
+    <None Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\Konscious.Security.Cryptography.Argon2.1.2.1.nupkg" />
+    <None Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\.signature.p7s" />
+    <None Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\Konscious.Security.Cryptography.Blake2.1.0.9.nupkg" />
+    <None Include="packages\MahApps.Metro.2.2.0\.signature.p7s" />
+    <None Include="packages\MahApps.Metro.2.2.0\MahApps.Metro.2.2.0.nupkg" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\.signature.p7s" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.4.6.0\MahApps.Metro.IconPacks.4.6.0.nupkg" />
+    <None Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\.signature.p7s" />
+    <None Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.pri" />
+    <None Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\MahApps.Metro.IconPacks.Material.4.6.0.nupkg" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\.signature.p7s" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\Microsoft.Xaml.Behaviors.Wpf.1.1.19.nupkg" />
+    <None Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\tools\Install.ps1" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\.signature.p7s" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\LICENSE.md" />
+    <None Include="packages\Newtonsoft.Json.12.0.3\Newtonsoft.Json.12.0.3.nupkg" />
+    <None Include="packages\PDFsharp.1.50.5147\.signature.p7s" />
+    <None Include="packages\PDFsharp.1.50.5147\PDFsharp.1.50.5147.nupkg" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\.signature.p7s" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\MonoAndroid10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\MonoTouch10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\netcoreapp2.0\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\uap10.0.16299\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinios10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinmac20\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarintvos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\lib\xamarinwatchos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\MonoAndroid10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\MonoTouch10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\netcoreapp2.0\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\uap10.0.16299\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinios10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinmac20\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarintvos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\ref\xamarinwatchos10\_._" />
+    <None Include="packages\System.Numerics.Vectors.4.5.0\System.Numerics.Vectors.4.5.0.nupkg" />
+    <None Include="Projectweek Yannick.bak" />
+    <None Include="README.md" />
+    <None Include="TussentijdsProjectYannick\App.config" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling20.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling21.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling36.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling37.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling38.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling39.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling40.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling42.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling43.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling44.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling45.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling46.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling47.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling48.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Besrelling50.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\firstpage.pdf" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\gegevens.Json" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\latesttemp1.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\Projectweek Yannick.bak" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\temp1.docx" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\temp1.pdf" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannick.exe.config" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannickOverzicht.exe.config" />
+    <None Include="TussentijdsProjectYannick\bin\Debug\~%24srelling43.docx" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\AddPersoneelslid.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\App.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\BestellingMenu.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\Databeheer.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\edmxResourcesToEmbed\Projectweek_YannickDataModel.csdl" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\edmxResourcesToEmbed\Projectweek_YannickDataModel.msl" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\edmxResourcesToEmbed\Projectweek_YannickDataModel.ssdl" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\MainMenu.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\MainWindow.baml" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csproj.CopyComplete" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csproj.CoreCompileInputs.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csproj.GenerateResource.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csproj.ResolveComReference.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csprojAssemblyReference.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick_MarkupCompile.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick_MarkupCompile.i.cache" />
+    <None Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick_MarkupCompile.lref" />
+    <None Include="TussentijdsProjectYannick\packages.config" />
+    <None Include="TussentijdsProjectYannick\Projectweek Yannick.bak" />
+    <EntityDeploy Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Projectweek_YannickDataModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.edmx.diagram">
+      <DependentUpon>Projectweek_YannickDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="TussentijdsProjectYannick\Properties\Settings.settings" />
+    <None Include="TussentijdsProjectYannick\TussentijdsProjectYannick.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net45\ControlzEx.dll" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net45\ControlzEx.pdb" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net45\ControlzEx.xml" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net462\ControlzEx.dll" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net462\ControlzEx.pdb" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\net462\ControlzEx.xml" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.0\ControlzEx.dll" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.0\ControlzEx.pdb" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.0\ControlzEx.xml" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.1\ControlzEx.dll" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.1\ControlzEx.pdb" />
+    <Content Include="packages\ControlzEx.4.3.2\lib\netcoreapp3.1\ControlzEx.xml" />
+    <Content Include="packages\ControlzEx.4.3.2\logo-mini.png" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net40\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.xml" />
+    <Content Include="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.xml" />
+    <Content Include="packages\EntityFramework.6.2.0\tools\about_EntityFramework.help.txt" />
+    <Content Include="packages\EntityFramework.6.2.0\tools\EntityFramework.PowerShell.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\tools\EntityFramework.PowerShell.Utility.dll" />
+    <Content Include="packages\EntityFramework.6.2.0\tools\migrate.exe" />
+    <Content Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\lib\net46\Konscious.Security.Cryptography.Argon2.dll" />
+    <Content Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\lib\net46\Konscious.Security.Cryptography.Argon2.xml" />
+    <Content Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\lib\netstandard1.3\Konscious.Security.Cryptography.Argon2.dll" />
+    <Content Include="packages\Konscious.Security.Cryptography.Argon2.1.2.1\lib\netstandard1.3\Konscious.Security.Cryptography.Argon2.xml" />
+    <Content Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\lib\net46\Konscious.Security.Cryptography.Blake2.dll" />
+    <Content Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\lib\net46\Konscious.Security.Cryptography.Blake2.xml" />
+    <Content Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\lib\netstandard1.3\Konscious.Security.Cryptography.Blake2.dll" />
+    <Content Include="packages\Konscious.Security.Cryptography.Blake2.1.0.9\lib\netstandard1.3\Konscious.Security.Cryptography.Blake2.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net452\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net452\MahApps.Metro.pdb" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net452\MahApps.Metro.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net46\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net46\MahApps.Metro.pdb" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net46\MahApps.Metro.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net47\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net47\MahApps.Metro.pdb" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\net47\MahApps.Metro.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.0\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.0\MahApps.Metro.pdb" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.0\MahApps.Metro.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.1\MahApps.Metro.dll" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.1\MahApps.Metro.pdb" />
+    <Content Include="packages\MahApps.Metro.2.2.0\lib\netcoreapp3.1\MahApps.Metro.xml" />
+    <Content Include="packages\MahApps.Metro.2.2.0\mahapps.metro.logo.png" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net45\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net46\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\net47\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons\MahApps.Metro.IconPacks.BootstrapIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons\MahApps.Metro.IconPacks.BoxIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons\MahApps.Metro.IconPacks.Codicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo\MahApps.Metro.IconPacks.Entypo.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons\MahApps.Metro.IconPacks.EvaIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons\MahApps.Metro.IconPacks.FeatherIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons\MahApps.Metro.IconPacks.FileIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio\MahApps.Metro.IconPacks.Fontaudio.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome\MahApps.Metro.IconPacks.FontAwesome.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome\MahApps.Metro.IconPacks.ForkAwesome.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons\MahApps.Metro.IconPacks.Ionicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons\MahApps.Metro.IconPacks.JamIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign\MahApps.Metro.IconPacks.MaterialDesign.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight\MahApps.Metro.IconPacks.MaterialLight.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material\MahApps.Metro.IconPacks.Material.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns\MahApps.Metro.IconPacks.Microns.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern\MahApps.Metro.IconPacks.Modern.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons\MahApps.Metro.IconPacks.Octicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons\MahApps.Metro.IconPacks.PicolIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons\MahApps.Metro.IconPacks.PixelartIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons\MahApps.Metro.IconPacks.RadixIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon\MahApps.Metro.IconPacks.RemixIcon.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome\MahApps.Metro.IconPacks.RPGAwesome.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons\MahApps.Metro.IconPacks.SimpleIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons\MahApps.Metro.IconPacks.Typicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons\MahApps.Metro.IconPacks.Unicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons\MahApps.Metro.IconPacks.VaadinIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons\MahApps.Metro.IconPacks.WeatherIcons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons\MahApps.Metro.IconPacks.Zondicons.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks\MahApps.Metro.IconPacks.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.4.6.0\logo_small.png" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net45\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net46\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\net47\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.0\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\netcoreapp3.1\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material\MahApps.Metro.IconPacks.Material.xr.xml" />
+    <Content Include="packages\MahApps.Metro.IconPacks.Material.4.6.0\logo_small.png" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Design\Microsoft.Xaml.Behaviors.Design.dll" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.pdb" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\netcoreapp3.0\Design\Microsoft.Xaml.Behaviors.DesignTools.dll" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\netcoreapp3.0\Microsoft.Xaml.Behaviors.dll" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\netcoreapp3.0\Microsoft.Xaml.Behaviors.pdb" />
+    <Content Include="packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\netcoreapp3.0\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net20\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net20\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net35\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net35\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.3\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard1.3\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net40+sl5+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.xml" />
+    <Content Include="packages\Newtonsoft.Json.12.0.3\packageIcon.png" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\de\PdfSharp.Charting.resources.dll" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\de\PdfSharp.resources.dll" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.xml" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll" />
+    <Content Include="packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard1.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard1.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard2.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\netstandard2.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\LICENSE.TXT" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net45\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net45\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net46\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\net46\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard1.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard1.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard2.0\System.Numerics.Vectors.dll" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\ref\netstandard2.0\System.Numerics.Vectors.xml" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\THIRD-PARTY-NOTICES.TXT" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\useSharedDesignerContext.txt" />
+    <Content Include="packages\System.Numerics.Vectors.4.5.0\version.txt" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\ControlzEx.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\ControlzEx.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\ControlzEx.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\cross-mark.png" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\de\PdfSharp.Charting.resources.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\de\PdfSharp.resources.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\EntityFramework.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\EntityFramework.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\gegevens.txt" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\harold.jpg" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Konscious.Security.Cryptography.Argon2.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Konscious.Security.Cryptography.Argon2.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Konscious.Security.Cryptography.Blake2.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Konscious.Security.Cryptography.Blake2.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BootstrapIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.BoxIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Codicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Codicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Codicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Core.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Core.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Core.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Entypo.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Entypo.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Entypo.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.EvaIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FeatherIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FileIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FileIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FileIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Fontaudio.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.FontAwesome.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.ForkAwesome.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Ionicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Ionicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Ionicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.JamIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.JamIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.JamIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Material.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Material.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Material.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialDesign.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.MaterialLight.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Microns.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Microns.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Microns.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Modern.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Modern.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Modern.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Octicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Octicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Octicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PicolIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.PixelartIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RadixIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RemixIcon.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.RPGAwesome.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.SimpleIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Typicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Typicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Typicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Unicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Unicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Unicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.VaadinIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.WeatherIcons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Zondicons.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Zondicons.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.IconPacks.Zondicons.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\MahApps.Metro.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Microsoft.Xaml.Behaviors.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Microsoft.Xaml.Behaviors.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Microsoft.Xaml.Behaviors.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Newtonsoft.Json.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\Newtonsoft.Json.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\PdfSharp.Charting.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\PdfSharp.Charting.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\PdfSharp.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\PdfSharp.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\System.Numerics.Vectors.dll" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\System.Numerics.Vectors.xml" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannick.exe" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannick.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannickOverzicht.exe" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\TussentijdsProjectYannickOverzicht.pdb" />
+    <Content Include="TussentijdsProjectYannick\bin\Debug\updates.txt" />
+    <Content Include="TussentijdsProjectYannick\cross-mark.png" />
+    <Content Include="TussentijdsProjectYannick\harold.jpg" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\Interop.ACTIVEXLib.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\Interop.UCAddinLib.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\Interop.VSTOEE100.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\Interop.VSTOEE90.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TempPE\Projectweek_YannickDataModel.Context.cs.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TempPE\Projectweek_YannickDataModel.cs.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TempPE\Projectweek_YannickDataModel.Designer.cs.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.csproj.FileListAbsolute.txt" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.exe" />
+    <Content Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.pdb" />
+    <Content Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Projectweek_YannickDataModel.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Projectweek_YannickDataModel1.cs</LastGenOutput>
+    </Content>
+    <Content Include="TussentijdsProjectYannick\updates.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BootstrapIcons\Themes\PackIconBootstrapIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.BoxIcons\Themes\PackIconBoxIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Codicons\Themes\PackIconCodicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Entypo\Themes\PackIconEntypo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.EvaIcons\Themes\PackIconEvaIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FeatherIcons\Themes\PackIconFeatherIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FileIcons\Themes\PackIconFileIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Fontaudio\Themes\PackIconFontaudio.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.FontAwesome\Themes\PackIconFontAwesome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.ForkAwesome\Themes\PackIconForkAwesome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Ionicons\Themes\PackIconIonicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.JamIcons\Themes\PackIconJamIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialDesign\Themes\PackIconMaterialDesign.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.MaterialLight\Themes\PackIconMaterialLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Material\Themes\PackIconMaterial.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Microns\Themes\PackIconMicrons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Modern\Themes\PackIconModern.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Octicons\Themes\PackIconOcticons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PicolIcons\Themes\PackIconPicolIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.PixelartIcons\Themes\PackIconPixelartIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RadixIcons\Themes\PackIconRadixIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RemixIcon\Themes\PackIconRemixIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.RPGAwesome\Themes\PackIconRPGAwesome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.SimpleIcons\Themes\PackIconSimpleIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Typicons\Themes\PackIconTypicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Unicons\Themes\PackIconUnicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.VaadinIcons\Themes\PackIconVaadinIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.WeatherIcons\Themes\PackIconWeatherIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="packages\MahApps.Metro.IconPacks.4.6.0\lib\uap10.0.16299\MahApps.Metro.IconPacks.Zondicons\Themes\PackIconZondicons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\AddPersoneelslid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\BestellingMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\Databeheer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\MainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TussentijdsProjectYannick\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TussentijdsProjectYannick\AddPersoneelslid.xaml.cs">
+      <DependentUpon>AddPersoneelslid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\AdminRechten.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Bestelling.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\BestellingMenu.xaml.cs">
+      <DependentUpon>BestellingMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\BestellingProduct.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Categorie.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Databeheer.xaml.cs">
+      <DependentUpon>Databeheer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Klant.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Leverancier.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\MAPI.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\AddPersoneelslid.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\AddPersoneelslid.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\App.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\App.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\Bestelling.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\BestellingMenu.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\BestellingMenu.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\Databeheer.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\Databeheer.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\MainMenu.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\MainMenu.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\MainWindow.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\MainWindow.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\Overzicht.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick_Content.g.cs" />
+    <Compile Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick_Content.g.i.cs" />
+    <Compile Include="TussentijdsProjectYannick\Personeelslid.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Product.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.Context.cs" />
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Projectweek_YannickDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.cs" />
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel.Designer.cs">
+      <DependentUpon>Projectweek_YannickDataModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Projectweek_YannickDataModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Projectweek_YannickDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TussentijdsProjectYannick\Properties\AssemblyInfo.cs" />
+    <Compile Include="TussentijdsProjectYannick\Properties\Resources.Designer.cs" />
+    <Compile Include="TussentijdsProjectYannick\Properties\Settings.Designer.cs" />
+    <Compile Include="TussentijdsProjectYannick\sysdiagram.cs">
+      <DependentUpon>Projectweek_YannickDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.g.resources" />
+    <EmbeddedResource Include="TussentijdsProjectYannick\obj\Debug\TussentijdsProjectYannick.Properties.Resources.resources" />
+    <EmbeddedResource Include="TussentijdsProjectYannick\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\objects\info\" />
+    <Folder Include=".git\objects\pack\" />
+    <Folder Include=".git\refs\tags\" />
+    <Folder Include="TussentijdsProjectYannick\bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

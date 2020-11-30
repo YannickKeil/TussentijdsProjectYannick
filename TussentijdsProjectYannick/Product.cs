@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TussentijdsProjectYannick
+namespace ProjectweekWPF.TussentijdsProjectYannick
 {
     using System;
     using System.Collections.Generic;
@@ -37,20 +37,5 @@ namespace TussentijdsProjectYannick
         public virtual ICollection<BestellingProduct> BestellingProducts { get; set; }
         public virtual Categorie Categorie { get; set; }
         public virtual Leverancier Leverancier { get; set; }
-        public double Netto()
-        {
-            double netto = Convert.ToDouble(AankoopPrijs) * (1 + (Convert.ToDouble(Marge) / 100));
-            return Math.Round(netto, 2);
-        }
-        public double Bruto()
-        {
-            double brutto = (Convert.ToDouble(AankoopPrijs) * (1 + (Convert.ToDouble(Marge) / 100))) * (1 + (Convert.ToDouble(BTW) / 100));
-            return Math.Round(brutto, 2);
-        }
-        public double BTWVerschil()
-        {
-            double btw = Bruto() - Netto();
-            return Math.Round(btw, 2);
-        }
     }
 }

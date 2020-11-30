@@ -52,7 +52,9 @@ namespace TussentijdsProjectYannick
 
         private void btnOverzicht_Click(object sender, RoutedEventArgs e)
         {
-            var overzicht = new TussentijdsProjectYannickOverzicht.MainWindow();
+            TussentijdsProjectYannickOverzicht.Personeelslid thisSelected = new TussentijdsProjectYannickOverzicht.Personeelslid() { Achternaam = Selected.Achternaam, Voornaam = Selected.Voornaam, AdminRechtenID = Selected.AdminRechtenID, PersoneelslidID = Selected.PersoneelslidID, Wachtwoord = Selected.Wachtwoord, Salt = Selected.Salt, Username = Selected.Username, Indiensttreding = Selected.Indiensttreding, GeboorteDatum = Selected.GeboorteDatum, };
+
+            var overzicht = new TussentijdsProjectYannickOverzicht.MainWindow(thisSelected);
             overzicht.ShowDialog();
         }
 

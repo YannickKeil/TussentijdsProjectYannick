@@ -678,6 +678,11 @@ namespace TussentijdsProjectYannick
                     txtPasswordPersoneellidEdit.ToolTip = errorPassword;
                     imgPasswordPersoneellidEdit.Visibility = Visibility.Visible;
                 }
+                if (password.Length == 0)
+                {
+                    checks = true;
+                    imgPasswordPersoneellidEdit.Visibility = Visibility.Hidden;
+                }
                 if (txtVoornaamPersoneellidEdit.Text == "")
                 {
                     txtVoornaamPersoneellidEdit.ToolTip = "Voornaam mag niet leeg zijn";
@@ -699,10 +704,13 @@ namespace TussentijdsProjectYannick
                 }
                 if (ctx.Personeelslids.Where(p => p.Username == txtUsernamePersoneellidEdit.Text).Any())
                 {
+                    if(ctx.Personeelslids.Single(p => p.PersoneelslidID == (int)cbEditPersoneellid.SelectedValue).Username != txtUsernamePersoneellidEdit.Text) 
+                    { 
                     checks = false;
                     errorUsername += "het moet een unique Username zijn.";
                     txtUsernamePersoneellidEdit.ToolTip = errorUsername;
                     imgUsernamePersoneellidEdit.Visibility = Visibility.Visible;
+                    }
                 }
                 if (checks)
                 {
@@ -1947,15 +1955,15 @@ namespace TussentijdsProjectYannick
         }
         public void JsonCreate(List<object> listObject)
         {
-            if (!File.Exists("gegevens.Json"))
+            if (!File.Exists("gegevens.txt"))
             {
-                using (FileStream fs = File.Create("gegevens.Json"))
+                using (FileStream fs = File.Create("gegevens.txt"))
                 {
                 }
             }
 
             var jsonString = JsonConvert.SerializeObject(listObject, Formatting.Indented);
-            File.WriteAllText("gegevens.Json", jsonString);
+            File.WriteAllText("gegevens.txt", jsonString);
             MessageBox.Show(jsonString.ToString());
             using (Projectweek_YannickEntities ctx = new Projectweek_YannickEntities())
             {
@@ -1965,7 +1973,7 @@ namespace TussentijdsProjectYannick
 
                 MAPI mapi = new MAPI();
 
-                mapi.AddAttachment($"{Directory.GetCurrentDirectory()}/gegevens.Json");
+                mapi.AddAttachment($"{Directory.GetCurrentDirectory()}/gegevens.txt");
                 mapi.AddRecipientTo(ctx.Leveranciers.Where(l => l.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(l => l.Emailadres).FirstOrDefault());
                 mapi.SendMailPopup("Json Gevens producten om bijtewerken", $"Beste {ctx.Leveranciers.Where(l => l.LeverancierID == (int)cbJsonLeveranciers.SelectedValue).Select(l => l.Contactpersoon).FirstOrDefault()},\n" +
                     $"\n" +

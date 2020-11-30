@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TussentijdsProjectYannick
+namespace ProjectweekWPF.TussentijdsProjectYannick
 {
     using System;
     using System.Collections.Generic;
