@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProjectweekModelStoreContainer" CdmEntityContainer="Projectweek_YannickEntities">
+    <EntitySetMapping Name="AdminRechtens">
+      <EntityTypeMapping TypeName="ProjectweekModel.AdminRechten">
+        <MappingFragment StoreEntitySet="AdminRechten">
+          <ScalarProperty Name="AdminRechtenID" ColumnName="AdminRechtenID" />
+          <ScalarProperty Name="titel" ColumnName="titel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellings">
+      <EntityTypeMapping TypeName="ProjectweekModel.Bestelling">
+        <MappingFragment StoreEntitySet="Bestelling">
+          <ScalarProperty Name="DatumAankomst" ColumnName="DatumAankomst" />
+          <ScalarProperty Name="DatumVerzending" ColumnName="DatumVerzending" />
+          <ScalarProperty Name="BestellingID" ColumnName="BestellingID" />
+          <ScalarProperty Name="DatumOpgemaakt" ColumnName="DatumOpgemaakt" />
+          <ScalarProperty Name="PersoneelslidID" ColumnName="PersoneelslidID" />
+          <ScalarProperty Name="LeverancierID" ColumnName="LeverancierID" />
+          <ScalarProperty Name="KlantID" ColumnName="KlantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BestellingProducts">
+      <EntityTypeMapping TypeName="ProjectweekModel.BestellingProduct">
+        <MappingFragment StoreEntitySet="BestellingProduct">
+          <ScalarProperty Name="AantalProtuctBesteld" ColumnName="AantalProtuctBesteld" />
+          <ScalarProperty Name="BestellingProductID" ColumnName="BestellingProductID" />
+          <ScalarProperty Name="BestellingID" ColumnName="BestellingID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="ProjectweekModel.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+          <ScalarProperty Name="CategorieNaam" ColumnName="CategorieNaam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klants">
+      <EntityTypeMapping TypeName="ProjectweekModel.Klant">
+        <MappingFragment StoreEntitySet="Klant">
+          <ScalarProperty Name="KlantID" ColumnName="KlantID" />
+          <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+          <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+          <ScalarProperty Name="Straatnaam" ColumnName="Straatnaam" />
+          <ScalarProperty Name="Huisnummer" ColumnName="Huisnummer" />
+          <ScalarProperty Name="Bus" ColumnName="Bus" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Gemeente" ColumnName="Gemeente" />
+          <ScalarProperty Name="Telefoonnummer" ColumnName="Telefoonnummer" />
+          <ScalarProperty Name="Emailadres" ColumnName="Emailadres" />
+          <ScalarProperty Name="AangemaaktOp" ColumnName="AangemaaktOp" />
+          <ScalarProperty Name="Opmerking" ColumnName="Opmerking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Leveranciers">
+      <EntityTypeMapping TypeName="ProjectweekModel.Leverancier">
+        <MappingFragment StoreEntitySet="Leverancier">
+          <ScalarProperty Name="LeverancierID" ColumnName="LeverancierID" />
+          <ScalarProperty Name="Contactpersoon" ColumnName="Contactpersoon" />
+          <ScalarProperty Name="Telefoonnummer" ColumnName="Telefoonnummer" />
+          <ScalarProperty Name="Emailadres" ColumnName="Emailadres" />
+          <ScalarProperty Name="Straatnaam" ColumnName="Straatnaam" />
+          <ScalarProperty Name="Huisnummer" ColumnName="Huisnummer" />
+          <ScalarProperty Name="Bus" ColumnName="Bus" />
+          <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+          <ScalarProperty Name="Gemeente" ColumnName="Gemeente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personeelslids">
+      <EntityTypeMapping TypeName="ProjectweekModel.Personeelslid">
+        <MappingFragment StoreEntitySet="Personeelslid">
+          <ScalarProperty Name="PersoneelslidID" ColumnName="PersoneelslidID" />
+          <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+          <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+          <ScalarProperty Name="Wachtwoord" ColumnName="Wachtwoord" />
+          <ScalarProperty Name="AdminRechtenID" ColumnName="AdminRechtenID" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Indiensttreding" ColumnName="Indiensttreding" />
+          <ScalarProperty Name="GeboorteDatum" ColumnName="GeboorteDatum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="ProjectweekModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="AankoopPrijs" ColumnName="AankoopPrijs" />
+          <ScalarProperty Name="AantalBeschikbaar" ColumnName="AantalBeschikbaar" />
+          <ScalarProperty Name="AantalBesteld" ColumnName="AantalBesteld" />
+          <ScalarProperty Name="AantalNaBesteld" ColumnName="AantalNaBesteld" />
+          <ScalarProperty Name="AantalOpVooraad" ColumnName="AantalOpVooraad" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Naam" ColumnName="Naam" />
+          <ScalarProperty Name="Marge" ColumnName="Marge" />
+          <ScalarProperty Name="Eenheid" ColumnName="Eenheid" />
+          <ScalarProperty Name="BTW" ColumnName="BTW" />
+          <ScalarProperty Name="LeverancierID" ColumnName="LeverancierID" />
+          <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ProjectweekModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

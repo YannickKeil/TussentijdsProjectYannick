@@ -399,11 +399,5 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht.csproj">
-      <Project>{0f829e0d-31cc-439e-935e-b6085226ad51}</Project>
-      <Name>TussentijdsProjectYannickOverzicht</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
