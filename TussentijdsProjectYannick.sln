@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TussentijdsProjectYannick", "TussentijdsProjectYannick\TussentijdsProjectYannick.csproj", "{46C466F1-7494-47E5-8879-A17E662871EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TussentijdsProjectYannickOverzicht", "..\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht.csproj", "{0F829E0D-31CC-439E-935E-B6085226AD51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TussentijdsProjectYannickOverzicht", "..\..\12-10-2020 tot 30-10-2020 Tussentijds Project\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht\TussentijdsProjectYannickOverzicht.csproj", "{0F829E0D-31CC-439E-935E-B6085226AD51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
